@@ -1,0 +1,318 @@
+<html>
+<head>
+<title>MySQLUtil.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #000080; font-weight: bold;}
+.s1 { color: #000000;}
+.s2 { color: #808080; font-style: italic;}
+.s3 { color: #008000; font-weight: bold;}
+.s4 { color: #0000ff;}
+</style>
+</head>
+<body bgcolor="#ffffff">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+MySQLUtil.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span>SqlUtil;
+
+<span class="s0">import </span>java.sql.*;
+<span class="s0">import <a href="Config.java.html">SqlUtil.Config</a></span>;
+<span class="s0">import </span>java.lang.Class.*;
+
+<span class="s0">public class </span>MySQLUtil {
+    <span class="s0">static </span>Connection conn = <span class="s0">null</span>;
+    <span class="s0">static </span>Statement stmt = <span class="s0">null</span>;
+
+    <span class="s2">/*may be used in the future 
+    PreparedStatement ps = null; 
+    ResultSet rs = null; 
+     */</span>
+
+    <span class="s0">public </span>MySQLUtil() {
+        registerDri();
+        getConn();
+    }
+
+    <span class="s2">/**</span>
+     <span class="s2">* Using for get connection with DB.</span>
+     <span class="s2">*/</span>
+    <span class="s0">public static void </span>registerDri() {
+        <span class="s0">try </span>{
+            Class.forName(<a href="Config.java.html">Config</a>.getJdbc_driver());
+            System.out.println(<span class="s3">&quot;</span><span class="s0">\033</span><span class="s3">[92;1msuccessed to register driver!</span><span class="s0">\033</span><span class="s3">[0m&quot;</span>);
+        } <span class="s0">catch </span>(ClassNotFoundException e) {
+            e.printStackTrace();
+            System.err.println(<span class="s3">&quot;failed to register driver!&quot;</span>);
+        }
+    }
+
+    <span class="s0">public static void </span>getConn() {
+        <span class="s0">try </span>{
+            conn = DriverManager.getConnection(<a href="Config.java.html">Config</a>.getJbdc_url(), <a href="Config.java.html">Config</a>.getUSER(), <a href="Config.java.html">Config</a>.getPWD());
+            System.out.println(<span class="s3">&quot;</span><span class="s0">\033</span><span class="s3">[92;1msuccessed to get connection!</span><span class="s0">\033</span><span class="s3">[0m&quot;</span>);
+        } <span class="s0">catch </span>(SQLException e) {
+            e.printStackTrace();
+            System.err.println(<span class="s3">&quot;failed to get connection!&quot;</span>);
+        }
+    }
+
+
+
+    <span class="s2">/**</span>
+     <span class="s2">* Multiply methods of one same name,</span>
+     <span class="s2">* using for close ResultSet, Connection or Statement.</span>
+     <span class="s2">*/</span>
+    <span class="s0">public static void </span>close() {
+        close(stmt);
+        close(conn);
+        System.out.println(<span class="s3">&quot;</span><span class="s0">\033</span><span class="s3">[92;1msuccessed to close them!</span><span class="s0">\033</span><span class="s3">[0m&quot;</span>);
+    }
+
+    <span class="s0">public static void </span>close(ResultSet rs, Connection conn, Statement stmt) {
+        close(rs);
+        close(stmt);
+        close(conn);
+        System.out.println(<span class="s3">&quot;</span><span class="s0">\033</span><span class="s3">[92;1msuccessed to close them!</span><span class="s0">\033</span><span class="s3">[0m&quot;</span>);
+    }
+
+    <span class="s0">public static void </span>close(ResultSet rs) {
+        <span class="s0">try </span>{
+            <span class="s0">if </span>(rs != <span class="s0">null</span>) {
+                rs.close();
+                System.out.println(<span class="s3">&quot;</span><span class="s0">\033</span><span class="s3">[92;1msuccessed to close ResultSet!</span><span class="s0">\033</span><span class="s3">[0m&quot;</span>);
+            } <span class="s0">else </span>System.err.println(<span class="s3">&quot;empty pointer!&quot;</span>);
+        } <span class="s0">catch </span>(SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    <span class="s0">public static void </span>close(Connection conn) {
+        <span class="s0">try </span>{
+            <span class="s0">if </span>(conn != <span class="s0">null</span>) {
+                conn.close();
+                System.out.println(<span class="s3">&quot;</span><span class="s0">\033</span><span class="s3">[92;1msuccessed to close Connection!</span><span class="s0">\033</span><span class="s3">[0m&quot;</span>);
+            } <span class="s0">else </span>System.err.println(<span class="s3">&quot;empty pointer!&quot;</span>);
+        } <span class="s0">catch </span>(SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    <span class="s0">public static void </span>close(Statement stmt) {
+        <span class="s0">try </span>{
+            <span class="s0">if </span>(stmt != <span class="s0">null</span>) {
+                stmt.close();
+                System.out.println(<span class="s3">&quot;</span><span class="s0">\033</span><span class="s3">[92;1msuccessed to close Statement!</span><span class="s0">\033</span><span class="s3">[0m&quot;</span>);
+            } <span class="s0">else </span>System.err.println(<span class="s3">&quot;empty pointer!&quot;</span>);
+        } <span class="s0">catch </span>(SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    <span class="s0">public static void </span>close(PreparedStatement ps) {
+        <span class="s0">try </span>{
+            <span class="s0">if </span>(ps != <span class="s0">null</span>) {
+                ps.close();
+                System.out.println(<span class="s3">&quot;</span><span class="s0">\033</span><span class="s3">[92;1msuccessed to close PreparedStatement!</span><span class="s0">\033</span><span class="s3">[0m&quot;</span>);
+            } <span class="s0">else </span>System.err.println(<span class="s3">&quot;empty pointer!&quot;</span>);
+        } <span class="s0">catch </span>(SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    <span class="s2">/**</span>
+     <span class="s2">* To run SQL</span>
+     <span class="s2">*/</span>
+    <span class="s0">public static </span>ResultSet query(String sql) {
+        <span class="s0">try </span>{
+            stmt = conn.createStatement();
+            <span class="s0">return </span>stmt.executeQuery(sql);
+        } <span class="s0">catch </span>(SQLException e) {
+            e.printStackTrace();
+        }
+        <span class="s0">return null</span>;
+    }
+
+    <span class="s0">public static </span>PreparedStatement setPreStmt(String sql) {
+        <span class="s0">try </span>{
+            <span class="s0">return </span>conn.prepareStatement(sql,ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
+        } <span class="s0">catch </span>(SQLException e) {
+            e.printStackTrace();
+        }
+        <span class="s0">return null</span>;
+    }
+
+    <span class="s0">public static </span>ResultSet query(PreparedStatement ps, String... strings) {
+        <span class="s0">try </span>{
+            <span class="s0">for </span>(<span class="s0">int </span>i = <span class="s4">0</span>; i &lt; strings.length; i++) {
+                ps.setString(i + <span class="s4">1</span>, strings[i]);
+            }
+            <span class="s0">return </span>ps.executeQuery();
+        } <span class="s0">catch </span>(SQLException e) {
+            e.printStackTrace();
+        }
+        <span class="s0">return null</span>;
+    }
+
+    <span class="s0">public static boolean </span>update(PreparedStatement ps , String... strings){
+        <span class="s0">try </span>{
+            <span class="s0">for </span>(<span class="s0">int </span>i = <span class="s4">0</span>; i &lt; strings.length; i++) {
+                ps.setString(i + <span class="s4">1</span>, strings[i]);
+            }
+            <span class="s0">return </span>ps.execute();
+        } <span class="s0">catch </span>(SQLException e) {
+            e.printStackTrace();
+        }
+        <span class="s0">return false</span>;
+    }
+
+    <span class="s0">public static boolean </span>update(String tbName, String column, String newData, String conColumn, String conNewData) {
+        <span class="s2">//run SQL</span>
+        <span class="s0">try </span>{
+            PreparedStatement ps = conn.prepareStatement(<span class="s3">&quot;UPDATE &quot; </span>+ tbName + <span class="s3">&quot; SET &quot; </span>+ column + <span class="s3">&quot;=? where &quot; </span>+ conColumn + <span class="s3">&quot;=?&quot;</span>);
+            ps.setString(<span class="s4">1</span>, newData);
+            ps.setString(<span class="s4">2</span>, conNewData);
+            ps.execute();
+            <span class="s0">return true</span>;
+        } <span class="s0">catch </span>(SQLException e) {
+            e.printStackTrace();
+        }
+        <span class="s0">return false</span>;
+    }
+
+    <span class="s0">public static boolean </span>add(String tbName, String... newData) {
+        <span class="s2">//run SQL</span>
+        <span class="s0">try </span>{
+            <span class="s0">int </span>n = newData.length;
+            ;
+            StringBuilder sql = <span class="s0">new </span>StringBuilder();
+            sql.append(<span class="s3">&quot;INSERT INTO &quot; </span>+ tbName + <span class="s3">&quot; VALUES(?&quot;</span>);
+            <span class="s0">for </span>(<span class="s0">int </span>i = <span class="s4">1</span>; i &lt; n; i++) {
+                sql.append(<span class="s3">&quot;,?&quot;</span>);
+            }
+            sql.append(<span class="s3">&quot;)&quot;</span>);
+            System.out.println(sql.toString());
+            PreparedStatement ps = conn.prepareStatement(sql.toString());
+            StringBuilder data = <span class="s0">new </span>StringBuilder();
+            <span class="s0">for </span>(<span class="s0">int </span>i = <span class="s4">0</span>; i &lt; n; i++) {
+                ps.setString(i+<span class="s4">1</span>,newData[i]);
+            }
+            System.out.println(ps.toString());
+            ps.execute();
+            <span class="s0">return true</span>;
+        } <span class="s0">catch </span>(SQLException e) {
+            e.printStackTrace();
+        }
+        <span class="s0">return false</span>;
+    }
+
+    <span class="s0">public static boolean </span>delete(String tbName, String con) {
+        <span class="s2">//run SQL</span>
+        <span class="s0">try </span>{
+            PreparedStatement ps = conn.prepareStatement(<span class="s3">&quot;DELETE FROM &quot; </span>+ tbName + <span class="s3">&quot; where ?&quot;</span>);
+            ps.setString(<span class="s4">1</span>, con);
+            ps.execute();
+            <span class="s0">return true</span>;
+        } <span class="s0">catch </span>(SQLException e) {
+            e.printStackTrace();
+        }
+        <span class="s0">return false</span>;
+    }
+
+    <span class="s0">public static </span>ResultSet select(String tbName, String con) {
+        <span class="s0">try </span>{
+            PreparedStatement ps = conn.prepareStatement(<span class="s3">&quot;SELECT * FROM &quot; </span>+ tbName + <span class="s3">&quot; where &quot; </span>+ con);
+            <span class="s0">return </span>ps.executeQuery();
+        } <span class="s0">catch </span>(SQLException e) {
+            e.printStackTrace();
+        }
+        <span class="s0">return null</span>;
+    }
+
+    <span class="s2">/**</span>
+     <span class="s2">* output the ResultSet</span>
+     <span class="s2">*/</span>
+    <span class="s0">public static </span>String getString(ResultSet rs, String keyword) {
+        <span class="s0">try </span>{
+            <span class="s0">return </span>rs.getString(keyword);
+        } <span class="s0">catch </span>(SQLException e) {
+            e.printStackTrace();
+        }
+        <span class="s0">return </span><span class="s3">&quot;&quot;</span>;
+    }
+
+    <span class="s0">public static </span>String getString(ResultSet rs, <span class="s0">int </span>column) {
+        <span class="s0">try </span>{
+            <span class="s0">return </span>rs.getString(column);
+        } <span class="s0">catch </span>(SQLException e) {
+            e.printStackTrace();
+        }
+        <span class="s0">return </span><span class="s3">&quot;&quot;</span>;
+    }
+
+    <span class="s0">public static int </span>getInt(ResultSet rs, String keyword) {
+        <span class="s0">try </span>{
+            <span class="s0">return </span>rs.getInt(keyword);
+        } <span class="s0">catch </span>(SQLException e) {
+            e.printStackTrace();
+        }
+        System.err.println(<span class="s3">&quot;Wrong! DEFAULT SET IT -1&quot;</span>);
+        <span class="s0">return </span>-<span class="s4">1</span>;
+    }
+
+    <span class="s0">public static int </span>getInt(ResultSet rs, <span class="s0">int </span>column) {
+        <span class="s0">try </span>{
+            <span class="s0">return </span>rs.getInt(column);
+        } <span class="s0">catch </span>(SQLException e) {
+            e.printStackTrace();
+        }
+        System.err.println(<span class="s3">&quot;Wrong! DEFAULT SET IT -1&quot;</span>);
+        <span class="s0">return </span>-<span class="s4">1</span>;
+    }
+
+    <span class="s0">public static double </span>getDouble(ResultSet rs, String keyword) {
+        <span class="s0">try </span>{
+            <span class="s0">return </span>rs.getDouble(keyword);
+        } <span class="s0">catch </span>(SQLException e) {
+            e.printStackTrace();
+        }
+        System.err.println(<span class="s3">&quot;Wrong! DEFAULT SET IT -1&quot;</span>);
+        <span class="s0">return </span>-<span class="s4">1</span>;
+    }
+
+    <span class="s0">public static double </span>getDouble(ResultSet rs, <span class="s0">int </span>column) {
+        <span class="s0">try </span>{
+            <span class="s0">return </span>rs.getDouble(column);
+        } <span class="s0">catch </span>(SQLException e) {
+            e.printStackTrace();
+        }
+        System.err.println(<span class="s3">&quot;Wrong! DEFAULT SET IT -1&quot;</span>);
+        <span class="s0">return </span>-<span class="s4">1</span>;
+    }
+
+    <span class="s0">public static </span>String getDate(ResultSet rs, String keyword) {
+        <span class="s0">try </span>{
+            Date result = rs.getDate(keyword);
+            <span class="s0">return </span>result.toString();
+        } <span class="s0">catch </span>(SQLException e) {
+            e.printStackTrace();
+        }
+        <span class="s0">return </span><span class="s3">&quot;&quot;</span>;
+    }
+
+    <span class="s0">public static </span>String getDate(ResultSet rs, <span class="s0">int </span>column) {
+        <span class="s0">try </span>{
+            Date result = rs.getDate(column);
+            <span class="s0">return </span>result.toString();
+        } <span class="s0">catch </span>(SQLException e) {
+            e.printStackTrace();
+        }
+        <span class="s0">return </span><span class="s3">&quot;&quot;</span>;
+    }
+
+}
+</pre>
+</body>
+</html>

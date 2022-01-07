@@ -1,0 +1,104 @@
+<html>
+<head>
+<title>GetUser.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #000080; font-weight: bold;}
+.s1 { color: #000000;}
+.s2 { color: #0000ff;}
+.s3 { color: #008000; font-weight: bold;}
+</style>
+</head>
+<body bgcolor="#ffffff">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+GetUser.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span>Users;
+
+<span class="s0">import <a href="../Items/Items.java.html">Items.Items</a></span>;
+<span class="s0">import <a href="../SqlUtil/MySQLUtil.java.html">SqlUtil.MySQLUtil</a></span>;
+
+<span class="s0">import </span>java.sql.PreparedStatement;
+<span class="s0">import </span>java.sql.ResultSet;
+<span class="s0">import </span>java.sql.SQLException;
+
+<span class="s0">import static <a href="../Items/GetItem.java.html">Items.GetItem</a></span>.getWhereLimit;
+<span class="s0">import static <a href="UserLogin.java.html">Users.UserLogin</a></span>.*;
+
+<span class="s0">public class </span>GetUser {
+    <span class="s0">public static <a href="Customers.java.html">Customers</a></span>[] cusPoster(<span class="s0">int </span>page, String query) {
+        <span class="s0">try </span>(ResultSet rs = getUserInfo(<span class="s2">1</span>, page, query)) {
+            <span class="s0">if </span>(rs != <span class="s0">null</span>) <span class="s0">return </span>handleRsOfCus(rs);
+        } <span class="s0">catch </span>(SQLException e) {
+            e.printStackTrace();
+        }
+        <span class="s0">return null</span>;
+    }
+
+    <span class="s0">private static <a href="Customers.java.html">Customers</a></span>[] handleRsOfCus(ResultSet rs) <span class="s0">throws </span>SQLException {
+        <a href="Customers.java.html">Customers</a>[] items;
+        System.out.println(rs.getType());
+        rs.last();
+        items = <span class="s0">new <a href="Customers.java.html">Customers</a></span>[rs.getRow()];
+        rs.beforeFirst();
+        <span class="s0">int </span>i = -<span class="s2">1</span>;
+        <span class="s0">while </span>(rs.next()) {
+            String UID = rs.getString(<span class="s3">&quot;UID&quot;</span>);
+            <a href="CustomersProperties.java.html">CustomersProperties</a> properties = propertiesQuery(UID);
+            <span class="s0">int </span>credit = CreditSysQuery(UID);
+            <a href="Vips.java.html">Vips</a> vip = vipsQuery(UID);
+            <a href="Customers.java.html">Customers</a> item = <span class="s0">new <a href="Customers.java.html">Customers</a></span>(UID, rs.getInt(<span class="s3">&quot;state&quot;</span>), rs.getString(<span class="s3">&quot;userName&quot;</span>),
+                    <span class="s3">&quot;/cinema/upload&quot; </span>+ rs.getString(<span class="s3">&quot;avator&quot;</span>), rs.getString(<span class="s3">&quot;sex&quot;</span>).charAt(<span class="s2">0</span>), rs.getInt(<span class="s3">&quot;age&quot;</span>), rs.getString(<span class="s3">&quot;phone&quot;</span>), rs.getInt(<span class="s3">&quot;regionCountry&quot;</span>), rs.getInt(<span class="s3">&quot;regionProvince&quot;</span>), rs.getInt(<span class="s3">&quot;regionCity&quot;</span>), rs.getString(<span class="s3">&quot;joinTime&quot;</span>), properties, credit, vip);
+            items[++i] = item;
+        }
+        <span class="s0">return </span>items;
+    }
+
+    <span class="s0">public static <a href="Staffs.java.html">Staffs</a></span>[] staffPoster(<span class="s0">int </span>page, String query) {
+        <span class="s0">try </span>(ResultSet rs = getUserInfo(<span class="s2">2</span>, page, query)) {
+            <span class="s0">if </span>(rs != <span class="s0">null</span>) <span class="s0">return </span>handleRsOfStaffs(rs);
+        } <span class="s0">catch </span>(SQLException e) {
+            e.printStackTrace();
+        }
+        <span class="s0">return null</span>;
+    }
+
+    <span class="s0">private static <a href="Staffs.java.html">Staffs</a></span>[] handleRsOfStaffs(ResultSet rs) <span class="s0">throws </span>SQLException {
+        <a href="Staffs.java.html">Staffs</a>[] items;
+        System.out.println(rs.getType());
+        rs.last();
+        items = <span class="s0">new <a href="Staffs.java.html">Staffs</a></span>[rs.getRow()];
+        rs.beforeFirst();
+        <span class="s0">int </span>i = -<span class="s2">1</span>;
+        <span class="s0">while </span>(rs.next()) {
+            <a href="Staffs.java.html">Staffs</a> item = <span class="s0">new <a href="Staffs.java.html">Staffs</a></span>(rs.getString(<span class="s3">&quot;UID&quot;</span>), rs.getInt(<span class="s3">&quot;state&quot;</span>), rs.getString(<span class="s3">&quot;userName&quot;</span>),
+                    <span class="s3">&quot;/cinema/upload&quot; </span>+ rs.getString(<span class="s3">&quot;avator&quot;</span>), rs.getString(<span class="s3">&quot;sex&quot;</span>).charAt(<span class="s2">0</span>), rs.getInt(<span class="s3">&quot;age&quot;</span>), rs.getString(<span class="s3">&quot;phone&quot;</span>), rs.getInt(<span class="s3">&quot;regionCountry&quot;</span>), rs.getInt(<span class="s3">&quot;regionProvince&quot;</span>), rs.getInt(<span class="s3">&quot;regionCity&quot;</span>), rs.getString(<span class="s3">&quot;joinTime&quot;</span>), rs.getInt(<span class="s3">&quot;rank&quot;</span>), rs.getInt(<span class="s3">&quot;root&quot;</span>), rs.getInt(<span class="s3">&quot;workGroup&quot;</span>), rs.getInt(<span class="s3">&quot;workPlace&quot;</span>), rs.getString(<span class="s3">&quot;workOn&quot;</span>));
+            items[++i] = item;
+        }
+        <span class="s0">return </span>items;
+    }
+
+    <span class="s0">private static </span>ResultSet getUserInfo(<span class="s0">int </span>type, <span class="s0">int </span>page, String query) {
+        <span class="s0">int </span>capacity = <span class="s2">10</span>;
+        String tb_name = <span class="s3">&quot;&quot;</span>;
+        String tail = <span class="s3">&quot;&quot;</span>;
+        <span class="s0">switch </span>(type) {
+            <span class="s0">case </span><span class="s2">1</span>:
+                tb_name = <span class="s3">&quot;tb_Users&quot;</span>;
+                <span class="s0">break</span>;
+            <span class="s0">case </span><span class="s2">2</span>:
+                tb_name = <span class="s3">&quot;tb_Staffs&quot;</span>;
+                <span class="s0">break</span>;
+        }
+        <span class="s0">if </span>(query != <span class="s0">null </span>&amp;&amp; !query.equals(<span class="s3">&quot;&quot;</span>)) {
+            tail = getWhereLimit(tb_name, query);
+        }
+        PreparedStatement ps = <a href="../SqlUtil/MySQLUtil.java.html">MySQLUtil</a>.setPreStmt(<span class="s3">&quot;SELECT *  FROM &quot; </span>+ tb_name + tail + <span class="s3">&quot; LIMIT &quot; </span>+ capacity + <span class="s3">&quot; OFFSET &quot; </span>+ ((page - <span class="s2">1</span>) * capacity));
+        <span class="s0">return <a href="../SqlUtil/MySQLUtil.java.html">MySQLUtil</a></span>.query(ps);
+    }
+}
+</pre>
+</body>
+</html>

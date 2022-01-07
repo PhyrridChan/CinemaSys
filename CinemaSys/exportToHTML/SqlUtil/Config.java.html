@@ -1,0 +1,76 @@
+<html>
+<head>
+<title>Config.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #000080; font-weight: bold;}
+.s1 { color: #000000;}
+.s2 { color: #808080; font-style: italic;}
+.s3 { color: #808080; font-weight: bold; font-style: italic;}
+.s4 { color: #008000; font-weight: bold;}
+</style>
+</head>
+<body bgcolor="#ffffff">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Config.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span>SqlUtil;
+
+<span class="s0">import </span>java.util.ResourceBundle;
+<span class="s2">/**</span>
+ <span class="s2">* Using for get the config info from the properties file</span>
+ <span class="s2">* </span><span class="s3">@author </span><span class="s2">zhangfan</span>
+ <span class="s2">*/</span>
+<span class="s0">public class </span>Config {
+    <span class="s0">private final static </span>ResourceBundle bundle = ResourceBundle.getBundle(<span class="s4">&quot;SqlUtil.jdbc_mysql&quot;</span>);
+    <span class="s0">private static </span>String USER = bundle.getString(<span class="s4">&quot;USER&quot;</span>);
+    <span class="s0">private static </span>String PWD = bundle.getString(<span class="s4">&quot;PWD&quot;</span>);
+    <span class="s0">private static </span>String jdbc_driver = bundle.getString(<span class="s4">&quot;jdbc-driver&quot;</span>);
+    <span class="s0">private static </span>String jbdc_url = bundle.getString(<span class="s4">&quot;jdbc-url&quot;</span>);
+    <span class="s0">private static </span>String DB_name = bundle.getString(<span class="s4">&quot;name&quot;</span>);
+
+    <span class="s0">public static </span>String getUSER() {
+        <span class="s0">return </span>USER;
+    }
+
+    <span class="s0">public static void </span>setUSER(String USER) {
+        Config.USER = USER;
+    }
+
+    <span class="s0">public static </span>String getPWD() {
+        <span class="s0">return </span>PWD;
+    }
+
+    <span class="s0">public static void </span>setPWD(String PWD) {
+        Config.PWD = PWD;
+    }
+
+    <span class="s0">public static </span>String getJdbc_driver() {
+        <span class="s0">return </span>jdbc_driver;
+    }
+
+    <span class="s0">public static void </span>setJdbc_driver(String jdbc_driver) {
+        Config.jdbc_driver = jdbc_driver;
+    }
+
+    <span class="s0">public static </span>String getJbdc_url() {
+        <span class="s0">return </span>jbdc_url;
+    }
+
+    <span class="s0">public static void </span>setJbdc_url(String jbdc_url) {
+        Config.jbdc_url = jbdc_url;
+    }
+
+    <span class="s0">public static </span>String getDB_name() {
+        <span class="s0">return </span>DB_name;
+    }
+
+    <span class="s0">public static void </span>setDB_name(String DB_name) {
+        Config.DB_name = DB_name;
+    }
+}
+</pre>
+</body>
+</html>

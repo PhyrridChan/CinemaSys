@@ -1,0 +1,66 @@
+<html>
+<head>
+<title>ItemInfoParse.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #000080; font-weight: bold;}
+.s1 { color: #000000;}
+.s2 { color: #0000ff;}
+.s3 { color: #008000; font-weight: bold;}
+</style>
+</head>
+<body bgcolor="#ffffff">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+ItemInfoParse.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span>Items;
+
+<span class="s0">import </span>java.util.HashMap;
+<span class="s0">import </span>java.util.LinkedHashMap;
+<span class="s0">import </span>java.util.Map;
+
+<span class="s0">public class </span>ItemInfoParse {
+    <span class="s0">public static </span>HashMap&lt;String, String&gt; parse(String text) {
+        <span class="s0">if </span>(text == <span class="s0">null </span>|| text.isEmpty()) {
+            <span class="s0">return null</span>;
+        }
+        <span class="s0">char</span>[] chars = text.toCharArray();
+        <span class="s0">int </span>count = <span class="s2">0</span>;
+        HashMap&lt;String, String&gt; map = <span class="s0">new </span>HashMap&lt;&gt;();
+        <span class="s0">int </span>j = <span class="s2">0</span>;
+        <span class="s0">while </span>(<span class="s0">true</span>) {
+            StringBuilder sb = <span class="s0">new </span>StringBuilder();
+            <span class="s0">while </span>(<span class="s0">true</span>) {
+                <span class="s0">char </span>c = chars[j++];
+                <span class="s0">if </span>(c != <span class="s3">'{' </span>&amp;&amp; c != <span class="s3">'}' </span>&amp;&amp; c != <span class="s3">',' </span>&amp;&amp; c != <span class="s3">'</span><span class="s0">\n</span><span class="s3">' </span>&amp;&amp; c != <span class="s3">' '</span>) {
+                    sb.append(c);
+                } <span class="s0">else if </span>(c != <span class="s3">'</span><span class="s0">\n</span><span class="s3">' </span>&amp;&amp; c != <span class="s3">' '</span>) {
+                    <span class="s0">break</span>;
+                }
+            }
+            <span class="s0">if </span>(sb.length() != <span class="s2">0</span>) {
+                String sbstr = sb.toString();
+                <span class="s0">if </span>(sbstr.contains(<span class="s3">&quot;=&quot;</span>)) {
+                    String[] sbs = sbstr.split(<span class="s3">&quot;=&quot;</span>);
+                    <span class="s0">if </span>(sbs.length &gt; <span class="s2">1</span>) map.put(sbs[<span class="s2">0</span>], sbs[<span class="s2">1</span>]);
+                    <span class="s0">else </span>map.put(sbs[<span class="s2">0</span>], <span class="s0">null</span>);
+                }
+            }
+            <span class="s0">if </span>(j &gt;= chars.length) <span class="s0">break</span>;
+        }
+        <span class="s0">return </span>map;
+    }
+
+    <span class="s0">public static void </span>main(String[] args) {
+        String str = <span class="s3">&quot;Items{ID=1331661, state=0, itemName=误杀2, engName=Fireflies in the Sun, pics=https://p0.meituan.net/movie/e93b8b54ffd529b26605c8c078b9cbca2295531.jpg, keywords=误杀2,肖央,任达华,文咏珊,戴墨,选座购票,剧情介绍, genreID=剧情／犯罪／家庭, country=0, runtime=, releaseDate=2021-12-17 18:00, rate=-1.0, boxOffice=0.0, introduction=林日朗（肖央 饰）与妻子阿玲、儿子小虫一直过着清贫但幸福的生活，直到儿子小虫突发意外急需救治，几经周折，走投无路的林日朗为了救儿子决定放手一搏。他制定了一个惊天计划....., cast=null, soundMix=, tech=, whereToWatch=null, award=}&quot;</span>;
+        HashMap&lt;String, String&gt; strs = parse(str);
+        <span class="s0">for </span>(Map.Entry&lt;String, String&gt; entry: strs.entrySet()){
+            System.out.println(entry.getKey() + <span class="s3">&quot;----&quot; </span>+ entry.getValue());
+        }
+    }
+}
+</pre>
+</body>
+</html>

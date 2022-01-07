@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>theaterInfo</title>
+    <link href="styles.css" rel="stylesheet"/>
+    <link href="../imgs/decorate.ico" type="images/x-icon" rel="icon">
+</head>
+
+<body style="background: #111111">
+<div class="app2">
+    <!-- Nav -->
+    <div class="nav">
+        <!--    tabs    -->
+        <div class="nav__bar">
+            <div class="nav__bar__tab">
+                <a href="/main_page/movies.html" class="nav__bar__link"><b>电影</b></a>
+            </div>
+            <div class="nav__bar__tab">
+                <a href="/main_page/theaters.html" class="nav__bar__link"><b>影城</b></a>
+            </div>
+            <div class="nav__bar__tab">
+                <a href="/main_page/ranking.html" class="nav__bar__link"><b>榜单</b></a>
+            </div>
+            <div class="nav__bar__tab">
+                <a href="#" style="font-style: italic" class="nav__bar__link"><b>NEWS</b></a>
+            </div>
+        </div>
+        <!--    logo    -->
+        <a href="/cinema/main">
+            <img class="nav__logo" src="https://i.bmp.ovh/imgs/2021/11/12329def7ff8e6aa.png" alt=""/>
+        </a>
+        <!-- avator: login;myAvator -->
+        <div>
+            <div class="img-avator">
+                <a class="nav__bar__link" href="#" style="position: absolute;top: 10px;right:0px;width: 55px"
+                   id="login"><b>[登录]</b></a>
+                <img class="nav__avatar" id="myAvator" alt="" style="display: none"
+                     src="">
+            </div>
+        </div>
+    </div>
+    <!-- End Nav -->
+    <div style="height: 1300px;margin-left: 6.7%">
+        <div class="blocks" style="padding: 100px 10px 10px 70px">
+            <div style="background-image: url('../imgs/cinemaLogo/4.png');
+            border-radius: 5px;
+            width: 100%;
+            background-position: center center;
+            background-size: cover;
+            height: 300px;"></div>
+        </div>
+        <!--基本信息-->
+        <div class="blocks" style="padding: 100px 10px 25px 0">
+            <div style="float: left;background: #222222;border-radius: 5px;width: 79%;height: 300px;">
+                <div style="display: inline-block;color:white;">
+                    <h4 style="font-size: 30px; margin: 15px 0 15px 15px;">万达影城（长沙解放路激光IMAX店）
+                    </h4>
+                    <h5 style="margin: 15px;">地址：解放西路197号印象汇4楼万达影城（沃尔玛楼上）
+                    </h5>
+                    <h5 style="margin: 15px;">电话: 0731-84144900
+                    </h5>
+                    <h4 style="font-size: 22px; margin: 15px 0 0 15px;">影院介绍
+                    </h4>
+                    <h5 style="margin: 5px 15px 15px 15px;
+                                width: 90%; height: auto;">
+                        影院简介影院简介影院简介影院简介影院简介影院简介影院简介影院简介影院简介影院简介影院简介影院简介影院简介影院简介影院简介影院简介
+                        影院简介影院简介影院简介影院简介影院简介影院简介影院简介影院简介影院简介影院简介影院简介影院简介影院简介影院简介影院简介影院简介</h5>
+                </div>
+            </div>
+        </div>
+        <!-- -->
+        <div class="blocks" style="width: 100%;padding: 0 10px 15px 0;border-radius: 5px;">
+            <div class="showMovies" style="width: 83%;background: #222222;">
+                <div class="div__title">
+                    <img height="12" src="../imgs/decorate.svg">
+                    <b style="font-size: xx-large;padding-left: 15px">
+                        在线购票</b>
+                </div>
+                <dl class="row__posters" id="movies">
+                    <dt class="row__poster row__posterLarge"
+                        style="height: min-content;transform: scale(1.03);border: 3px solid #1488CC">
+                        <a href="#">
+                            <img style="border-radius: 5px;" width="162px"
+                                 src="https://image.tmdb.org/t/p/original//asDqvkE66EegtKJJXIRhBJPxscr.jpg"/>
+                        </a>
+                    </dt>
+                    <dt class="row__poster row__posterLarge" style="height: min-content;">
+                        <a href="#">
+                            <img style="border-radius: 5px;" width="162px"
+                                 src="https://image.tmdb.org/t/p/original//asDqvkE66EegtKJJXIRhBJPxscr.jpg"/>
+                        </a>
+                    </dt>
+                    <dt class="row__poster row__posterLarge" style="height: min-content;">
+                        <a href="#">
+                            <img style="border-radius: 5px;" width="162px"
+                                 src="https://image.tmdb.org/t/p/original//asDqvkE66EegtKJJXIRhBJPxscr.jpg"/>
+                        </a>
+                    </dt>
+                    <dt class="row__poster row__posterLarge" style="height: min-content;">
+                        <a href="#">
+                            <img style="border-radius: 5px;" width="162px"
+                                 src="https://image.tmdb.org/t/p/original//asDqvkE66EegtKJJXIRhBJPxscr.jpg"/>
+                        </a>
+                    </dt>
+                    <dt class="row__poster row__posterLarge" style="height: min-content;">
+                        <a href="#">
+                            <img style="border-radius: 5px;" width="162px"
+                                 src="https://image.tmdb.org/t/p/original//asDqvkE66EegtKJJXIRhBJPxscr.jpg"/>
+                        </a>
+                    </dt>
+                    <dt class="row__poster row__posterLarge" style="height: min-content;">
+                        <a href="#">
+                            <img style="border-radius: 5px;" width="162px"
+                                 src="https://image.tmdb.org/t/p/original//asDqvkE66EegtKJJXIRhBJPxscr.jpg"/>
+                        </a>
+                    </dt>
+                    <dt class="row__poster row__posterLarge" style="height: min-content;">
+                        <a href="#">
+                            <img style="border-radius: 5px;" width="162px"
+                                 src="https://image.tmdb.org/t/p/original//asDqvkE66EegtKJJXIRhBJPxscr.jpg"/>
+                        </a>
+                    </dt>
+                    <dt class="row__poster row__posterLarge" style="height: min-content;">
+                        <a href="#">
+                            <img style="border-radius: 5px;" width="162px"
+                                 src="https://image.tmdb.org/t/p/original//asDqvkE66EegtKJJXIRhBJPxscr.jpg"/>
+                        </a>
+                    </dt>
+                    <dt class="row__poster row__posterLarge" style="height: min-content;">
+                        <a href="#">
+                            <img style="border-radius: 5px;" width="162px"
+                                 src="https://image.tmdb.org/t/p/original//asDqvkE66EegtKJJXIRhBJPxscr.jpg"/>
+                        </a>
+                    </dt>
+                    <dt class="row__poster row__posterLarge" style="height: min-content;">
+                        <a href="#">
+                            <img style="border-radius: 5px;" width="162px"
+                                 src="https://image.tmdb.org/t/p/original//asDqvkE66EegtKJJXIRhBJPxscr.jpg"/>
+                        </a>
+                    </dt>
+                    <dt class="row__poster row__posterLarge" style="height: min-content;">
+                        <a href="#">
+                            <img style="border-radius: 5px;" width="162px"
+                                 src="https://image.tmdb.org/t/p/original//asDqvkE66EegtKJJXIRhBJPxscr.jpg"/>
+                        </a>
+                    </dt>
+                </dl>
+                <div style="background: #222222;padding-bottom: 15px">
+                    <div style="margin-left: 15px;width: 97%;color: #1488CC;background: #333333;">
+                        <h1 class="row__poster__name" style="padding: 10px 0 10px 10px"
+                        >电影名电影名电影名</h1>
+                        <table style="padding-left: 10px">
+                            <tr>
+                                <td style="width: 10%;text-align: center;">观影时间</td>
+                                <td>
+                                    <ul class="bottom-flex" style="padding: 15px">
+                                        <li>
+                                            <a href="#" class="link-search" style="padding-top: 10px;color: #1488CC">
+                                                今天（11月29日）
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="link-search" style="padding: 10px">
+                                                明天（11月30日）
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="link-search" style="padding: 10px">
+                                                后天（12月1日）
+                                            </a>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </table>
+                        <dl class="row__posters">
+                            <dt class="row__poster row__posterLarge"
+                                style="background: #1488CC;width: 184px;height: 106px;">
+                                <a href="#">
+                                    <div class="row__poster__info"
+                                         style="width: 184px;height: 20px;margin: 0 0 5px 5px;color: white">
+                                        <div style="float: right;padding: 10px 20px 0 10px;font-size: 28px">
+                                            ¥45
+                                        </div>
+                                        <b style="font-size: 24px">14:00</b>
+                                        <p style="color: #111111">15:00结束</p>
+                                        <b style="font-size: 20px">国语3DIMAX</b>
+                                        <p style="color: #111111">1号3DIMAX厅</p>
+
+                                    </div>
+                                </a>
+                            </dt>
+                            <dt class="row__poster row__posterLarge"
+                                style="background: #b3b3b3;width: 184px;height: 106px;">
+                                <a href="#">
+                                    <div class="row__poster__info"
+                                         style="width: 184px;height: 20px;margin: 0 0 5px 5px;color: white">
+                                        <div style="float: right;padding: 10px 20px 0 10px;font-size: 28px">
+                                            售罄
+                                        </div>
+                                        <b style="font-size: 24px">14:00</b>
+                                        <p style="color: #111111">15:00结束</p>
+                                        <b style="font-size: 20px">国语3DIMAX</b>
+                                        <p style="color: #111111">1号3DIMAX厅</p>
+
+                                    </div>
+                                </a>
+                            </dt>
+                            <dt class="row__poster row__posterLarge"
+                                style="background: #1488CC;width: 184px;height: 106px;">
+                                <a href="#">
+                                    <div class="row__poster__info"
+                                         style="width: 184px;height: 20px;margin: 0 0 5px 5px;color: white">
+                                        <div style="float: right;padding: 10px 20px 0 10px;font-size: 28px">
+                                            ¥45
+                                        </div>
+                                        <b style="font-size: 24px">14:00</b>
+                                        <p style="color: #111111">15:00结束</p>
+                                        <b style="font-size: 20px">国语3DIMAX</b>
+                                        <p style="color: #111111">1号3DIMAX厅</p>
+
+                                    </div>
+                                </a>
+                            </dt>
+                            <dt class="row__poster row__posterLarge"
+                                style="background: #b3b3b3;width: 184px;height: 106px;">
+                                <a href="#">
+                                    <div class="row__poster__info"
+                                         style="width: 184px;height: 20px;margin: 0 0 5px 5px;color: white">
+                                        <div style="float: right;padding: 10px 20px 0 10px;font-size: 28px">
+                                            售罄
+                                        </div>
+                                        <b style="font-size: 24px">14:00</b>
+                                        <p style="color: #111111">15:00结束</p>
+                                        <b style="font-size: 20px">国语3DIMAX</b>
+                                        <p style="color: #111111">1号3DIMAX厅</p>
+
+                                    </div>
+                                </a>
+                            </dt>
+                            <dt class="row__poster row__posterLarge"
+                                style="background: #1488CC;width: 184px;height: 106px;">
+                                <a href="#">
+                                    <div class="row__poster__info"
+                                         style="width: 184px;height: 20px;margin: 0 0 5px 5px;color: white">
+                                        <div style="float: right;padding: 10px 20px 0 10px;font-size: 28px">
+                                            ¥45
+                                        </div>
+                                        <b style="font-size: 24px">14:00</b>
+                                        <p style="color: #111111">15:00结束</p>
+                                        <b style="font-size: 20px">国语3DIMAX</b>
+                                        <p style="color: #111111">1号3DIMAX厅</p>
+
+                                    </div>
+                                </a>
+                            </dt>
+                            <dt class="row__poster row__posterLarge"
+                                style="background: #b3b3b3;width: 184px;height: 106px;">
+                                <a href="#">
+                                    <div class="row__poster__info"
+                                         style="width: 184px;height: 20px;margin: 0 0 5px 5px;color: white">
+                                        <div style="float: right;padding: 10px 20px 0 10px;font-size: 28px">
+                                            售罄
+                                        </div>
+                                        <b style="font-size: 24px">14:00</b>
+                                        <p style="color: #111111">15:00结束</p>
+                                        <b style="font-size: 20px">国语3DIMAX</b>
+                                        <p style="color: #111111">1号3DIMAX厅</p>
+
+                                    </div>
+                                </a>
+                            </dt>
+                            <dt class="row__poster row__posterLarge"
+                                style="background: #1488CC;width: 184px;height: 106px;">
+                                <a href="#">
+                                    <div class="row__poster__info"
+                                         style="width: 184px;height: 20px;margin: 0 0 5px 5px;color: white">
+                                        <div style="float: right;padding: 10px 20px 0 10px;font-size: 28px">
+                                            ¥45
+                                        </div>
+                                        <b style="font-size: 24px">14:00</b>
+                                        <p style="color: #111111">15:00结束</p>
+                                        <b style="font-size: 20px">国语3DIMAX</b>
+                                        <p style="color: #111111">1号3DIMAX厅</p>
+
+                                    </div>
+                                </a>
+                            </dt>
+                            <dt class="row__poster row__posterLarge"
+                                style="background: #b3b3b3;width: 184px;height: 106px;">
+                                <a href="#">
+                                    <div class="row__poster__info"
+                                         style="width: 184px;height: 20px;margin: 0 0 5px 5px;color: white">
+                                        <div style="float: right;padding: 10px 20px 0 10px;font-size: 28px">
+                                            售罄
+                                        </div>
+                                        <b style="font-size: 24px">14:00</b>
+                                        <p style="color: #111111">15:00结束</p>
+                                        <b style="font-size: 20px">国语3DIMAX</b>
+                                        <p style="color: #111111">1号3DIMAX厅</p>
+
+                                    </div>
+                                </a>
+                            </dt>
+                            <dt class="row__poster row__posterLarge"
+                                style="background: #1488CC;width: 184px;height: 106px;">
+                                <a href="#">
+                                    <div class="row__poster__info"
+                                         style="width: 184px;height: 20px;margin: 0 0 5px 5px;color: white">
+                                        <div style="float: right;padding: 10px 20px 0 10px;font-size: 28px">
+                                            ¥45
+                                        </div>
+                                        <b style="font-size: 24px">14:00</b>
+                                        <p style="color: #111111">15:00结束</p>
+                                        <b style="font-size: 20px">国语3DIMAX</b>
+                                        <p style="color: #111111">1号3DIMAX厅</p>
+
+                                    </div>
+                                </a>
+                            </dt>
+                            <dt class="row__poster row__posterLarge"
+                                style="background: #b3b3b3;width: 184px;height: 106px;">
+                                <a href="#">
+                                    <div class="row__poster__info"
+                                         style="width: 184px;height: 20px;margin: 0 0 5px 5px;color: white">
+                                        <div style="float: right;padding: 10px 20px 0 10px;font-size: 28px">
+                                            售罄
+                                        </div>
+                                        <b style="font-size: 24px">14:00</b>
+                                        <p style="color: #111111">15:00结束</p>
+                                        <b style="font-size: 20px">国语3DIMAX</b>
+                                        <p style="color: #111111">1号3DIMAX厅</p>
+
+                                    </div>
+                                </a>
+                            </dt>
+                            <dt class="row__poster row__posterLarge"
+                                style="background: #1488CC;width: 184px;height: 106px;">
+                                <a href="#">
+                                    <div class="row__poster__info"
+                                         style="width: 184px;height: 20px;margin: 0 0 5px 5px;color: white">
+                                        <div style="float: right;padding: 10px 20px 0 10px;font-size: 28px">
+                                            ¥45
+                                        </div>
+                                        <b style="font-size: 24px">14:00</b>
+                                        <p style="color: #111111">15:00结束</p>
+                                        <b style="font-size: 20px">国语3DIMAX</b>
+                                        <p style="color: #111111">1号3DIMAX厅</p>
+
+                                    </div>
+                                </a>
+                            </dt>
+                            <dt class="row__poster row__posterLarge"
+                                style="background: #b3b3b3;width: 184px;height: 106px;">
+                                <a href="#">
+                                    <div class="row__poster__info"
+                                         style="width: 184px;height: 20px;margin: 0 0 5px 5px;color: white">
+                                        <div style="float: right;padding: 10px 20px 0 10px;font-size: 28px">
+                                            售罄
+                                        </div>
+                                        <b style="font-size: 24px">14:00</b>
+                                        <p style="color: #111111">15:00结束</p>
+                                        <b style="font-size: 20px">国语3DIMAX</b>
+                                        <p style="color: #111111">1号3DIMAX厅</p>
+
+                                    </div>
+                                </a>
+                            </dt>
+                            <dt class="row__poster row__posterLarge"
+                                style="background: #1488CC;width: 184px;height: 106px;">
+                                <a href="#">
+                                    <div class="row__poster__info"
+                                         style="width: 184px;height: 20px;margin: 0 0 5px 5px;color: white">
+                                        <div style="float: right;padding: 10px 20px 0 10px;font-size: 28px">
+                                            ¥45
+                                        </div>
+                                        <b style="font-size: 24px">14:00</b>
+                                        <p style="color: #111111">15:00结束</p>
+                                        <b style="font-size: 20px">国语3DIMAX</b>
+                                        <p style="color: #111111">1号3DIMAX厅</p>
+
+                                    </div>
+                                </a>
+                            </dt>
+                            <dt class="row__poster row__posterLarge"
+                                style="background: #b3b3b3;width: 184px;height: 106px;">
+                                <a href="#">
+                                    <div class="row__poster__info"
+                                         style="width: 184px;height: 20px;margin: 0 0 5px 5px;color: white">
+                                        <div style="float: right;padding: 10px 20px 0 10px;font-size: 28px">
+                                            售罄
+                                        </div>
+                                        <b style="font-size: 24px">14:00</b>
+                                        <p style="color: #111111">15:00结束</p>
+                                        <b style="font-size: 20px">国语3DIMAX</b>
+                                        <p style="color: #111111">1号3DIMAX厅</p>
+
+                                    </div>
+                                </a>
+                            </dt>
+                        </dl>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bottom">
+        <div class="bottom-width">
+            有疑问请联系 <a href="tel:1-844-542-4813" class="tel-link">123-1234-1234</a>
+            <div>
+                <ul class="bottom-flex">
+                    <li class="list-bottom">
+                        <a href="#" class="link-bottom">
+                            常见问题
+                        </a>
+                    </li>
+                    <li class="list-bottom">
+                        <a href="#" class="link-bottom">
+                            客服中心
+                        </a>
+                    </li>
+                    <li class="list-bottom">
+                        <a href="#" class="link-bottom">
+                            使用条款
+                        </a>
+                    </li>
+                    <li class="list-bottom">
+                        <a href="#" class="link-bottom">
+                            隐私政策
+                        </a>
+                    </li>
+                    <li class="list-bottom">
+                        <a href="#" class="link-bottom">
+                            关于我们
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script>
+    $(function () {
+        var oTop1 = $(document).scrollTop();
+
+        $(window).scroll(function () {
+            var oTop2 = $(document).scrollTop();
+            console.log(oTop2);
+            if (oTop2 > oTop1) {
+                $(".nav").addClass("hide").removeClass("show");
+            } else {
+                $(".nav").addClass("show").removeClass("hide");
+            }
+            oTop1 = $(document).scrollTop();
+        });
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,184 @@
+<html>
+<head>
+<title>Theaters.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #000080; font-weight: bold;}
+.s1 { color: #000000;}
+.s2 { color: #808080; font-style: italic;}
+.s3 { color: #0000ff;}
+.s4 { color: #008000; font-weight: bold;}
+</style>
+</head>
+<body bgcolor="#ffffff">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Theaters.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span>Items;
+
+<span class="s0">import <a href="../JSON/JSONhandle.java.html">JSON.JSONhandle</a></span>;
+
+
+<span class="s0">import </span>java.io.IOException;
+<span class="s0">import </span>java.util.Arrays;
+
+<span class="s0">import static <a href="../JSON/JSONhandle.java.html">JSON.JSONhandle</a></span>.searchJsonArray;
+<span class="s0">import static <a href="../JSON/SpecificUtil.java.html">JSON.SpecificUtil</a></span>.searchJsonArraySite;
+
+<span class="s0">public class </span>Theaters {
+    <span class="s0">private </span>String ID;
+    <span class="s0">private int </span>state;
+    <span class="s0">private </span>String theaterName;
+
+    <span class="s2">//ref</span>
+    <span class="s0">private int </span>regionCity;
+    <span class="s0">private int </span>regionDistrict;
+
+    <span class="s0">private </span>String site;
+
+    <span class="s0">private <a href="Arrange.java.html">Arrange</a></span>[] onShowMovie = <span class="s0">new <a href="Arrange.java.html">Arrange</a></span>[<span class="s3">30</span>];
+
+    <span class="s0">private </span>String[] showrooms = <span class="s0">new </span>String[<span class="s3">20</span>];
+
+    <span class="s0">private </span>String pic;
+
+    <span class="s0">private </span>String phone;
+    <span class="s0">private </span>String introduction;
+
+    <span class="s2">/**</span>
+     <span class="s2">* Constructor</span>
+     <span class="s2">*/</span>
+    <span class="s0">public </span>Theaters(String ID, <span class="s0">int </span>state, String theaterName, String site, <a href="Arrange.java.html">Arrange</a>[] onShowMovie, String[] showrooms, String pic, String phone, String introduction) {
+        <span class="s0">this</span>.ID = ID;
+        <span class="s0">this</span>.state = state;
+        <span class="s0">this</span>.theaterName = theaterName;
+        <span class="s0">this</span>.site = site;
+        <span class="s0">this</span>.onShowMovie = onShowMovie;
+        <span class="s0">this</span>.showrooms = showrooms;
+        <span class="s0">this</span>.pic = pic;
+        <span class="s0">this</span>.phone = phone;
+        <span class="s0">this</span>.introduction = introduction;
+    }
+
+    <span class="s0">public static </span>String parseSite(String prov, String city, String site) <span class="s0">throws </span>IOException {
+        <a href="../JSON/JSONhandle.java.html">JSONhandle</a> jsoNhandle = <span class="s0">new <a href="../JSON/JSONhandle.java.html">JSONhandle</a></span>();
+        String province = <span class="s4">&quot;&quot;</span>, regionCity = <span class="s4">&quot;&quot;</span>, regionSite = <span class="s4">&quot;&quot;</span>;
+        <span class="s0">if </span>(prov != <span class="s0">null </span>&amp;&amp; city != <span class="s0">null </span>&amp;&amp; site != <span class="s0">null</span>) {
+            province = searchJsonArray(<span class="s4">&quot;provList&quot;</span>, prov);
+            regionCity = searchJsonArray(<span class="s4">&quot;cityList&quot;</span>, prov, city);
+            regionSite = searchJsonArraySite(<span class="s4">&quot;siteList&quot;</span>, prov, city, site);
+        }
+        <span class="s0">return </span>province + regionCity + regionSite;
+    }
+
+    <span class="s2">/**</span>
+     <span class="s2">* Getters and Setters</span>
+     <span class="s2">*/</span>
+    <span class="s0">public </span>String getID() {
+        <span class="s0">return </span>ID;
+    }
+
+    <span class="s0">public void </span>setID(String ID) {
+        <span class="s0">this</span>.ID = ID;
+    }
+
+    <span class="s0">public int </span>getState() {
+        <span class="s0">return </span>state;
+    }
+
+    <span class="s0">public void </span>setState(<span class="s0">int </span>state) {
+        <span class="s0">this</span>.state = state;
+    }
+
+    <span class="s0">public </span>String getTheaterName() {
+        <span class="s0">return </span>theaterName;
+    }
+
+    <span class="s0">public void </span>setTheaterName(String theaterName) {
+        <span class="s0">this</span>.theaterName = theaterName;
+    }
+
+    <span class="s0">public int </span>getRegionCity() {
+        <span class="s0">return </span>regionCity;
+    }
+
+    <span class="s0">public void </span>setRegionCity(<span class="s0">int </span>regionCity) {
+        <span class="s0">this</span>.regionCity = regionCity;
+    }
+
+    <span class="s0">public int </span>getRegionDistrict() {
+        <span class="s0">return </span>regionDistrict;
+    }
+
+    <span class="s0">public void </span>setRegionDistrict(<span class="s0">int </span>regionDistrict) {
+        <span class="s0">this</span>.regionDistrict = regionDistrict;
+    }
+
+    <span class="s0">public <a href="Arrange.java.html">Arrange</a></span>[] getOnShowMovie() {
+        <span class="s0">return </span>onShowMovie;
+    }
+
+    <span class="s0">public void </span>setOnShowMovie(<a href="Arrange.java.html">Arrange</a>[] onShowMovie) {
+        <span class="s0">this</span>.onShowMovie = onShowMovie;
+    }
+
+    <span class="s0">public </span>String[] getShowrooms() {
+        <span class="s0">return </span>showrooms;
+    }
+
+    <span class="s0">public void </span>setShowrooms(String[] showrooms) {
+        <span class="s0">this</span>.showrooms = showrooms;
+    }
+
+    <span class="s0">public </span>String getSite() {
+        <span class="s0">return </span>site;
+    }
+
+    <span class="s0">public void </span>setSite(String site) {
+        <span class="s0">this</span>.site = site;
+    }
+
+    <span class="s0">public </span>String getPic() {
+        <span class="s0">return </span>pic;
+    }
+
+    <span class="s0">public void </span>setPic(String pic) {
+        <span class="s0">this</span>.pic = pic;
+    }
+
+    <span class="s0">public </span>String getPhone() {
+        <span class="s0">return </span>phone;
+    }
+
+    <span class="s0">public void </span>setPhone(String phone) {
+        <span class="s0">this</span>.phone = phone;
+    }
+
+    <span class="s0">public </span>String getIntroduction() {
+        <span class="s0">return </span>introduction;
+    }
+
+    <span class="s0">public void </span>setIntroduction(String introduction) {
+        <span class="s0">this</span>.introduction = introduction;
+    }
+
+    @Override
+    <span class="s0">public </span>String toString() {
+        <span class="s0">return </span><span class="s4">&quot;Theaters{&quot; </span>+
+                <span class="s4">&quot;ID=&quot; </span>+ ID +
+                <span class="s4">&quot;, state=&quot; </span>+ state +
+                <span class="s4">&quot;, itemName=&quot; </span>+ theaterName +
+                <span class="s4">&quot;, site=&quot; </span>+ site +
+                <span class="s4">&quot;, onShowMovie=&quot; </span>+ Arrays.toString(onShowMovie) +
+                <span class="s4">&quot;, showrooms=&quot; </span>+ Arrays.toString(showrooms) +
+                <span class="s4">&quot;, pics=&quot; </span>+ pic +
+                <span class="s4">&quot;, phone=&quot; </span>+ phone +
+                <span class="s4">&quot;, introduction=&quot; </span>+ introduction +
+                <span class="s4">'}'</span>;
+    }
+}
+</pre>
+</body>
+</html>

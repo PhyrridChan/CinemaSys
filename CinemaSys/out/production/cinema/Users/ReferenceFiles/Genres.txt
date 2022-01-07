@@ -1,0 +1,24 @@
+Action and Adventure
+动作片
+Comedy
+喜剧片
+Documentary
+纪录片
+Drama
+戏剧
+Family
+适合家庭的
+Fantasy
+奇幻片
+Foreign
+外语片
+Horror
+恐怖片
+Musical
+音乐片
+Romance
+爱情片
+Science Fiction
+科幻片
+Thriller
+惊悚电影

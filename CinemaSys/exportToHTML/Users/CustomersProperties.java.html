@@ -1,0 +1,93 @@
+<html>
+<head>
+<title>CustomersProperties.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #000080; font-weight: bold;}
+.s1 { color: #000000;}
+.s2 { color: #0000ff;}
+.s3 { color: #008000; font-weight: bold;}
+.s4 { color: #808080; font-style: italic;}
+</style>
+</head>
+<body bgcolor="#ffffff">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+CustomersProperties.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span>Users;
+
+
+<span class="s0">import <a href="../SqlUtil/MySQLUtil.java.html">SqlUtil.MySQLUtil</a></span>;
+
+<span class="s0">import </span>java.util.Arrays;
+
+<span class="s0">public class </span>CustomersProperties {
+    <span class="s0">private </span>String preferCopyright;
+    <span class="s0">private </span>String preferCategory;
+    <span class="s0">private int </span>activity;
+    <span class="s0">private </span>String statement;
+    <span class="s0">private int </span>label;
+    <span class="s0">private int </span>level;
+    <span class="s0">private int </span>grow;
+    <span class="s0">private int </span>regionID;
+
+    <span class="s0">final int</span>[] eventCre = {
+            <span class="s2">2</span>, <span class="s2">3</span>, <span class="s2">4</span>, <span class="s2">5</span>, <span class="s2">6</span>, -<span class="s2">3</span>
+    };
+
+    <span class="s0">final int</span>[] increLevel = {
+            <span class="s2">0</span>, <span class="s2">10</span>, <span class="s2">50</span>, <span class="s2">120</span>, <span class="s2">250</span>, <span class="s2">500</span>, <span class="s2">1000</span>, <span class="s2">2000</span>
+    };
+
+    <span class="s0">public </span>CustomersProperties(String preferCopyright, String preferCategory, <span class="s0">int </span>activity, String statement, <span class="s0">int </span>label, <span class="s0">int </span>level, <span class="s0">int </span>grow) {
+        <span class="s0">this</span>.preferCopyright = preferCopyright;
+        <span class="s0">this</span>.preferCategory = preferCategory;
+        <span class="s0">this</span>.activity = activity;
+        <span class="s0">this</span>.statement = statement;
+        <span class="s0">this</span>.label = label;
+        <span class="s0">this</span>.level = level;
+        <span class="s0">this</span>.grow = grow;
+    }
+
+    <span class="s0">public void </span>updateGrow(<a href="Customers.java.html">Customers</a> customers, <span class="s0">int </span>eventTag, String event) {
+        <span class="s0">try </span>{
+            String UID = customers.getUID();
+            <a href="Activities.java.html">Activities</a>.activities(UID, <span class="s3">&quot;&quot;</span>, eventTag, event);
+            <span class="s0">this</span>.grow += eventCre[eventTag - <span class="s2">10</span>];
+            <a href="../SqlUtil/MySQLUtil.java.html">MySQLUtil</a>.update(<span class="s3">&quot;tb_CustomersProperties&quot;</span>, <span class="s3">&quot;grow&quot;</span>, grow + <span class="s3">&quot;&quot;</span>, <span class="s3">&quot;UID&quot;</span>, UID);
+            updateLevel(UID);
+        } <span class="s0">catch </span>(Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    <span class="s0">public void </span>updateLevel(String UID) {
+        <span class="s0">try </span>{
+            <span class="s0">while </span>(level &lt; <span class="s2">8 </span>&amp;&amp; grow &gt; increLevel[level]) level++;
+            <a href="../SqlUtil/MySQLUtil.java.html">MySQLUtil</a>.update(<span class="s3">&quot;tb_CustomersProperties&quot;</span>, <span class="s3">&quot;level&quot;</span>, level + <span class="s3">&quot;&quot;</span>, <span class="s3">&quot;UID&quot;</span>, UID);
+        } <span class="s0">catch </span>(Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    <span class="s0">public </span>String toString() {
+        <span class="s0">return </span><span class="s3">&quot;CustomersProperties{&quot; </span>+
+                <span class="s3">&quot;preferCopyright='&quot; </span>+ preferCopyright + <span class="s3">'</span><span class="s0">\'</span><span class="s3">' </span>+
+                <span class="s3">&quot;, preferCategory='&quot; </span>+ preferCategory + <span class="s3">'</span><span class="s0">\'</span><span class="s3">' </span>+
+                <span class="s3">&quot;, activity=&quot; </span>+ activity +
+                <span class="s3">&quot;, statement='&quot; </span>+ statement + <span class="s3">'</span><span class="s0">\'</span><span class="s3">' </span>+
+                <span class="s3">&quot;, label=&quot; </span>+ label +
+                <span class="s3">&quot;, level=&quot; </span>+ level +
+                <span class="s3">&quot;, grow=&quot; </span>+ grow +
+                <span class="s3">&quot;, regionID=&quot; </span>+ regionID +
+<span class="s4">//                &quot;, eventCre=&quot; + Arrays.toString(eventCre) +</span>
+<span class="s4">//                &quot;, increLevel=&quot; + Arrays.toString(increLevel) +</span>
+                <span class="s3">'}'</span>;
+    }
+}
+</pre>
+</body>
+</html>

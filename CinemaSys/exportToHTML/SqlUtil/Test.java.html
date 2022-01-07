@@ -1,0 +1,82 @@
+<html>
+<head>
+<title>Test.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #000080; font-weight: bold;}
+.s1 { color: #000000;}
+.s2 { color: #808080; font-style: italic;}
+.s3 { color: #008000; font-weight: bold;}
+.s4 { color: #0000ff;}
+</style>
+</head>
+<body bgcolor="#ffffff">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Test.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span>SqlUtil;
+
+<span class="s0">import </span>java.sql.ResultSet;
+<span class="s0">import </span>java.sql.SQLException;
+
+<span class="s0">public class </span>Test {
+    <span class="s0">public static void </span>main(String[] args) <span class="s0">throws </span>SQLException {
+        System.out.println(<a href="Config.java.html">Config</a>.getDB_name());
+        System.out.println(<a href="Config.java.html">Config</a>.getJbdc_url());
+        System.out.println(<a href="Config.java.html">Config</a>.getPWD());
+        System.out.println(<a href="Config.java.html">Config</a>.getJdbc_driver());
+        System.out.println(<a href="Config.java.html">Config</a>.getUSER());
+        <a href="MySQLUtil.java.html">MySQLUtil</a> mysql = <span class="s0">new <a href="MySQLUtil.java.html">MySQLUtil</a></span>();
+<span class="s2">//        ResultSet rs2 = MySQLUtil.query(&quot;SELECT * FROM area_code_2021 where level = 1&quot;);</span>
+<span class="s2">//        int i = 0;</span>
+<span class="s2">//        while (rs2.next()) {</span>
+<span class="s2">//            String pcode = rs2.getString(&quot;code&quot;);</span>
+<span class="s2">////            System.out.println(pcode);</span>
+<span class="s2">//            ResultSet rs = MySQLUtil.query(&quot;SELECT * FROM area_code_2021 where level = 2 and pcode=&quot;+pcode);</span>
+<span class="s2">//            System.out.println(&quot;cityList[&quot; + (i++) + &quot;] = [&quot;);</span>
+<span class="s2">//            if (rs.next()) {</span>
+<span class="s2">//                System.out.println(&quot;'&quot; + rs.getString(&quot;name&quot;) + &quot;'&quot;);</span>
+<span class="s2">//                while (rs.next()) {</span>
+<span class="s2">//                    System.out.print(&quot;,&quot;);</span>
+<span class="s2">//                    System.out.println(&quot;'&quot; + rs.getString(&quot;name&quot;) + &quot;'&quot;);</span>
+<span class="s2">//                }</span>
+<span class="s2">//            }</span>
+<span class="s2">//            System.out.println(&quot;];&quot;);</span>
+<span class="s2">//        }</span>
+
+<span class="s2">//        ResultSet rs2 = MySQLUtil.query(&quot;SELECT * FROM area_code_2021 where level = 1&quot;);</span>
+<span class="s2">//        int i = 0,j = 0, m = 0;</span>
+<span class="s2">//        System.out.println(&quot;{&quot;);</span>
+<span class="s2">//        while (rs2.next()) {</span>
+<span class="s2">//            String pcode = rs2.getString(&quot;code&quot;);</span>
+<span class="s2">//            ResultSet rs = MySQLUtil.query(&quot;SELECT count(*) FROM area_code_2021 where level = 2 and pcode=&quot;+pcode);</span>
+<span class="s2">//            if (rs.next()) j = rs.getInt(1);</span>
+<span class="s2">//            int k = (i++)*30;</span>
+<span class="s2">//            for (int p = 0;p &lt; j; p++) System.out.println((k+p) +&quot;:&quot;+ m++ +&quot;,&quot;);</span>
+<span class="s2">//        }</span>
+<span class="s2">//        System.out.println(&quot;}&quot;);</span>
+
+        ResultSet rs2 = <a href="MySQLUtil.java.html">MySQLUtil</a>.query(<span class="s3">&quot;SELECT * FROM area_code_2021 where level = 2&quot;</span>);
+        <span class="s0">int </span>i = <span class="s4">0</span>, m = <span class="s4">0 </span>;
+        <span class="s0">while </span>(rs2.next()) {
+            String pcode = rs2.getString(<span class="s3">&quot;code&quot;</span>);
+<span class="s2">//            System.out.println(pcode);</span>
+            ResultSet rs = <a href="MySQLUtil.java.html">MySQLUtil</a>.query(<span class="s3">&quot;SELECT * FROM area_code_2021 where level = 3 and pcode=&quot;</span>+pcode);
+            System.out.println(<span class="s3">&quot;cityList[&quot; </span>+ (m++) + <span class="s3">&quot;] = [&quot;</span>);
+            <span class="s0">if </span>(rs.next()) {
+                System.out.println(<span class="s3">&quot;'&quot; </span>+ rs.getString(<span class="s3">&quot;name&quot;</span>) + <span class="s3">&quot;'&quot;</span>);
+                <span class="s0">while </span>(rs.next()) {
+                    System.out.print(<span class="s3">&quot;,&quot;</span>);
+                    System.out.println(<span class="s3">&quot;'&quot; </span>+ rs.getString(<span class="s3">&quot;name&quot;</span>) + <span class="s3">&quot;'&quot;</span>);
+                }
+            }
+            System.out.println(<span class="s3">&quot;];&quot;</span>);
+        }
+        <a href="MySQLUtil.java.html">MySQLUtil</a>.close();
+    }
+}
+</pre>
+</body>
+</html>

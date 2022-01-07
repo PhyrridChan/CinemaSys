@@ -1,0 +1,128 @@
+<html>
+<head>
+<title>Arrange.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #000080; font-weight: bold;}
+.s1 { color: #000000;}
+.s2 { color: #808080; font-style: italic;}
+.s3 { color: #008000; font-weight: bold;}
+</style>
+</head>
+<body bgcolor="#ffffff">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Arrange.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span>Items;
+
+<span class="s0">import </span>java.util.Map;
+
+<span class="s0">public class </span>Arrange {
+    <span class="s0">private </span>String ID;
+    <span class="s0">private </span>String movieID;
+    <span class="s0">private </span>String theaterID;
+    <span class="s0">private </span>String startTime;
+    <span class="s0">private int </span>room;
+    <span class="s0">private double </span>price;
+    <span class="s0">private int </span>state;
+
+    <span class="s0">public </span>Arrange(String movieID, String theaterID, String startTime, <span class="s0">int </span>room, <span class="s0">double </span>price, <span class="s0">int </span>state) {
+        <span class="s0">this</span>.movieID = movieID;
+        <span class="s0">this</span>.theaterID = theaterID;
+        <span class="s0">this</span>.startTime = startTime;
+        <span class="s0">this</span>.room = room;
+        <span class="s0">this</span>.price = price;
+        <span class="s0">this</span>.state = state;
+    }
+
+    <span class="s0">public </span>Arrange(String ID, String movieID, String theaterID, String startTime, <span class="s0">int </span>room, <span class="s0">double </span>price, <span class="s0">int </span>state) {
+        <span class="s0">this</span>.ID = ID;
+        <span class="s0">this</span>.movieID = movieID;
+        <span class="s0">this</span>.theaterID = theaterID;
+        <span class="s0">this</span>.startTime = startTime;
+        <span class="s0">this</span>.room = room;
+        <span class="s0">this</span>.price = price;
+        <span class="s0">this</span>.state = state;
+    }
+
+    <span class="s0">public </span>String getID() {
+        <span class="s0">return </span>ID;
+    }
+
+    <span class="s0">public void </span>setID(String ID) {
+        <span class="s0">this</span>.ID = ID;
+    }
+
+    <span class="s0">public </span>String getMovieID() {
+        <span class="s0">return </span>movieID;
+    }
+
+    <span class="s0">public void </span>setMovieID(String movieID) {
+        <span class="s0">this</span>.movieID = movieID;
+    }
+
+    <span class="s0">public </span>String getTheaterID() {
+        <span class="s0">return </span>theaterID;
+    }
+
+    <span class="s0">public void </span>setTheaterID(String theaterID) {
+        <span class="s0">this</span>.theaterID = theaterID;
+    }
+
+    <span class="s0">public </span>String getStartTime() {
+        <span class="s0">return </span>startTime;
+    }
+
+    <span class="s0">public void </span>setStartTime(String startTime) {
+        <span class="s0">this</span>.startTime = startTime;
+    }
+
+    <span class="s0">public int </span>getRoom() {
+        <span class="s0">return </span>room;
+    }
+
+    <span class="s0">public void </span>setRoom(<span class="s0">int </span>room) {
+        <span class="s0">this</span>.room = room;
+    }
+
+    <span class="s0">public double </span>getPrice() {
+        <span class="s0">return </span>price;
+    }
+
+    <span class="s0">public void </span>setPrice(<span class="s0">double </span>price) {
+        <span class="s0">this</span>.price = price;
+    }
+
+    <span class="s0">public int </span>getState() {
+        <span class="s0">return </span>state;
+    }
+
+    <span class="s0">public void </span>setState(<span class="s0">int </span>state) {
+        <span class="s0">this</span>.state = state;
+    }
+
+    <span class="s0">public </span>String getSetMap(<span class="s0">int </span>room) {
+        <span class="s2">// a == available</span>
+        <span class="s2">// _ == noSet</span>
+        <span class="s0">return </span><span class="s3">&quot;[&quot; </span>+
+                <span class="s3">&quot;'aaaaaaaaaa',&quot; </span>+
+                <span class="s3">&quot;'aaaaaaaaaa',&quot; </span>+
+                <span class="s3">&quot;'aaaaaaaaaa',&quot; </span>+
+                <span class="s3">&quot;'aaaaaaaaaa',&quot; </span>+
+                <span class="s3">&quot;'aaaaaaaaaa',&quot; </span>+
+                <span class="s3">&quot;'aaaaaaaaaa',&quot; </span>+
+                <span class="s3">&quot;'aaaaaaaaaa',&quot; </span>+
+                <span class="s3">&quot;'aaaaaaaaaa',&quot; </span>+
+                <span class="s3">&quot;'aaaaaaaaaa',&quot; </span>+
+                <span class="s3">&quot;'aa__aa__aa'&quot; </span>+ <span class="s3">&quot;]&quot;</span>;
+    }
+
+    <span class="s0">public </span>String getSold(<span class="s0">int </span>room) {
+        <span class="s0">return </span><span class="s3">&quot;['2_3', '2_4', '4_5', '7_1', '7_2', '9_4', '9_5', '9_6', '9_7', '10_5', '10_6']&quot;</span>;
+    }
+}
+</pre>
+</body>
+</html>

@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
+    <display-name>Cinema</display-name>
+    <welcome-file-list>
+        <welcome-file>MainPageServlet</welcome-file>
+        <welcome-file>/WEB-INF/login_page/CustomerLoginPage/customerLogin.html</welcome-file>
+    </welcome-file-list>
+
+    <servlet>
+        <servlet-name>TFServlet</servlet-name>
+        <servlet-class>com.test.controller.TFServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>TFServlet</servlet-name>
+        <url-pattern>/test</url-pattern>
+    </servlet-mapping>
+
+    <!--    Login & Signup-->
+    <!--    Customer-->
+    <!-- loginVerify -->
+    <servlet>
+        <servlet-name>CustomerLoginServlet</servlet-name>
+        <servlet-class>com.test.controller.Customer.CustomerLoginServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CustomerLoginServlet</servlet-name>
+        <url-pattern>/CmLoginServlet</url-pattern>
+    </servlet-mapping>
+    <!-- signup -->
+    <servlet>
+        <servlet-name>CustomerSignupServlet</servlet-name>
+        <servlet-class>com.test.controller.Customer.CustomerSignupServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CustomerSignupServlet</servlet-name>
+        <url-pattern>/CmSignupServlet</url-pattern>
+    </servlet-mapping>
+    <!-- infoInput -->
+    <servlet>
+        <servlet-name>CustomerInfoInputServlet</servlet-name>
+        <servlet-class>com.test.controller.Customer.CustomerInfoInputServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CustomerInfoInputServlet</servlet-name>
+        <url-pattern>/CmInfoInputServlet</url-pattern>
+    </servlet-mapping>
+
+    <!-- managerOfCinema -->
+    <!-- loginVerify -->
+    <servlet>
+        <servlet-name>CnmLoginServlet</servlet-name>
+        <servlet-class>com.test.controller.managerOfCinema.CnmLoginServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CnmLoginServlet</servlet-name>
+        <url-pattern>/admin/login</url-pattern>
+    </servlet-mapping>
+    <!-- signup -->
+    <servlet>
+        <servlet-name>CnmSignupServlet</servlet-name>
+        <servlet-class>com.test.controller.managerOfCinema.CnmSignupServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CnmSignupServlet</servlet-name>
+        <url-pattern>/CnmSignupServlet</url-pattern>
+    </servlet-mapping>
+    <!--Main-->
+    <servlet>
+        <!--        // key = "a1n0e0","j2a2e6","l4l3c5","k2a0d2","b1d0p0";-->
+        <servlet-name>CnmMainServlet</servlet-name>
+        <servlet-class>com.test.controller.CnmMainPage.CnmMainServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CnmMainServlet</servlet-name>
+        <url-pattern>/admin/a1n0e0/me</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>CinemaServlet</servlet-name>
+        <servlet-class>com.test.controller.CnmMainPage.CinemaServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CinemaServlet</servlet-name>
+        <url-pattern>/admin/j2a2e6/me</url-pattern>
+    </servlet-mapping>
+
+
+    <!--  mainPage / Cus -->
+    <!--    Main-->
+    <servlet>
+        <display-name>MainPageServlet</display-name>
+        <servlet-name>MainPageServlet</servlet-name>
+        <servlet-class>com.test.controller.cusMainPage.MainPageServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MainPageServlet</servlet-name>
+        <url-pattern>/main</url-pattern>
+    </servlet-mapping>
+    <!--    Theater-->
+    <servlet>
+        <servlet-name>theatersServlet</servlet-name>
+        <servlet-class>com.test.controller.cusMainPage.theatersServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>theatersServlet</servlet-name>
+        <url-pattern>/theaters</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>TheaterInfoServlet</servlet-name>
+        <servlet-class>com.test.controller.cusMainPage.TheaterInfoServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>TheaterInfoServlet</servlet-name>
+        <url-pattern>/TInfo</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ChooseCinemaServlet</servlet-name>
+        <servlet-class>com.test.controller.Customer.ChooseCinemaServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ChooseCinemaServlet</servlet-name>
+        <url-pattern>/chooseCinema</url-pattern>
+    </servlet-mapping>
+    <!--    Movies-->
+    <servlet>
+        <servlet-name>moviesServlet</servlet-name>
+        <servlet-class>com.test.controller.cusMainPage.moviesServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>moviesServlet</servlet-name>
+        <url-pattern>/movies</url-pattern>
+    </servlet-mapping>
+    <!--    Ranking-->
+    <servlet>
+        <servlet-name>rankingServlet</servlet-name>
+        <servlet-class>com.test.controller.cusMainPage.rankingServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>rankingServlet</servlet-name>
+        <url-pattern>/ranking</url-pattern>
+    </servlet-mapping>
+    <!--    CusMe-->
+    <servlet>
+        <servlet-name>CustomerMeServlet</servlet-name>
+        <servlet-class>com.test.controller.Customer.CustomerMeServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CustomerMeServlet</servlet-name>
+        <url-pattern>/me</url-pattern>
+    </servlet-mapping>
+    <!--    MovieInfo-->
+    <servlet>
+        <servlet-name>MovieInfoServlet</servlet-name>
+        <servlet-class>com.test.controller.cusMainPage.MovieInfoServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MovieInfoServlet</servlet-name>
+        <url-pattern>/info</url-pattern>
+    </servlet-mapping>
+    <!--    TicketBooking-->
+    <servlet>
+        <servlet-name>TicketBookingServlet</servlet-name>
+        <servlet-class>com.test.controller.booking.TicketBookingServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>TicketBookingServlet</servlet-name>
+        <url-pattern>/ticket</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>PayTheBillServlet</servlet-name>
+        <servlet-class>com.test.controller.booking.PayTheBillServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>PayTheBillServlet</servlet-name>
+        <url-pattern>/payTheBill</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>BillInfoServlet</servlet-name>
+        <servlet-class>com.test.controller.booking.BillInfoServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>BillInfoServlet</servlet-name>
+        <url-pattern>/billInfo</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>HandleTicketServlet</servlet-name>
+        <servlet-class>com.test.controller.booking.HandleTicketServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>HandleTicketServlet</servlet-name>
+        <url-pattern>/handle</url-pattern>
+    </servlet-mapping>
+
+</web-app>

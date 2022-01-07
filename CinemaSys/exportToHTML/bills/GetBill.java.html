@@ -1,0 +1,154 @@
+<html>
+<head>
+<title>GetBill.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #000080; font-weight: bold;}
+.s1 { color: #000000;}
+.s2 { color: #0000ff;}
+.s3 { color: #008000; font-weight: bold;}
+.s4 { color: #808080; font-style: italic;}
+</style>
+</head>
+<body bgcolor="#ffffff">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+GetBill.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span>bills;
+
+<span class="s0">import <a href="../Items/GetItem.java.html">Items.GetItem</a></span>;
+<span class="s0">import <a href="../Items/Arrange.java.html">Items.Arrange</a></span>;
+<span class="s0">import <a href="../SqlUtil/MySQLUtil.java.html">SqlUtil.MySQLUtil</a></span>;
+<span class="s0">import <a href="../Users/UserInfoParse.java.html">Users.UserInfoParse</a></span>;
+
+<span class="s0">import </span>java.sql.PreparedStatement;
+<span class="s0">import </span>java.sql.ResultSet;
+<span class="s0">import </span>java.sql.SQLException;
+<span class="s0">import </span>java.text.SimpleDateFormat;
+<span class="s0">import </span>java.util.Date;
+<span class="s0">import </span>java.util.HashMap;
+
+<span class="s0">import static <a href="../Items/GetArrange.java.html">Items.GetArrange</a></span>.getArrange;
+
+<span class="s0">public class </span>GetBill {
+    <span class="s0">public static <a href="Bills.java.html">Bills</a> </span>getbill(String bid) {
+        <a href="Bills.java.html">Bills</a> bills;
+        <span class="s0">try </span>(ResultSet rs = getbillInfo(bid);) {
+            <span class="s0">return </span>handleRsOfBill(rs)[<span class="s2">0</span>];
+        } <span class="s0">catch </span>(SQLException e) {
+            e.printStackTrace();
+        }
+        <span class="s0">return null</span>;
+    }
+
+    <span class="s0">public static <a href="Bills.java.html">Bills</a></span>[] getbills(String uid) {
+        <span class="s0">try </span>(ResultSet rs = getbillInfoOfUser(uid)) {
+            <span class="s0">return </span>handleRsOfBillAndUser(rs);
+        } <span class="s0">catch </span>(SQLException e) {
+            e.printStackTrace();
+        }
+        <span class="s0">return null</span>;
+    }
+
+    <span class="s0">private static <a href="Bills.java.html">Bills</a></span>[] handleRsOfBillAndUser(ResultSet rs) <span class="s0">throws </span>SQLException {
+        <a href="Bills.java.html">Bills</a>[] bills;
+        System.out.println(rs.getType());
+        rs.last();
+        bills = <span class="s0">new <a href="Bills.java.html">Bills</a></span>[rs.getRow()];
+        rs.beforeFirst();
+        <span class="s0">int </span>i = -<span class="s2">1</span>;
+        <span class="s0">while </span>(rs.next()) {
+            <a href="Bills.java.html">Bills</a> bill = getbill(rs.getString(<span class="s3">&quot;billID&quot;</span>));
+            bills[++i] = bill;
+        }
+        <span class="s0">return </span>bills;
+    }
+
+    <span class="s0">private static </span>ResultSet getbillInfoOfUser(String uid) {
+        PreparedStatement ps = <a href="../SqlUtil/MySQLUtil.java.html">MySQLUtil</a>.setPreStmt(<span class="s3">&quot;SELECT * FROM billAndUsers WHERE UID = ? ORDER BY billID DESC&quot;</span>);
+        <span class="s0">return <a href="../SqlUtil/MySQLUtil.java.html">MySQLUtil</a></span>.query(ps, uid);
+    }
+
+    <span class="s0">private static <a href="Bills.java.html">Bills</a></span>[] handleRsOfBill(ResultSet rs) <span class="s0">throws </span>SQLException {
+        <a href="Bills.java.html">Bills</a>[] bills;
+        System.out.println(rs.getType());
+        rs.last();
+        bills = <span class="s0">new <a href="Bills.java.html">Bills</a></span>[rs.getRow()];
+        rs.beforeFirst();
+        <span class="s0">int </span>i = -<span class="s2">1</span>;
+        <span class="s0">while </span>(rs.next()) {
+            <a href="../Items/Arrange.java.html">Arrange</a> arrange = getArrange(rs.getString(<span class="s3">&quot;arrangeID&quot;</span>));
+            String ticketStr = rs.getString(<span class="s3">&quot;tickets&quot;</span>);
+            String[] tickets = ticketStr == <span class="s3">&quot;&quot; </span>|| ticketStr == <span class="s0">null </span>? <span class="s0">null </span>: ticketStr.split(<span class="s3">&quot;,&quot;</span>);
+            <a href="Bills.java.html">Bills</a> bill = <span class="s0">new <a href="Bills.java.html">Bills</a></span>(rs.getString(<span class="s3">&quot;billID&quot;</span>), tickets,
+                    arrange, <a href="../Items/GetItem.java.html">GetItem</a>.get(arrange.getMovieID()), rs.getDouble(<span class="s3">&quot;total&quot;</span>), rs.getInt(<span class="s3">&quot;counter&quot;</span>), rs.getInt(<span class="s3">&quot;state&quot;</span>));
+            bills[++i] = bill;
+        }
+        <span class="s0">return </span>bills;
+    }
+
+    <span class="s0">public static </span>ResultSet getbillInfo(String bid) {
+        PreparedStatement ps = <a href="../SqlUtil/MySQLUtil.java.html">MySQLUtil</a>.setPreStmt(<span class="s3">&quot;SELECT * FROM Bill WHERE billID = ?&quot;</span>);
+        <span class="s0">return <a href="../SqlUtil/MySQLUtil.java.html">MySQLUtil</a></span>.query(ps, bid);
+    }
+
+    <span class="s0">public static <a href="Bills.java.html">Bills</a> </span>uploadBill(<a href="Bills.java.html">Bills</a> bills) {
+        String billID = bills.getBid(), arrangeID = bills.getArrange().getID();
+        String tickets = bills.getTicketStr();
+        <span class="s0">int </span>counter = bills.getCounter(), state = bills.getState();
+        <span class="s0">double </span>total = bills.getTotal();
+        PreparedStatement ps;
+        <span class="s0">int </span>flag = -<span class="s2">1</span>;
+        <span class="s0">if </span>(billID == <span class="s0">null</span>) {
+            flag = <span class="s2">1</span>;
+            billID = createBillID();
+            ps = <a href="../SqlUtil/MySQLUtil.java.html">MySQLUtil</a>.setPreStmt(<span class="s3">&quot;INSERT INTO Bill value (?,?,?,?,?,?);&quot;</span>);
+        } <span class="s0">else</span>
+            ps = <a href="../SqlUtil/MySQLUtil.java.html">MySQLUtil</a>.setPreStmt(<span class="s3">&quot;UPDATE Bill SET tickets = ?, arrangeID = ?, total = ?, counter = ?, state = ? WHERE billID = ?;&quot;</span>);
+
+        <span class="s0">if </span>(flag == <span class="s2">1</span>) <a href="../SqlUtil/MySQLUtil.java.html">MySQLUtil</a>.update(ps, billID, tickets, arrangeID, <span class="s3">&quot;&quot; </span>+ total, <span class="s3">&quot;&quot; </span>+ counter, <span class="s3">&quot;&quot; </span>+ state);
+        <span class="s0">else <a href="../SqlUtil/MySQLUtil.java.html">MySQLUtil</a></span>.update(ps, tickets, arrangeID, <span class="s3">&quot;&quot; </span>+ total, <span class="s3">&quot;&quot; </span>+ counter, <span class="s3">&quot;&quot; </span>+ state, billID);
+        <span class="s0">return </span>getbill(billID);
+    }
+
+    <span class="s0">private static </span>String createBillID() {
+        <span class="s0">boolean </span>suc = <span class="s0">false</span>;
+        Date date = <span class="s0">new </span>Date(System.currentTimeMillis());
+        SimpleDateFormat formatter = <span class="s0">new </span>SimpleDateFormat(<span class="s3">&quot;yyMMddHHmmss&quot;</span>);
+        SimpleDateFormat formatter2 = <span class="s0">new </span>SimpleDateFormat(<span class="s3">&quot;yyyy-MM-dd HH:mm:ss&quot;</span>);
+        String head = formatter.format(date); <span class="s4">//12</span>
+        ResultSet rs = <a href="../SqlUtil/MySQLUtil.java.html">MySQLUtil</a>.query(<span class="s3">&quot;SELECT billID FROM Bill WHERE billID LIKE '&quot; </span>+ head + <span class="s3">&quot;%' ORDER BY billID DESC LIMIT 1;&quot;</span>);
+        String rear = <span class="s3">&quot;&quot;</span>;
+        <span class="s0">try </span>{
+            <span class="s0">if </span>(rs.next()) {
+                rear = <a href="../SqlUtil/MySQLUtil.java.html">MySQLUtil</a>.getString(rs, <span class="s3">&quot;billID&quot;</span>).substring(<span class="s2">11</span>, <span class="s2">17</span>);
+                rear = head + String.format(<span class="s3">&quot;%04d&quot;</span>, Integer.parseInt(rear) + <span class="s2">1</span>);
+            } <span class="s0">else </span>{
+                rear = <span class="s3">&quot;000001&quot;</span>;
+            }
+        } <span class="s0">catch </span>(SQLException e) {
+            e.printStackTrace();
+        }
+        <span class="s0">return </span>head + rear;
+    }
+
+    <span class="s0">public static void </span>main(String[] args) {
+        <a href="../SqlUtil/MySQLUtil.java.html">MySQLUtil</a> mySQLUtil = <span class="s0">new <a href="../SqlUtil/MySQLUtil.java.html">MySQLUtil</a></span>();
+        System.out.println(createBillID());
+    }
+
+    <span class="s0">public static boolean </span>updateUser(String bid, String userInfo) {
+        HashMap&lt;String, String&gt; info = <a href="../Users/UserInfoParse.java.html">UserInfoParse</a>.parse(userInfo);
+        String uid = info.get(<span class="s3">&quot;UID&quot;</span>);
+        String sql = <span class="s3">&quot;INSERT INTO billAndUsers VALUES (?, ?)&quot;</span>;
+        PreparedStatement ps = <a href="../SqlUtil/MySQLUtil.java.html">MySQLUtil</a>.setPreStmt(sql);
+        <span class="s0">return <a href="../SqlUtil/MySQLUtil.java.html">MySQLUtil</a></span>.update(ps, bid, uid);
+    }
+}
+
+
+</pre>
+</body>
+</html>

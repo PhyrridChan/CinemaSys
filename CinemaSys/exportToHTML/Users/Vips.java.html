@@ -1,0 +1,87 @@
+<html>
+<head>
+<title>Vips.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #000080; font-weight: bold;}
+.s1 { color: #000000;}
+.s2 { color: #808080; font-style: italic;}
+.s3 { color: #008000; font-weight: bold;}
+</style>
+</head>
+<body bgcolor="#ffffff">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Vips.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span>Users;
+
+<span class="s0">public class </span>Vips {
+    <span class="s0">private int </span>type;
+    <span class="s0">private </span>String expire;
+    <span class="s0">private int </span>vipLevel;
+
+    <span class="s0">public </span>Vips(<span class="s0">int </span>type, String expire, <span class="s0">int </span>vipLevel) {
+        <span class="s0">this</span>.type = type;
+        <span class="s0">this</span>.expire = expire;
+        <span class="s0">this</span>.vipLevel = vipLevel;
+    }
+
+    <span class="s2">/**</span>
+     <span class="s2">* Getters and Setters</span>
+     <span class="s2">*/</span>
+    <span class="s0">public int </span>getType() {
+        <span class="s0">return </span>type;
+    }
+
+    <span class="s0">public void </span>setType(<span class="s0">int </span>type) {
+        <span class="s0">this</span>.type = type;
+    }
+
+    <span class="s0">public </span>String getExpire() {
+        <span class="s0">return </span>expire;
+    }
+
+    <span class="s0">public void </span>setExpire(String expire) {
+        <span class="s0">this</span>.expire = expire;
+    }
+
+    <span class="s0">public int </span>getVipLevel() {
+        <span class="s0">return </span>vipLevel;
+    }
+
+    <span class="s0">public void </span>getVipLevel(<span class="s0">int </span>vipLevel) {
+        <span class="s0">this</span>.vipLevel = vipLevel;
+    }
+
+    <span class="s2">/**</span>
+     <span class="s2">*</span>
+     <span class="s2">*/</span>
+    <span class="s0">public boolean </span>updateExpire(String billNo) {
+        <span class="s0">boolean </span>suc = <span class="s0">false</span>;
+        <span class="s0">return </span>suc;
+    }
+
+    <span class="s0">public boolean </span>updateType(String billNo) {
+        <span class="s0">boolean </span>suc = <span class="s0">false</span>;
+        <span class="s0">return </span>suc;
+    }
+
+    <span class="s0">public boolean </span>updateVipLevel(<span class="s0">int </span>vipLevel) {
+        <span class="s0">boolean </span>suc = <span class="s0">false</span>;
+        <span class="s0">return </span>suc;
+    }
+
+    @Override
+    <span class="s0">public </span>String toString() {
+        <span class="s0">return </span><span class="s3">&quot;Vips{&quot; </span>+
+                <span class="s3">&quot;type=&quot; </span>+ type +
+                <span class="s3">&quot;, expire='&quot; </span>+ expire + <span class="s3">'</span><span class="s0">\'</span><span class="s3">' </span>+
+                <span class="s3">&quot;, vipLevel=&quot; </span>+ vipLevel +
+                <span class="s3">'}'</span>;
+    }
+}
+</pre>
+</body>
+</html>

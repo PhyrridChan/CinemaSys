@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>mainPage</title>
+    <link href="styles.css" rel="stylesheet"/>
+    <link href="../decorate.ico" type="images/x-icon" rel="icon">
+</head>
+
+<body style="background: #111111">
+<div class="app">
+    <!-- Nav -->
+    <div class="nav">
+        <!--    tabs    -->
+        <div class="nav__bar">
+            <div class="nav__bar__tab">
+                <a href="/main_page/movies.html" class="nav__bar__link"><b>电影</b></a>
+            </div>
+            <div class="nav__bar__tab">
+                <a href="/main_page/theaters.html" class="nav__bar__link"><b>影城</b></a>
+            </div>
+            <div class="nav__bar__tab">
+                <a href="/main_page/ranking.html" class="nav__bar__link"><b>榜单</b></a>
+            </div>
+            <div class="nav__bar__tab">
+                <a href="#" style="font-style: italic" class="nav__bar__link"><b>NEWS</b></a>
+            </div>
+        </div>
+        <!--    logo    -->
+        <a href="/cinema/main">
+            <img class="nav__logo" src="https://i.bmp.ovh/imgs/2021/11/12329def7ff8e6aa.png" alt=""/>
+        </a>
+        <!-- avator: login;myAvator -->
+        <div>
+            <div class="img-avator">
+                <a class="nav__bar__link" href="/cinema" style="position: absolute;top: 10px;right:0px;width: 55px"
+                   id="login"><b>[登录]</b></a>
+                <img class="nav__avatar" id="myAvator" alt="" style="display: none"
+                     src="#">
+            </div>
+        </div>
+    </div>
+    <!-- End Nav -->
+
+    <!-- Header -->
+    <div style="display: flex; width: 100%;overflow: hidden;">
+        <!-- MoviePromote1-->
+        <div class="banner"
+             style="background-image: url('https://image.tmdb.org/t/p/original//hVMoqvXs5j9ffun56tZ5YhliSD9.jpg');"
+        >
+            <div class="banner__contents">
+                <h1 class="banner__title" style="text-shadow:#000 1px 1px 2px">电影名</h1>
+                <div class="banner__buttons">
+                    <button class="banner__button" onclick="location.href='#'">购票</button>
+                    <button class="banner__button" onclick="location.href='#'">查看详情</button>
+                </div>
+                <h1 class="banner__description" style="text-shadow:#000 1px 1px 2px">
+                    电影简介电影简介...电影简介...电影简介...电影简介...电影简介...电影简介......
+                    电影简介电影简介...电影简介...电影简介...电影简介...电影简介...电影简介......
+                </h1>
+            </div>
+            <div class="banner--fadeBottom"></div>
+        </div>
+        <!-- MoviePromote2-->
+        <div class="secbanner"
+             style="background-image: url('https://p0.meituan.net/movie/10069d33c6c95ccb38665c76644fe63e5055632.jpg@464w_644h_1e_1c');"
+        >
+            <div class="banner__contents"></div>
+            <div class="banner--fadeBottom"></div>
+        </div>
+        <!-- MoviePromote3-->
+        <div class="secbanner"
+             style="background-image: url('https://p0.meituan.net/movie/dcc0411b145d4336a7f67e650d17964e1846717.jpg@464w_644h_1e_1c');"
+        >
+            <div class="banner__contents"></div>
+            <div class="banner--fadeBottom"></div>
+        </div>
+    </div>
+    <!-- End Header -->
+
+
+    <div style="width: 100%;">
+
+        <div class="showMovies">
+            <div class="div__title">
+                <img height="12" src="/imgs/decorate.svg">
+                <b style="font-size: xx-large;padding-left: 15px">
+                    正在热映</b>
+            </div>
+            <dl class="row__posters">
+                <dt class="row__poster row__posterLarge">
+                    <a href="#">
+                        <img style="border-radius: 5px;" width="162px"
+                             src="https://image.tmdb.org/t/p/original//asDqvkE66EegtKJJXIRhBJPxscr.jpg"
+                             alt="Love, Death &amp; Robots"/>
+                    </a>
+                    <div class="row__poster__info" style="height: 20px;margin: 0 0 5px 5px;">
+                        <img class="row__poster__info" width="25px" height="25px" src="/imgs/icon.png">
+                        <b class="row__poster__info" style="font-size: 20px;color: white;margin: 0 0 5px 5px;">7.0</b>
+                    </div>
+                    <h1 class="row__poster__name"
+                    >电影名电影名电影名</h1>
+                </dt>
+                <dt class="row__poster row__posterLarge">
+                    <a href="#">
+                        <img style="border-radius: 5px;" width="162px"
+                             src="https://image.tmdb.org/t/p/original//asDqvkE66EegtKJJXIRhBJPxscr.jpg"
+                             alt="Love, Death &amp; Robots"/>
+                    </a>
+                    <div class="row__poster__info" style="height: 20px;margin: 0 0 5px 5px;">
+                        <img class="row__poster__info" width="25px" height="25px" src="/imgs/icon.png">
+                        <b class="row__poster__info" style="font-size: 20px;color: white;margin: 0 0 5px 5px;">7.0</b>
+                    </div>
+                    <h1 class="row__poster__name"
+                    >电影名电影名电影名</h1>
+                </dt>
+                <dt class="row__poster row__posterLarge">
+                    <a href="#">
+                        <img style="border-radius: 5px;" width="162px"
+                             src="https://image.tmdb.org/t/p/original//asDqvkE66EegtKJJXIRhBJPxscr.jpg"
+                             alt="Love, Death &amp; Robots"/>
+                    </a>
+                    <div class="row__poster__info" style="height: 20px;margin: 0 0 5px 5px;">
+                        <img class="row__poster__info" width="25px" height="25px" src="/imgs/icon.png">
+                        <b class="row__poster__info" style="font-size: 20px;color: white;margin: 0 0 5px 5px;">7.0</b>
+                    </div>
+                    <h1 class="row__poster__name"
+                    >电影名电影名电影名</h1>
+                </dt>
+                <dt class="row__poster row__posterLarge">
+                    <a href="#">
+                        <img style="border-radius: 5px;" width="162px"
+                             src="https://image.tmdb.org/t/p/original//asDqvkE66EegtKJJXIRhBJPxscr.jpg"
+                             alt="Love, Death &amp; Robots"/>
+                    </a>
+                    <div class="row__poster__info" style="height: 20px;margin: 0 0 5px 5px;">
+                        <img class="row__poster__info" width="25px" height="25px" src="/imgs/icon.png">
+                        <b class="row__poster__info" style="font-size: 20px;color: white;margin: 0 0 5px 5px;">7.0</b>
+                    </div>
+                    <h1 class="row__poster__name"
+                    >电影名电影名电影名</h1>
+                </dt>
+                <dt class="row__poster row__posterLarge">
+                    <a href="#">
+                        <img style="border-radius: 5px;" width="162px"
+                             src="https://image.tmdb.org/t/p/original//asDqvkE66EegtKJJXIRhBJPxscr.jpg"
+                             alt="Love, Death &amp; Robots"/>
+                    </a>
+                    <div class="row__poster__info" style="height: 20px;margin: 0 0 5px 5px;">
+                        <img class="row__poster__info" width="25px" height="25px" src="/imgs/icon.png">
+                        <b class="row__poster__info" style="font-size: 20px;color: white;margin: 0 0 5px 5px;">7.0</b>
+                    </div>
+                    <h1 class="row__poster__name"
+                    >电影名电影名电影名</h1>
+                </dt>
+                <dt class="row__poster row__posterLarge">
+                    <a href="#">
+                        <img style="border-radius: 5px;" width="162px"
+                             src="https://image.tmdb.org/t/p/original//asDqvkE66EegtKJJXIRhBJPxscr.jpg"
+                             alt="Love, Death &amp; Robots"/>
+                    </a>
+                    <div class="row__poster__info" style="height: 20px;margin: 0 0 5px 5px;">
+                        <img class="row__poster__info" width="25px" height="25px" src="/imgs/icon.png">
+                        <b class="row__poster__info" style="font-size: 20px;color: white;margin: 0 0 5px 5px;">7.0</b>
+                    </div>
+                    <h1 class="row__poster__name"
+                    >电影名电影名电影名</h1>
+                </dt>
+            </dl>
+
+        </div>
+
+        <div class="showMovies">
+            <div class="div__title">
+                <img height="12" src="/imgs/decorate.svg">
+                <b style="font-size: xx-large;padding-left: 15px">
+                    即将上映</b>
+            </div>
+            <dl class="row__posters">
+                <dt class="row__poster row__posterLarge">
+                    <a href="#">
+                        <img style="border-radius: 5px;" width="162px"
+                             src="https://image.tmdb.org/t/p/original//asDqvkE66EegtKJJXIRhBJPxscr.jpg"
+                             alt="Love, Death &amp; Robots"/>
+                    </a>
+                    <div class="row__poster__info" style="height: 20px;margin: 0 0 5px 5px;">
+                        <img class="row__poster__info" width="25px" height="25px" src="/imgs/icon.png">
+                        <b class="row__poster__info" style="font-size: 20px;color: white;margin: 0 0 5px 5px;">7.0</b>
+                    </div>
+                    <h1 class="row__poster__name"
+                    >电影名电影名电影名</h1>
+                </dt>
+                <dt class="row__poster row__posterLarge">
+                    <a href="#">
+                        <img style="border-radius: 5px;" width="162px"
+                             src="https://image.tmdb.org/t/p/original//asDqvkE66EegtKJJXIRhBJPxscr.jpg"
+                             alt="Love, Death &amp; Robots"/>
+                    </a>
+                    <div class="row__poster__info" style="height: 20px;margin: 0 0 5px 5px;">
+                        <img class="row__poster__info" width="25px" height="25px" src="/imgs/icon.png">
+                        <b class="row__poster__info" style="font-size: 20px;color: white;margin: 0 0 5px 5px;">7.0</b>
+                    </div>
+                    <h1 class="row__poster__name"
+                    >电影名电影名电影名</h1>
+                </dt>
+                <dt class="row__poster row__posterLarge">
+                    <a href="#">
+                        <img style="border-radius: 5px;" width="162px"
+                             src="https://image.tmdb.org/t/p/original//asDqvkE66EegtKJJXIRhBJPxscr.jpg"
+                             alt="Love, Death &amp; Robots"/>
+                    </a>
+                    <div class="row__poster__info" style="height: 20px;margin: 0 0 5px 5px;">
+                        <img class="row__poster__info" width="25px" height="25px" src="/imgs/icon.png">
+                        <b class="row__poster__info" style="font-size: 20px;color: white;margin: 0 0 5px 5px;">7.0</b>
+                    </div>
+                    <h1 class="row__poster__name"
+                    >电影名电影名电影名</h1>
+                </dt>
+                <dt class="row__poster row__posterLarge">
+                    <a href="#">
+                        <img style="border-radius: 5px;" width="162px"
+                             src="https://image.tmdb.org/t/p/original//asDqvkE66EegtKJJXIRhBJPxscr.jpg"
+                             alt="Love, Death &amp; Robots"/>
+                    </a>
+                    <div class="row__poster__info" style="height: 20px;margin: 0 0 5px 5px;">
+                        <img class="row__poster__info" width="25px" height="25px" src="/imgs/icon.png">
+                        <b class="row__poster__info" style="font-size: 20px;color: white;margin: 0 0 5px 5px;">7.0</b>
+                    </div>
+                    <h1 class="row__poster__name"
+                    >电影名电影名电影名</h1>
+                </dt>
+                <dt class="row__poster row__posterLarge">
+                    <a href="#">
+                        <img style="border-radius: 5px;" width="162px"
+                             src="https://image.tmdb.org/t/p/original//asDqvkE66EegtKJJXIRhBJPxscr.jpg"
+                             alt="Love, Death &amp; Robots"/>
+                    </a>
+                    <div class="row__poster__info" style="height: 20px;margin: 0 0 5px 5px;">
+                        <img class="row__poster__info" width="25px" height="25px" src="/imgs/icon.png">
+                        <b class="row__poster__info" style="font-size: 20px;color: white;margin: 0 0 5px 5px;">7.0</b>
+                    </div>
+                    <h1 class="row__poster__name"
+                    >电影名电影名电影名</h1>
+                </dt>
+                <dt class="row__poster row__posterLarge">
+                    <a href="#">
+                        <img style="border-radius: 5px;" width="162px"
+                             src="https://image.tmdb.org/t/p/original//asDqvkE66EegtKJJXIRhBJPxscr.jpg"
+                             alt="Love, Death &amp; Robots"/>
+                    </a>
+                    <div class="row__poster__info" style="height: 20px;margin: 0 0 5px 5px;">
+                        <img class="row__poster__info" width="25px" height="25px" src="/imgs/icon.png">
+                        <b class="row__poster__info" style="font-size: 20px;color: white;margin: 0 0 5px 5px;">7.0</b>
+                    </div>
+                    <h1 class="row__poster__name"
+                    >电影名电影名电影名</h1>
+                </dt>
+            </dl>
+
+        </div>
+
+        <div class="rightIframe">
+            <div class="rightIframe__div">
+                <div class="div__title">
+                    <img height="12" src="/imgs/decorate.svg">
+                    <b style="font-size: xx-large;padding-left: 15px">
+                        今日排行</b>
+                </div>
+                <div style="padding: 15px 10px 10px 10px">
+                    <div style="display: inline-flex">
+                        <img style="display:inline-block;border-radius: 5px;padding: 60px 5px 0 0"
+                             width="30px" height="30px"
+                             src="/imgs/icon.png">
+                        <img style="display:inline-block; border-radius: 5px;" height="150px"
+                             src="https://p0.meituan.net/movie/9ea0d81c8ca4d07b02e74441d4e2d6c74057669.jpg@464w_644h_1e_1c">
+                        <div style="display: inline-block;color:white;">
+                            <div class="row__poster__info" style="height: 20px;margin: 0 0 5px 5px;">
+                                <img class="row__poster__info" width="25px" height="25px" src="/imgs/icon.png">
+                                <b class="row__poster__info" style="font-size: 20px;color: white;margin: 0 0 5px 5px;">7.0</b>
+                            </div>
+                            <h4 style="font-size: 30px; margin: 5px 0 0 5px;">电影名</h4>
+                            <h5 style="margin: 5px 0 0 5px;">电影类型</h5>
+                            <h5 style="margin: 5px 0 0 5px;
+                                width: 256.55px; height: 38px;
+                                overflow:hidden;text-overflow:ellipsis;display:-webkit-box;
+                                -webkit-box-orient:vertical;-webkit-line-clamp:2;">
+                                电影简介电影简介电影简介电影简介电影简介电影简介电影简介电影简介电电影简介电影简介电影简介电影简介电影简介电影简介电影简介电影简介电影简介电影简介电影简介电影简介</h5>
+                        </div>
+                    </div>
+                    <table>
+                        <tr style="height:50px">
+                            <td style="padding: 5px"><img width="25px"
+                                     src="/imgs/icon.png">
+                            </td>
+                            <td style="width: 100px;padding: 5px">
+                                电影类型
+                            </td>
+                            <td style="padding: 5px">
+                                电影名
+                            </td>
+                        </tr>
+                        <tr style="height:50px">
+                            <td style="padding: 5px"><img width="25px"
+                                                          src="/imgs/icon.png">
+                            </td>
+                            <td style="width: 100px;padding: 5px">
+                                电影类型
+                            </td>
+                            <td style="padding: 5px">
+                                电影名
+                            </td>
+                        </tr>
+                        <tr style="height:50px">
+                            <td style="padding: 5px"><img width="25px"
+                                                          src="/imgs/icon.png">
+                            </td>
+                            <td style="width: 100px;padding: 5px">
+                                电影类型
+                            </td>
+                            <td style="padding: 5px">
+                                电影名
+                            </td>
+                        </tr>
+                        <tr style="height:50px">
+                            <td style="padding: 5px"><img width="25px"
+                                                          src="/imgs/icon.png">
+                            </td>
+                            <td style="width: 100px;padding: 5px">
+                                电影类型
+                            </td>
+                            <td style="padding: 5px">
+                                电影名
+                            </td>
+                        </tr>
+                        <tr style="height:50px">
+                            <td style="padding: 5px"><img width="25px"
+                                                          src="/imgs/icon.png">
+                            </td>
+                            <td style="width: 100px;padding: 5px">
+                                电影类型
+                            </td>
+                            <td style="padding: 5px">
+                                电影名
+                            </td>
+                        </tr>
+                        <tr style="height:50px">
+                            <td style="padding: 5px"><img width="25px"
+                                                          src="/imgs/icon.png">
+                            </td>
+                            <td style="width: 100px;padding: 5px">
+                                电影类型
+                            </td>
+                            <td style="padding: 5px">
+                                电影名
+                            </td>
+                        </tr>
+                        <tr style="height:50px">
+                            <td style="padding: 5px"><img width="25px"
+                                                          src="/imgs/icon.png">
+                            </td>
+                            <td style="width: 100px;padding: 5px">
+                                电影类型
+                            </td>
+                            <td style="padding: 5px">
+                                电影名
+                            </td>
+                        </tr>
+                        <tr style="height:50px">
+                            <td style="padding: 5px"><img width="25px"
+                                                          src="/imgs/icon.png">
+                            </td>
+                            <td style="width: 100px;padding: 5px">
+                                电影类型
+                            </td>
+                            <td style="padding: 5px">
+                                电影名
+                            </td>
+                        </tr>
+                        <tr style="height:50px">
+                            <td style="padding: 5px"><img width="25px"
+                                                          src="/imgs/icon.png">
+                            </td>
+                            <td style="width: 100px;padding: 5px">
+                                电影类型
+                            </td>
+                            <td style="padding: 5px">
+                                电影名
+                            </td>
+                        </tr>
+                        <tr style="height:50px">
+                            <td style="padding: 5px"><img width="25px"
+                                                          src="/imgs/icon.png">
+                            </td>
+                            <td style="width: 100px;padding: 5px">
+                                电影类型
+                            </td>
+                            <td style="padding: 5px">
+                                电影名
+                            </td>
+                        </tr>
+                    </table>
+                    <div style="margin-top: 10px;text-align: center">
+                        <a style="text-decoration: none;;color: #b3b3b3;" href="#">查看全部</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bottom">
+            <div class="bottom-width">
+                有疑问请联系 <a href="tel:1-844-542-4813" class="tel-link">123-1234-1234</a>
+                <div>
+                    <ul class="bottom-flex">
+                        <li class="list-bottom">
+                            <a href="#" class="link-bottom">
+                                常见问题
+                            </a>
+                        </li>
+                        <li class="list-bottom">
+                            <a href="#" class="link-bottom">
+                                客服中心
+                            </a>
+                        </li>
+                        <li class="list-bottom">
+                            <a href="#" class="link-bottom">
+                                使用条款
+                            </a>
+                        </li>
+                        <li class="list-bottom">
+                            <a href="#" class="link-bottom">
+                                隐私政策
+                            </a>
+                        </li>
+                        <li class="list-bottom">
+                            <a href="#" class="link-bottom">
+                                关于我们
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script>
+    $(function () {
+        var oTop1 = $(document).scrollTop();
+
+        $(window).scroll(function () {
+            var oTop2 = $(document).scrollTop();
+            console.log(oTop2);
+            if (oTop2 > oTop1) {
+                $(".nav").addClass("hide").removeClass("show");
+            } else {
+                $(".nav").addClass("show").removeClass("hide");
+            }
+            oTop1 = $(document).scrollTop();
+        });
+    });
+</script>
+</body>
+</html>

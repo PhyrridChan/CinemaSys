@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/login_page/CustomerLoginPage/style.css">
+    <title>customerSignUpPage</title>
+
+</head>
+<body>
+<div class="upper">
+    <div class="logo">
+        <a href="#">
+            <img src="/login_page/CustomerLoginPage/img/logo.png" class="img-logo"/>
+        </a>
+    </div>
+    <div class="login-div">
+        <form action="/cinema/CmSignupServlet" method="post" class="login">
+            <h1>注册</h1>
+            <div class="input-text">
+                <input type="text" id="inputUserName" name="userName" placeholder="用户名" />
+                <div class="warning-input" id="warningEmail">
+                    请输入有效的用户名
+                </div>
+            </div>
+
+            <div class="input-text">
+                <input type="password" id="inputPassword" name="userPWD" placeholder="密码" />
+                <div class="warning-input" id="warningPassword">
+                    密码错误
+                </div>
+            </div>
+
+            <div class="input-text">
+                <input type="password" id="inputRePassword" name="userRePWD" placeholder="密码验证" />
+                <div class="warning-input" id="warningRePassword">
+                    密码错误
+                </div>
+            </div>
+
+            <div>
+                <button class="signin-button">注册</button>
+            </div>
+
+            <div class="login-face">
+                <img src="/login_page/CustomerLoginPage/img/wechat.png" height="15"/><a href="#" class="color_link log_face">使用微信辅助注册</a>
+                <img src="/login_page/CustomerLoginPage/img/qq.png" height="15"/><a href="#" class="color_link log_face">使用QQ辅助注册</a>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="bottom">
+    <div class="bottom-width">
+        有疑问请联系 <a href="tel:1-844-542-4813" class="tel-link">123-1234-1234</a>
+        <div>
+            <ul class="bottom-flex">
+                <li class="list-bottom">
+                    <a href="#" class="link-bottom">
+                        常见问题
+                    </a>
+                </li>
+                <li class="list-bottom">
+                    <a href="#" class="link-bottom">
+                        客服中心
+                    </a>
+                </li>
+                <li class="list-bottom">
+                    <a href="#" class="link-bottom">
+                        使用条款
+                    </a>
+                </li>
+                <li class="list-bottom">
+                    <a href="#" class="link-bottom">
+                        隐私政策
+                    </a>
+                </li>
+                <li class="list-bottom">
+                    <a href="#" class="link-bottom">
+                        关于我们
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+</body>
+</html>

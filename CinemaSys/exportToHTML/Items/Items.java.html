@@ -1,0 +1,272 @@
+<html>
+<head>
+<title>Items.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #000080; font-weight: bold;}
+.s1 { color: #000000;}
+.s2 { color: #808080; font-style: italic;}
+.s3 { color: #008000; font-weight: bold;}
+</style>
+</head>
+<body bgcolor="#ffffff">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Items.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span>Items;
+
+<span class="s0">public class </span>Items {
+    <span class="s0">private </span>String ID;
+    <span class="s2">//ref</span>
+    <span class="s0">private int </span>state;
+    <span class="s0">private </span>String itemName;
+    <span class="s0">private </span>String engName;
+    <span class="s0">private </span>String pics;
+    <span class="s0">private </span>String keywords;
+    <span class="s2">//ref</span>
+    <span class="s0">private </span>String genreID;
+    <span class="s2">//ref</span>
+    <span class="s0">private int </span>country;
+    <span class="s0">private </span>String runtime;
+    <span class="s0">private </span>String releaseDate;
+    <span class="s0">private double </span>rate;
+    <span class="s0">private double </span>boxOffice;
+    <span class="s0">private </span>String introduction;
+    <span class="s0">private <a href="Casts.java.html">Casts</a> </span>cast;
+    <span class="s2">//ref</span>
+    <span class="s0">private </span>String soundMix;
+    <span class="s2">//ref</span>
+    <span class="s0">private </span>String tech;
+    <span class="s0">private <a href="ToWatch.java.html">ToWatch</a> </span>whereToWatch;
+    <span class="s2">//ref :using class</span>
+    <span class="s2">//award:&quot;{awards},{awarded},{nominated}&quot;</span>
+    <span class="s0">private </span>String award;
+    <span class="s0">private <a href="Awards.java.html">Awards</a> </span>awards_;
+
+    <span class="s0">public </span>Items(<span class="s0">int </span>state, String itemName, String engName, String pics, String keywords, String genreID, <span class="s0">int </span>country, String runtime, String releaseDate, <span class="s0">double </span>rate, <span class="s0">double </span>boxOffice, String introduction, <a href="Casts.java.html">Casts</a> cast, String soundMix, String tech, <a href="ToWatch.java.html">ToWatch</a> whereToWatch, String award) {
+        String ID = <span class="s3">&quot;&quot;</span>;
+        <span class="s0">this</span>.ID = ID;
+        <span class="s0">this</span>.state = state;
+        <span class="s0">this</span>.itemName = itemName;
+        <span class="s0">this</span>.engName = engName;
+        <span class="s0">this</span>.pics = pics;
+        <span class="s0">this</span>.keywords = keywords;
+        <span class="s0">this</span>.genreID = genreID;
+        <span class="s0">this</span>.country = country;
+        <span class="s0">this</span>.runtime = runtime;
+        <span class="s0">this</span>.releaseDate = releaseDate;
+        <span class="s0">this</span>.rate = rate;
+        <span class="s0">this</span>.boxOffice = boxOffice;
+        <span class="s0">this</span>.introduction = introduction;
+        <span class="s0">this</span>.cast = cast;
+        <span class="s0">this</span>.soundMix = soundMix;
+        <span class="s0">this</span>.tech = tech;
+        <span class="s0">this</span>.whereToWatch = whereToWatch;
+        <span class="s0">this</span>.award = award;
+    }
+
+    <span class="s0">public </span>Items(String ID, <span class="s0">int </span>state, String itemName, String engName, String pics, String keywords, String genreID, <span class="s0">int </span>country, String runtime, String releaseDate, <span class="s0">double </span>rate, <span class="s0">double </span>boxOffice, String introduction, <a href="Casts.java.html">Casts</a> cast, String soundMix, String tech, <a href="ToWatch.java.html">ToWatch</a> whereToWatch, String award) {
+        <span class="s0">this</span>.ID = ID;
+        <span class="s0">this</span>.state = state;
+        <span class="s0">this</span>.itemName = itemName;
+        <span class="s0">this</span>.engName = engName;
+        <span class="s0">this</span>.pics = pics;
+        <span class="s0">this</span>.keywords = keywords;
+        <span class="s0">this</span>.genreID = genreID;
+        <span class="s0">this</span>.country = country;
+        <span class="s0">this</span>.runtime = runtime;
+        <span class="s0">this</span>.releaseDate = releaseDate;
+        <span class="s0">this</span>.rate = rate;
+        <span class="s0">this</span>.boxOffice = boxOffice;
+        <span class="s0">this</span>.introduction = introduction;
+        <span class="s0">this</span>.cast = cast;
+        <span class="s0">this</span>.soundMix = soundMix;
+        <span class="s0">this</span>.tech = tech;
+        <span class="s0">this</span>.whereToWatch = whereToWatch;
+        <span class="s0">this</span>.award = award;
+    }
+
+    <span class="s2">/**</span>
+     <span class="s2">* Getters and Setters</span>
+     <span class="s2">*/</span>
+    <span class="s0">public </span>String getID() {
+        <span class="s0">return </span>ID;
+    }
+
+    <span class="s0">public void </span>setID(String ID) {
+        <span class="s0">this</span>.ID = ID;
+    }
+
+    <span class="s0">public int </span>getState() {
+        <span class="s0">return </span>state;
+    }
+
+    <span class="s0">public void </span>setState(<span class="s0">int </span>state) {
+        <span class="s0">this</span>.state = state;
+    }
+
+    <span class="s0">public </span>String getItemName() {
+        <span class="s0">return </span>itemName;
+    }
+
+    <span class="s0">public void </span>setItemName(String itemName) {
+        <span class="s0">this</span>.itemName = itemName;
+    }
+
+    <span class="s0">public </span>String getEngName() {
+        <span class="s0">return </span>engName;
+    }
+
+    <span class="s0">public void </span>setEngName(String engName) {
+        <span class="s0">this</span>.engName = engName;
+    }
+
+    <span class="s0">public </span>String getPics() {
+        <span class="s0">return </span>pics;
+    }
+
+    <span class="s0">public void </span>setPics(String pics) {
+        <span class="s0">this</span>.pics = pics;
+    }
+
+    <span class="s0">public </span>String getKeywords() {
+        <span class="s0">return </span>keywords;
+    }
+
+    <span class="s0">public void </span>setKeywords(String keywords) {
+        <span class="s0">this</span>.keywords = keywords;
+    }
+
+    <span class="s0">public </span>String getGenreID() {
+        <span class="s0">return </span>genreID;
+    }
+
+    <span class="s0">public void </span>setGenreID(String genreID) {
+        <span class="s0">this</span>.genreID = genreID;
+    }
+
+    <span class="s0">public int </span>getCountry() {
+        <span class="s0">return </span>country;
+    }
+
+    <span class="s0">public void </span>setCountry(<span class="s0">int </span>country) {
+        <span class="s0">this</span>.country = country;
+    }
+
+    <span class="s0">public </span>String getRuntime() {
+        <span class="s0">return </span>runtime;
+    }
+
+    <span class="s0">public void </span>setRuntime(String runtime) {
+        <span class="s0">this</span>.runtime = runtime;
+    }
+
+    <span class="s0">public </span>String getReleaseDate() {
+        <span class="s0">return </span>releaseDate;
+    }
+
+    <span class="s0">public void </span>setReleaseDate(String releaseDate) {
+        <span class="s0">this</span>.releaseDate = releaseDate;
+    }
+
+    <span class="s0">public double </span>getRate() {
+        <span class="s0">return </span>rate;
+    }
+
+    <span class="s0">public void </span>setRate(<span class="s0">double </span>rate) {
+        <span class="s0">this</span>.rate = rate;
+    }
+
+    <span class="s0">public double </span>getBoxOffice() {
+        <span class="s0">return </span>boxOffice;
+    }
+
+    <span class="s0">public void </span>setBoxOffice(<span class="s0">double </span>boxOffice) {
+        <span class="s0">this</span>.boxOffice = boxOffice;
+    }
+
+    <span class="s0">public </span>String getIntroduction() {
+        <span class="s0">return </span>introduction;
+    }
+
+    <span class="s0">public void </span>setIntroduction(String introduction) {
+        <span class="s0">this</span>.introduction = introduction;
+    }
+
+    <span class="s0">public <a href="Casts.java.html">Casts</a> </span>getCast() {
+        <span class="s0">return </span>cast;
+    }
+
+    <span class="s0">public void </span>setCast(<a href="Casts.java.html">Casts</a> cast) {
+        <span class="s0">this</span>.cast = cast;
+    }
+
+    <span class="s0">public </span>String getSoundMix() {
+        <span class="s0">return </span>soundMix;
+    }
+
+    <span class="s0">public void </span>setSoundMix(String soundMix) {
+        <span class="s0">this</span>.soundMix = soundMix;
+    }
+
+    <span class="s0">public </span>String getTech() {
+        <span class="s0">return </span>tech;
+    }
+
+    <span class="s0">public void </span>setTech(String tech) {
+        <span class="s0">this</span>.tech = tech;
+    }
+
+    <span class="s0">public <a href="ToWatch.java.html">ToWatch</a> </span>getWhereToWatch() {
+        <span class="s0">return </span>whereToWatch;
+    }
+
+    <span class="s0">public void </span>setWhereToWatch(<a href="ToWatch.java.html">ToWatch</a> whereToWatch) {
+        <span class="s0">this</span>.whereToWatch = whereToWatch;
+    }
+
+    <span class="s0">public </span>String getAward() {
+        <span class="s0">return </span>award;
+    }
+
+    <span class="s0">public void </span>setAward(String award) {
+        <span class="s0">this</span>.award = award;
+    }
+    <span class="s2">/**</span>
+     <span class="s2">* More methods</span>
+     <span class="s2">*</span>
+     <span class="s2">*/</span>
+    @Override
+    <span class="s0">public </span>String toString() {
+        <span class="s0">return </span><span class="s3">&quot;Items{&quot; </span>+
+                <span class="s3">&quot;ID=&quot; </span>+ ID +
+                <span class="s3">&quot;, state=&quot; </span>+ state +
+                <span class="s3">&quot;, itemName=&quot; </span>+ itemName +
+                <span class="s3">&quot;, engName=&quot; </span>+ engName +
+                <span class="s3">&quot;, pics=&quot; </span>+ pics +
+                <span class="s3">&quot;, keywords=&quot; </span>+ keywords +
+                <span class="s3">&quot;, genreID=&quot; </span>+ genreID +
+                <span class="s3">&quot;, country=&quot; </span>+ country +
+                <span class="s3">&quot;, runtime=&quot; </span>+ runtime +
+                <span class="s3">&quot;, releaseDate=&quot; </span>+ releaseDate +
+                <span class="s3">&quot;, rate=&quot; </span>+ rate +
+                <span class="s3">&quot;, boxOffice=&quot; </span>+ boxOffice +
+                <span class="s3">&quot;, introduction=&quot; </span>+ introduction +
+                <span class="s3">&quot;, cast=&quot; </span>+ cast +
+                <span class="s3">&quot;, soundMix=&quot; </span>+ soundMix +
+                <span class="s3">&quot;, tech=&quot; </span>+ tech +
+                <span class="s3">&quot;, whereToWatch=&quot; </span>+ whereToWatch +
+                <span class="s3">&quot;, award=&quot; </span>+ award +
+                <span class="s3">'}'</span>;
+    }
+
+    <span class="s0">public void </span>printInfo(){
+        System.out.print(<span class="s3">&quot;{ &quot;</span>);
+        System.out.println(<span class="s0">this</span>.toString() + <span class="s3">&quot;'&quot; </span>+ <span class="s0">this</span>.cast.toString() + <span class="s3">&quot;'&quot; </span>+ <span class="s3">&quot;'&quot; </span>+ <span class="s0">this</span>.whereToWatch.toString() + <span class="s3">&quot;' }&quot;</span>);
+    }
+}
+</pre>
+</body>
+</html>

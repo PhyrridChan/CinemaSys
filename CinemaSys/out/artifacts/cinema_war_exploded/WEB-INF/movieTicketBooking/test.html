@@ -1,0 +1,36 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Info</title><link rel="stylesheet"href="/movieTicketBooking/cinema.css"><script type="text/javascript"src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script><script type="text/javascript"src="/movieTicketBooking/jquery.seat-charts.min.js"></script><meta name="viewport"content="width=device-width, initial-scale=1.0"/></head><body><div class="seating">
+  <div id="seats">
+    <div class="screen">荧幕</div>
+  </div>
+  <div id="seat-map">
+    <ul class="showcase">
+      <li>
+        <div class="seatCharts-seat seatCharts-cell">X</div>
+        <small>不可用</small>
+      </li>
+      <li>
+        <div class="seatCharts-seat seatCharts-cell selected"></div>
+        <small>当前选择</small>
+      </li>
+      <li>
+        <div class="seatCharts-seat seatCharts-cell unavailable"></div>
+        <small>已售</small>
+      </li>
+    </ul>
+  </div>
+  <div class="booking-details">
+    <div style="width: 200px">
+      <p>电影名：<span>Star WarsStar WarsStar WarsStar WarsStar Wars</span></p>
+      <p>影城名：<span>万达影城万达影城万达影城万达影城万达影城万达影城万达影城万达影城</span></p>
+      <p>时间：<span>1 Jan 00:00</span></p>
+    </div>
+    <p>座位：</p>
+    <ul id="selected-seats"></ul>
+    <p>订票数：<span id="counter">0</span></p>
+    <p>总价：<b>¥<span id="total">0</span></b></p>
+  </div>
+</div>
+<button class="checkout-button">购票</button>
+<script type="text/javascript" src="/movieTicketBooking/cinema.js"></script>
+</body>
+</html>

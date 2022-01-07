@@ -1,0 +1,116 @@
+<html>
+<head>
+<title>Customers.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #000080; font-weight: bold;}
+.s1 { color: #000000;}
+.s2 { color: #808080; font-style: italic;}
+.s3 { color: #008000; font-weight: bold;}
+.s4 { color: #0000ff;}
+</style>
+</head>
+<body bgcolor="#ffffff">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Customers.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span>Users;
+
+<span class="s0">import <a href="../SqlUtil/MySQLUtil.java.html">SqlUtil.MySQLUtil</a></span>;
+
+<span class="s0">import </span>java.sql.ResultSet;
+<span class="s0">import </span>java.sql.SQLException;
+<span class="s0">import </span>java.text.SimpleDateFormat;
+<span class="s0">import </span>java.util.Date;
+<span class="s0">import </span>java.util.ResourceBundle;
+
+<span class="s0">public class </span>Customers <span class="s0">extends <a href="Users.java.html">Users</a> </span>{
+    <span class="s0">private <a href="CustomersProperties.java.html">CustomersProperties</a> </span>property;
+    <span class="s0">private int </span>credit;
+    <span class="s0">private <a href="Vips.java.html">Vips</a> </span>vip;
+    <span class="s0">private <a href="CreditSys.java.html">CreditSys</a> </span>creditSys;
+    <span class="s0">private <a href="Activities.java.html">Activities</a> </span>activities;
+    <span class="s0">private <a href="CustomersProperties.java.html">CustomersProperties</a> </span>properties;
+    <span class="s2">//Customer绑定第三方流媒体账号</span>
+    <span class="s2">//爱奇艺开放平台不开放注册，需要进行商务联系</span>
+    <span class="s2">//腾讯开放平台在12年后仅提供13年后停止了官方的SDK下载</span>
+    <span class="s2">//bilibili/tencent 拿mid与现有用户进行绑定，存储用户公开信息</span>
+        <span class="s2">/* 
+        引导用户跳转至哔哩哔哩授权页面 
+        用户决定是否同意授权 
+        第三方服务器获取授权码(code) 
+        通过授权码获取access_token 
+         */</span>
+
+    <span class="s0">public </span>Customers(String UID, <span class="s0">int </span>status, String userName, String avator, <span class="s0">char </span>sex, <span class="s0">int </span>age, String phone, <span class="s0">int </span>regionCountry, <span class="s0">int </span>regionProvince, <span class="s0">int </span>regionCity, String joinTime, <a href="CustomersProperties.java.html">CustomersProperties</a> property, <span class="s0">int </span>credit, <a href="Vips.java.html">Vips</a> vip) {
+        <span class="s0">super</span>(UID, status, userName, avator, sex, age, phone, regionCountry, regionProvince, regionCity, joinTime);
+        <span class="s0">this</span>.property = property;
+        <span class="s0">this</span>.credit = credit;
+        <span class="s0">this</span>.vip = vip;
+    }
+
+    <span class="s0">public </span>Customers(String userName, String avator, <span class="s0">char </span>sex, <span class="s0">int </span>age, String phone, <span class="s0">int </span>regionCountry, <span class="s0">int </span>regionProvince, <span class="s0">int </span>regionCity) {
+        <span class="s0">super</span>(userName, avator, sex, age, phone, regionCountry, regionProvince, regionCity);
+    }
+
+    @Override
+    <span class="s0">public </span>String toString() {
+        String str = <span class="s0">null</span>;
+        <span class="s0">if </span>(!(property == <span class="s0">null </span>|| vip == <span class="s0">null</span>)) str = <span class="s0">super</span>.toString() + <span class="s3">&quot;Customers{&quot; </span>+
+                <span class="s3">&quot;property=&quot; </span>+ property +
+                <span class="s3">&quot;, credit=&quot; </span>+ credit +
+                <span class="s3">&quot;, vip=&quot; </span>+ vip +
+                <span class="s3">'}'</span>;
+        <span class="s0">else </span>str = <span class="s0">super</span>.toString();
+        <span class="s0">return </span>str;
+    }
+
+    <span class="s0">public void </span>printInfo() {
+        System.out.print(<span class="s3">&quot;Customers{&quot;</span>);
+        <span class="s0">super</span>.printInfo();
+        <span class="s0">if </span>(!(property == <span class="s0">null </span>|| vip == <span class="s0">null</span>))
+            System.out.println(<span class="s3">&quot;, property=&quot; </span>+ property.toString()
+                    + <span class="s3">&quot;, credit=&quot; </span>+ credit
+                    + <span class="s3">&quot;, &quot; </span>+ vip.toString() + <span class="s3">&quot;}&quot;</span>);
+    }
+
+    <span class="s0">public boolean </span>addCus(String PWD) {
+        <span class="s0">boolean </span>suc = <span class="s0">false</span>;
+        Date date = <span class="s0">new </span>Date(System.currentTimeMillis());
+        SimpleDateFormat formatter = <span class="s0">new </span>SimpleDateFormat(<span class="s3">&quot;yyMMddHHmmss&quot;</span>);
+        SimpleDateFormat formatter2 = <span class="s0">new </span>SimpleDateFormat(<span class="s3">&quot;yyyy-MM-dd HH:mm:ss&quot;</span>);
+        String head = formatter.format(date); <span class="s2">//12</span>
+        ResultSet rs = <a href="../SqlUtil/MySQLUtil.java.html">MySQLUtil</a>.query(<span class="s3">&quot;SELECT UID FROM tb_Users WHERE UID LIKE '&quot; </span>+ head + <span class="s3">&quot;%' ORDER BY UID DESC LIMIT 1;&quot;</span>);
+        String rear = <span class="s3">&quot;&quot;</span>;
+        <span class="s0">try </span>{
+            <span class="s0">if </span>(rs.next()) {
+                rear = <a href="../SqlUtil/MySQLUtil.java.html">MySQLUtil</a>.getString(rs, <span class="s3">&quot;eventID&quot;</span>).substring(<span class="s4">11</span>, <span class="s4">17</span>);
+                rear = head + String.format(<span class="s3">&quot;%04d&quot;</span>, Integer.parseInt(rear) + <span class="s4">1</span>);
+            } <span class="s0">else </span>{
+                rear = <span class="s3">&quot;000001&quot;</span>;
+            }
+        } <span class="s0">catch </span>(SQLException e) {
+            e.printStackTrace();
+        }
+        String UID = head + rear;
+        <span class="s0">if </span>(<a href="../SqlUtil/MySQLUtil.java.html">MySQLUtil</a>.add(<span class="s3">&quot;tb_Users&quot;</span>, UID, <span class="s3">&quot;1&quot;</span>,
+                <span class="s0">this</span>.getUserName(),
+                <span class="s0">this</span>.getAvator(),
+                <span class="s0">this</span>.getSex() + <span class="s3">&quot;&quot;</span>,
+                <span class="s0">this</span>.getAge() + <span class="s3">&quot;&quot;</span>,
+                <span class="s0">this</span>.getPhone(),
+                <span class="s0">this</span>.getRegionCountry() + <span class="s3">&quot;&quot;</span>,
+                <span class="s0">this</span>.getRegionProvince() + <span class="s3">&quot;&quot;</span>,
+                <span class="s0">this</span>.getRegionCity() + <span class="s3">&quot;&quot;</span>,
+                formatter2.format(date),
+                <span class="s3">&quot;&quot;</span>, <span class="s3">&quot;&quot;</span>, <span class="s3">&quot;&quot;</span>, <span class="s3">&quot;&quot;</span>, PWD
+        ))
+            System.out.println(<span class="s3">&quot;</span><span class="s0">\033</span><span class="s3">[92;1msuccessed to insert!</span><span class="s0">\033</span><span class="s3">[0m&quot;</span>);
+        <span class="s0">return </span>suc;
+    }
+}
+</pre>
+</body>
+</html>

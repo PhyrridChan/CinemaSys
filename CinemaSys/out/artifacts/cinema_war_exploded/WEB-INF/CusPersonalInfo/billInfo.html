@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>billInfo</title>
+    <link href="../main_page/styles.css" rel="stylesheet"/>
+    <link href="../movieTicketBooking/cinema.css" rel="stylesheet"/>
+</head>
+<body style="background: #111111">
+<div class="nav">
+    <!--    tabs    -->
+    <div class="nav__bar">
+        <div class="nav__bar__tab">
+            <a href="../main_page/movies.html" class="nav__bar__link"><b>电影</b></a>
+        </div>
+        <div class="nav__bar__tab">
+            <a href="../main_page/theaters.html" class="nav__bar__link"><b>影城</b></a>
+        </div>
+        <div class="nav__bar__tab">
+            <a href="../main_page/ranking.html" class="nav__bar__link"><b>榜单</b></a>
+        </div>
+        <div class="nav__bar__tab">
+            <a href="#" style="font-style: italic" class="nav__bar__link"><b>NEWS</b></a>
+        </div>
+    </div>
+    <!--    logo    -->
+    <a href="/cinema/main">
+        <img class="nav__logo" src="https://i.bmp.ovh/imgs/2021/11/12329def7ff8e6aa.png" alt=""/>
+    </a>
+    <!-- avator: login;myAvator -->
+    <div>
+        <div class="img-avator">
+            <a class="nav__bar__link" href="/cinema" style="position: absolute;top: 10px;right:0px;width: 55px"
+               id="login"><b>[登录]</b></a>
+            <img class="nav__avatar" id="myAvator" alt="" style="display: none"
+                 src="#">
+        </div>
+    </div>
+</div>
+
+<div style="width: 100%;display: flex;justify-content: center;padding-top: 100px;">
+    <img style="display: inline-block;border-radius: 5px;padding-right: 1%;" height="180px" src="https://p0.meituan.net/movie/9ea0d81c8ca4d07b02e74441d4e2d6c74057669.jpg@464w_644h_1e_1c">
+    <div style="display: inline-block;background: #222222;border-radius: 5px;width: 70%;height: 180px;">
+        <div style="display: inline-block;vertical-align: middle;color:white;">
+            <h4 style="font-size: 30px; margin: 30px 5px 0 10px;">电影名
+            </h4>
+            <h5 style="margin: 5px 0 0 10px;">
+                <nobr style="color: #1488CC">2021-08-29 周日 15:00</nobr>
+            </h5>
+            <h5 style="margin-left: 10px;
+                                width: 250px; max-height: 38px;
+                               ">
+                <p>万达影城（长沙解放路激光IMAX店）</p>
+                <p>IMAX激光厅 银幕 5排15座 5排16座</p>
+            </h5>
+        </div>
+        <div style="display: inline-block;vertical-align: middle">
+            <div style="height: 20px;margin: 10px 10px 5px 250px;float: right;color:white;">
+                <b class="row__poster__info" style="font-size: 20px;color: white;margin: 0 5px 5px 0;">¥90</b>
+            </div>
+        </div>
+        <div style="display: inline-block;vertical-align: middle">
+            <div style="height: 20px;margin: 10px 10px 5px 250px;float: right;color:white;">
+                <b class="row__poster__info" style="margin: 0 5px 5px 0;font-size: 18px;color: white;">待取票</b>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="seating" style="padding-top: 30px;height: 300px;">
+    <div class="seatCharts-container" style="border: none;display: contents;">
+        <div style="width: 250px; height: 250px; background: #1488CC">
+            二维码
+        </div>
+    </div>
+</div>
+<button class="checkout-button">已取票</button>
+</body>
+</html>

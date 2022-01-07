@@ -1,0 +1,40 @@
+<html>
+<head>
+<title>testt.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #000080; font-weight: bold;}
+.s1 { color: #000000;}
+.s2 { color: #008000; font-weight: bold;}
+.s3 { color: #808080; font-style: italic;}
+.s4 { color: #0000ff;}
+</style>
+</head>
+<body bgcolor="#ffffff">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+testt.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span>pageConstructor;
+
+<span class="s0">import </span>java.util.Arrays;
+
+<span class="s0">public class </span>testt {
+    <span class="s0">public static void </span>main(String[] args) {
+        String a = <span class="s2">&quot;*qwe*qwe(qwe*&quot;</span>;
+        <span class="s3">//         [,qwe,qwe(qwe]</span>
+        <span class="s0">int </span>i = <span class="s4">2</span>;
+        String repla = <span class="s2">&quot;$wawawaw$&quot;</span>;
+        String[] str = a.split(<span class="s2">&quot;</span><span class="s0">\\</span><span class="s2">*&quot;</span>);
+        System.out.println(Arrays.toString(str));
+        str[i-<span class="s4">1</span>] += repla;
+        System.out.println(Arrays.toString(str));
+
+        System.out.println();
+    }
+}
+
+</pre>
+</body>
+</html>

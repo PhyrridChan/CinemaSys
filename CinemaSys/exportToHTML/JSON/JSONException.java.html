@@ -1,0 +1,62 @@
+<html>
+<head>
+<title>JSONException.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #000080; font-weight: bold;}
+.s1 { color: #000000;}
+.s2 { color: #808080; font-style: italic;}
+.s3 { color: #808080; font-weight: bold; font-style: italic;}
+.s4 { color: #008000; font-weight: bold;}
+</style>
+</head>
+<body bgcolor="#ffffff">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+JSONException.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span>JSON;
+
+<span class="s2">/**</span>
+ <span class="s2">* you can find more method to be overridden ⬇︎</span>
+ <span class="s2">*</span>
+ <span class="s2">* </span><span class="s3">@author </span><span class="s2">zhangfan e-mail:phyrrid_chan@outlook.com</span>
+ <span class="s2">* </span><span class="s3">@see </span><span class="s2">Exception</span>
+ <span class="s2">* </span><span class="s3">@see </span><span class="s2">java.io.Serializable</span>
+ <span class="s2">* </span><span class="s3">@see </span><span class="s2">Throwable</span>
+ <span class="s2">*/</span>
+<span class="s0">public class </span>JSONException <span class="s0">extends </span>Exception {
+    <span class="s0">public </span>JSONException() {
+        <span class="s0">super</span>();
+    }
+
+    <span class="s2">/**</span>
+     <span class="s2">* Constructs a new exception inherits from {</span><span class="s3">@link </span><span class="s2">Exception} with the specified detail message.  The</span>
+     <span class="s2">* cause is not initialized, and may subsequently be initialized by</span>
+     <span class="s2">* a call to {</span><span class="s3">@link </span><span class="s2">#initCause}.</span>
+     <span class="s2">*</span>
+     <span class="s2">* </span><span class="s3">@param </span><span class="s2">message the detail message. The detail message is saved for</span>
+     <span class="s2">*                later retrieval by the {</span><span class="s3">@link </span><span class="s2">#getMessage()} method.</span>
+     <span class="s2">*/</span>
+    <span class="s0">public </span>JSONException(String message) {
+        <span class="s0">super</span>(message);
+    }
+
+    <span class="s0">static class </span>NoSuchJsonFileException <span class="s0">extends </span>Throwable {
+        <span class="s2">/**</span>
+         <span class="s2">* The filePath is wrong</span>
+         <span class="s2">* :the file is not exist or the file is not a JSON file</span>
+         <span class="s2">*</span>
+         <span class="s2">* </span><span class="s3">@see </span><span class="s2">java.nio.file.NoSuchFileException</span>
+         <span class="s2">*/</span>
+        <span class="s0">public </span>NoSuchJsonFileException() <span class="s0">throws </span>NoSuchFieldException {
+            <span class="s0">throw new </span>NoSuchFieldException(<span class="s4">&quot;the file is not exist or the file is not a JSON file&quot;</span>);
+        }
+    }
+
+
+}
+</pre>
+</body>
+</html>

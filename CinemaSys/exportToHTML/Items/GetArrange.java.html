@@ -1,0 +1,132 @@
+<html>
+<head>
+<title>GetArrange.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #000080; font-weight: bold;}
+.s1 { color: #000000;}
+.s2 { color: #008000; font-weight: bold;}
+.s3 { color: #0000ff;}
+</style>
+</head>
+<body bgcolor="#ffffff">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+GetArrange.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span>Items;
+
+<span class="s0">import <a href="../SqlUtil/MySQLUtil.java.html">SqlUtil.MySQLUtil</a></span>;
+
+<span class="s0">import </span>java.sql.PreparedStatement;
+<span class="s0">import </span>java.sql.ResultSet;
+<span class="s0">import </span>java.sql.SQLException;
+<span class="s0">import </span>java.util.HashMap;
+<span class="s0">import </span>java.util.HashSet;
+<span class="s0">import </span>java.util.Set;
+
+<span class="s0">public class </span>GetArrange {
+    String AID;
+
+    <span class="s0">public static </span>ResultSet arrangeQuery(String AID) {
+        String sql = <span class="s2">&quot;SELECT * FROM Arrange WHERE ID = ?&quot;</span>;
+        PreparedStatement ps = <a href="../SqlUtil/MySQLUtil.java.html">MySQLUtil</a>.setPreStmt(sql);
+        <span class="s0">return <a href="../SqlUtil/MySQLUtil.java.html">MySQLUtil</a></span>.query(ps, AID);
+    }
+
+    <span class="s0">public static </span>ResultSet arrangesQuery(String theaterID) {
+        String sql = <span class="s2">&quot;SELECT * FROM Arrange WHERE theaterID = ?&quot;</span>;
+        PreparedStatement ps = <a href="../SqlUtil/MySQLUtil.java.html">MySQLUtil</a>.setPreStmt(sql);
+        <span class="s0">return <a href="../SqlUtil/MySQLUtil.java.html">MySQLUtil</a></span>.query(ps, theaterID);
+    }
+
+    <span class="s0">public static <a href="Arrange.java.html">Arrange</a> </span>getArrange(String AID) {
+        <span class="s0">try </span>(ResultSet rs = arrangeQuery(AID);) {
+            <span class="s0">return </span>handleRsOfArrange(rs)[<span class="s3">0</span>];
+        } <span class="s0">catch </span>(SQLException e) {
+            e.printStackTrace();
+        }
+        <span class="s0">return null</span>;
+    }
+
+    <span class="s0">public static <a href="Arrange.java.html">Arrange</a></span>[] getArranges(String theaterID) {
+        <span class="s0">try </span>(ResultSet rs = arrangesQuery(theaterID);) {
+            <span class="s0">return </span>handleRsOfArrange(rs);
+        } <span class="s0">catch </span>(SQLException e) {
+            e.printStackTrace();
+        }
+        <span class="s0">return null</span>;
+    }
+
+    <span class="s0">public static <a href="Arrange.java.html">Arrange</a></span>[] handleRsOfArrange(ResultSet rs) <span class="s0">throws </span>SQLException {
+        <a href="Arrange.java.html">Arrange</a>[] arranges;
+        System.out.println(rs.getType());
+        rs.last();
+        arranges = <span class="s0">new <a href="Arrange.java.html">Arrange</a></span>[rs.getRow()];
+        rs.beforeFirst();
+        <span class="s0">int </span>i = -<span class="s3">1</span>;
+        <span class="s0">while </span>(rs.next()) {
+            <a href="Arrange.java.html">Arrange</a> arrange = <span class="s0">new <a href="Arrange.java.html">Arrange</a></span>(
+                    rs.getString(<span class="s2">&quot;ID&quot;</span>),
+                    rs.getString(<span class="s2">&quot;movieID&quot;</span>),
+                    rs.getString(<span class="s2">&quot;theaterID&quot;</span>),
+                    rs.getString(<span class="s2">&quot;startTime&quot;</span>),
+                    rs.getInt(<span class="s2">&quot;room&quot;</span>),
+                    rs.getDouble(<span class="s2">&quot;price&quot;</span>),
+                    rs.getInt(<span class="s2">&quot;state&quot;</span>));
+            arranges[++i] = arrange;
+        }
+        <span class="s0">return </span>arranges;
+    }
+
+    <span class="s0">public static </span>HashMap&lt;String, String&gt; getSupInfo(String AID) {
+        HashMap&lt;String, String&gt; map = <span class="s0">new </span>HashMap&lt;&gt;();
+        String sql = <span class="s2">&quot;SELECT * FROM supInfo WHERE ID = ?&quot;</span>;
+        PreparedStatement ps = <a href="../SqlUtil/MySQLUtil.java.html">MySQLUtil</a>.setPreStmt(sql);
+        <span class="s0">try </span>(ResultSet rs = <a href="../SqlUtil/MySQLUtil.java.html">MySQLUtil</a>.query(ps, AID)) {
+            <span class="s0">if </span>(rs.next()) {
+                map.put(<span class="s2">&quot;time&quot;</span>, rs.getString(<span class="s2">&quot;time&quot;</span>));
+                map.put(<span class="s2">&quot;theaterName&quot;</span>, rs.getString(<span class="s2">&quot;theaterName&quot;</span>));
+                map.put(<span class="s2">&quot;name&quot;</span>, rs.getString(<span class="s2">&quot;movieName&quot;</span>));
+                map.put(<span class="s2">&quot;showroom&quot;</span>, rs.getString(<span class="s2">&quot;showrooms&quot;</span>));
+            }
+        } <span class="s0">catch </span>(SQLException e) {
+            e.printStackTrace();
+        }
+        <span class="s0">return </span>map;
+    }
+
+    <span class="s0">public static <a href="Arrange.java.html">Arrange</a></span>[] reduceArrange(<a href="Arrange.java.html">Arrange</a>[] movieArranges , String movieID) {
+        <span class="s0">int </span>count = <span class="s3">0</span>;
+        <span class="s0">for </span>(<a href="Arrange.java.html">Arrange</a> arrange : movieArranges) {
+            <span class="s0">if </span>(arrange.getMovieID().equals(movieID)) count++;
+        }
+        <a href="Arrange.java.html">Arrange</a>[] arranges = <span class="s0">new <a href="Arrange.java.html">Arrange</a></span>[count];
+        <span class="s0">int </span>j = -<span class="s3">1</span>;
+        <span class="s0">for </span>(<a href="Arrange.java.html">Arrange</a> arrange : movieArranges) {
+            <span class="s0">if </span>(arrange.getMovieID().equals(movieID)) arranges[++j] = arrange;
+        }
+        <span class="s0">return </span>arranges;
+    }
+
+    <span class="s0">public static <a href="Arrange.java.html">Arrange</a></span>[] reduceMovie(<a href="Arrange.java.html">Arrange</a>[] movieArranges) {
+        Set&lt;String&gt; set = <span class="s0">new </span>HashSet&lt;&gt;();
+        <span class="s0">for </span>(<a href="Arrange.java.html">Arrange</a> arrange : movieArranges) {
+            set.add(arrange.getMovieID());
+        }
+        <a href="Arrange.java.html">Arrange</a>[] arranges = <span class="s0">new <a href="Arrange.java.html">Arrange</a></span>[set.size()];
+        <span class="s0">int </span>j = -<span class="s3">1</span>;
+        set.clear();
+        <span class="s0">for </span>(<a href="Arrange.java.html">Arrange</a> arrange : movieArranges) {
+            <span class="s0">if </span>(!set.contains(arrange.getMovieID())) {
+                set.add(arrange.getMovieID());
+                arranges[++j] = arrange;
+            }
+        }
+        <span class="s0">return </span>arranges;
+    }
+}
+</pre>
+</body>
+</html>

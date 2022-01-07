@@ -1,0 +1,52 @@
+<html>
+<head>
+<title>theatersServlet.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #000080; font-weight: bold;}
+.s1 { color: #000000;}
+.s2 { color: #008000; font-weight: bold;}
+.s3 { color: #0000ff;}
+</style>
+</head>
+<body bgcolor="#ffffff">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+theatersServlet.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span>com.test.controller.cusMainPage;
+
+<span class="s0">import <a href="../../../../pageConstructor/ContentMaker.java.html">pageConstructor.ContentMaker</a></span>;
+
+<span class="s0">import </span>javax.servlet.*;
+<span class="s0">import </span>javax.servlet.http.*;
+<span class="s0">import </span>java.io.IOException;
+<span class="s0">import </span>java.io.PrintWriter;
+
+<span class="s0">import static <a href="../../../../pageConstructor/ContentMaker.java.html">pageConstructor.ContentMaker</a></span>.moviesContentMaker;
+
+<span class="s0">public class </span>theatersServlet <span class="s0">extends </span>HttpServlet {
+    @Override
+    <span class="s0">protected void </span>doGet(HttpServletRequest request, HttpServletResponse response) <span class="s0">throws </span>ServletException, IOException {
+        doPost(request, response);
+    }
+
+    @Override
+    <span class="s0">protected void </span>doPost(HttpServletRequest request, HttpServletResponse response) <span class="s0">throws </span>ServletException, IOException {
+        response.setContentType(<span class="s2">&quot;text/html; charset=utf-8&quot;</span>);
+        PrintWriter out = response.getWriter();
+        String regionProvince, regionCity, regionSite;
+        regionProvince = request.getParameter(<span class="s2">&quot;regionProvince&quot;</span>);
+        regionCity = request.getParameter(<span class="s2">&quot;regionCity&quot;</span>);
+        regionSite = request.getParameter(<span class="s2">&quot;regionSite&quot;</span>);
+        String content = <span class="s2">&quot;&quot;</span>;
+        <span class="s0">if </span>(<a href="../../../../pageConstructor/ContentMaker.java.html">ContentMaker</a>.getNavStr() != <span class="s0">null</span>)
+            content = moviesContentMaker(<span class="s2">&quot;theaters&quot;</span>, <span class="s3">2</span>, regionProvince, regionCity, regionSite);
+        <span class="s0">else</span>
+            content = moviesContentMaker(<span class="s2">&quot;theaters&quot;</span>, <a href="../../../../pageConstructor/ContentMaker.java.html">ContentMaker</a>.login(request.getCookies()), <span class="s3">2</span>, regionProvince, regionCity, regionSite);
+        out.write(content);
+    }
+}</pre>
+</body>
+</html>

@@ -1,0 +1,409 @@
+<html>
+<head>
+<title>GetItem.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #000080; font-weight: bold;}
+.s1 { color: #000000;}
+.s2 { color: #008000; font-weight: bold;}
+.s3 { color: #0000ff;}
+.s4 { color: #808080; font-style: italic;}
+</style>
+</head>
+<body bgcolor="#ffffff">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+GetItem.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span>Items;
+
+<span class="s0">import <a href="../SqlUtil/MySQLUtil.java.html">SqlUtil.MySQLUtil</a></span>;
+<span class="s0">import </span>com.mysql.cj.jdbc.result.ResultSetImpl;
+
+<span class="s0">import </span>java.io.IOException;
+<span class="s0">import </span>java.sql.PreparedStatement;
+<span class="s0">import </span>java.sql.ResultSet;
+<span class="s0">import </span>java.sql.SQLException;
+<span class="s0">import </span>java.util.ArrayList;
+
+<span class="s0">public class </span>GetItem {
+    <span class="s0">private static </span>ResultSet rs;
+
+    <span class="s0">public static <a href="Items.java.html">Items</a> </span>get(String ID) {
+        <a href="Items.java.html">Items</a> items;
+        <span class="s0">try </span>(ResultSet rs = getQuery(ID)) {
+            <span class="s0">if </span>(rs.next()) {
+                <a href="Casts.java.html">Casts</a> casts = castsQuery(ID);
+                <a href="ToWatch.java.html">ToWatch</a> toWatch = toWatchQuery(ID);
+                <span class="s0">return new <a href="Items.java.html">Items</a></span>(ID, rs.getInt(<span class="s2">&quot;state&quot;</span>),
+                        rs.getString(<span class="s2">&quot;itemName&quot;</span>),
+                        rs.getString(<span class="s2">&quot;engName&quot;</span>),
+                        rs.getString(<span class="s2">&quot;pics&quot;</span>),
+                        rs.getString(<span class="s2">&quot;keywords&quot;</span>),
+                        rs.getString(<span class="s2">&quot;genre&quot;</span>),
+                        rs.getInt(<span class="s2">&quot;country&quot;</span>),
+                        rs.getString(<span class="s2">&quot;runtime&quot;</span>),
+                        rs.getString(<span class="s2">&quot;releaseDate&quot;</span>),
+                        rs.getDouble(<span class="s2">&quot;rate&quot;</span>),
+                        rs.getDouble(<span class="s2">&quot;boxOffice&quot;</span>),
+                        rs.getString(<span class="s2">&quot;introduction&quot;</span>), casts,
+                        rs.getString(<span class="s2">&quot;soundMix&quot;</span>),
+                        rs.getString(<span class="s2">&quot;tech&quot;</span>), toWatch,
+                        rs.getString(<span class="s2">&quot;awards&quot;</span>));
+            }
+        } <span class="s0">catch </span>(SQLException e) {
+            e.printStackTrace();
+        }
+        <span class="s0">return null</span>;
+    }
+
+    <span class="s0">public static </span>ResultSet getQuery(String ID) <span class="s0">throws </span>SQLException {
+        String tbName = <span class="s2">&quot;Items&quot;</span>;
+        PreparedStatement ps = <a href="../SqlUtil/MySQLUtil.java.html">MySQLUtil</a>.setPreStmt(<span class="s2">&quot;SELECT * FROM &quot; </span>+ tbName + <span class="s2">&quot; WHERE ID=?&quot;</span>);
+        <span class="s0">return <a href="../SqlUtil/MySQLUtil.java.html">MySQLUtil</a></span>.query(ps, ID);
+    }
+
+    <span class="s0">public static <a href="Casts.java.html">Casts</a> </span>castsQuery(String ID) <span class="s0">throws </span>SQLException {
+        String tbName = <span class="s2">&quot;Casts&quot;</span>;
+        ResultSet rs = tableQueryCstm(tbName, ID);
+        <span class="s0">if </span>(rs.next())
+            <span class="s0">return new <a href="Casts.java.html">Casts</a></span>(rs.getString(<span class="s2">&quot;director&quot;</span>),
+                    rs.getString(<span class="s2">&quot;cast&quot;</span>),
+                    rs.getString(<span class="s2">&quot;producer&quot;</span>),
+                    rs.getString(<span class="s2">&quot;writer&quot;</span>),
+                    rs.getString(<span class="s2">&quot;cameraman&quot;</span>),
+                    rs.getString(<span class="s2">&quot;artDirector&quot;</span>),
+                    rs.getString(<span class="s2">&quot;editor&quot;</span>),
+                    rs.getString(<span class="s2">&quot;sound&quot;</span>));
+        <span class="s0">else return null</span>;
+    }
+
+    <span class="s0">public static <a href="ToWatch.java.html">ToWatch</a> </span>toWatchQuery(String ID) <span class="s0">throws </span>SQLException {
+        String tbName = <span class="s2">&quot;ToWatch&quot;</span>;
+        ResultSet rs = tableQueryCstm(tbName, ID);
+        <span class="s0">if </span>(rs.next())
+            <span class="s0">return new <a href="ToWatch.java.html">ToWatch</a></span>(rs.getString(<span class="s2">&quot;tencent&quot;</span>),
+                    rs.getString(<span class="s2">&quot;aqiyi&quot;</span>),
+                    rs.getString(<span class="s2">&quot;youku&quot;</span>),
+                    rs.getString(<span class="s2">&quot;bilibili&quot;</span>),
+                    rs.getString(<span class="s2">&quot;theater&quot;</span>));
+        <span class="s0">else return null</span>;
+    }
+
+    <span class="s0">public static </span>ResultSet tableQueryCstm(String tbName, String ID) {
+        String sql = <span class="s2">&quot;SELECT * FROM &quot; </span>+ tbName + <span class="s2">&quot; WHERE ID=?&quot;</span>;
+        PreparedStatement ps = <a href="../SqlUtil/MySQLUtil.java.html">MySQLUtil</a>.setPreStmt(sql);
+        <span class="s0">return <a href="../SqlUtil/MySQLUtil.java.html">MySQLUtil</a></span>.query(ps, ID);
+    }
+
+    <span class="s0">public static </span>ResultSet getRec() {
+        String tbName = <span class="s2">&quot;movieRec&quot;</span>;
+        PreparedStatement ps = <a href="../SqlUtil/MySQLUtil.java.html">MySQLUtil</a>.setPreStmt(<span class="s2">&quot;SELECT *  FROM &quot; </span>+ tbName + <span class="s2">&quot; LIMIT 3&quot;</span>);
+        <span class="s0">return <a href="../SqlUtil/MySQLUtil.java.html">MySQLUtil</a></span>.query(ps);
+    }
+
+    <span class="s0">public static </span>String[] RecInfo() {
+        String[] str = <span class="s0">new </span>String[<span class="s3">10</span>];
+        <span class="s0">try </span>(ResultSet rs = getRec();) {
+            <span class="s0">int </span>i = <span class="s3">0</span>;
+            <span class="s0">if </span>(rs.next()) {
+                str[i++] = rs.getString(<span class="s2">&quot;ID&quot;</span>); <span class="s4">//0</span>
+                str[i++] = rs.getString(<span class="s2">&quot;itemName&quot;</span>);
+                str[i++] = rs.getString(<span class="s2">&quot;introduction&quot;</span>);
+                str[i++] = rs.getString(<span class="s2">&quot;recImg&quot;</span>); <span class="s4">//3</span>
+                <span class="s0">if </span>(rs.next()) {
+                    str[i++] = rs.getString(<span class="s2">&quot;ID&quot;</span>); <span class="s4">//4</span>
+                    str[i++] = rs.getString(<span class="s2">&quot;itemName&quot;</span>);
+                    str[i++] = rs.getString(<span class="s2">&quot;pics&quot;</span>); <span class="s4">//6</span>
+                }
+                <span class="s0">if </span>(rs.next()) {
+                    str[i++] = rs.getString(<span class="s2">&quot;ID&quot;</span>); <span class="s4">//7</span>
+                    str[i++] = rs.getString(<span class="s2">&quot;itemName&quot;</span>);
+                    str[i++] = rs.getString(<span class="s2">&quot;pics&quot;</span>); <span class="s4">//9</span>
+                }
+            }
+            <span class="s0">return </span>str;
+        } <span class="s0">catch </span>(SQLException e) {
+            e.printStackTrace();
+        }
+        <span class="s0">return null</span>;
+    }
+
+    <span class="s0">public static </span>ResultSet getMoviePoster(<span class="s0">int </span>type, String... para) <span class="s0">throws </span>IOException {
+        String tbName = <span class="s2">&quot;&quot;</span>;
+        String limit = <span class="s2">&quot;&quot;</span>;
+        <span class="s0">switch </span>(type) {
+            <span class="s0">case </span><span class="s3">1</span>:
+                tbName = <span class="s2">&quot;moviehit&quot;</span>;
+                limit = <span class="s2">&quot; LIMIT 20&quot;</span>;
+                <span class="s0">break</span>;
+            <span class="s0">case </span><span class="s3">2</span>:
+                tbName = <span class="s2">&quot;moviecomming&quot;</span>;
+                limit = <span class="s2">&quot; LIMIT 20&quot;</span>;
+                <span class="s0">break</span>;
+            <span class="s0">case </span><span class="s3">3</span>:
+                tbName = <span class="s2">&quot;items&quot;</span>;
+                <span class="s0">if </span>(para.length == <span class="s3">2</span>) {
+                    String movieType = parseType(para[<span class="s3">0</span>]);
+                    limit = <span class="s2">&quot; WHERE type genre '%&quot; </span>+ movieType + <span class="s2">&quot;%' AND ID != '-1' LIMIT 50&quot;</span>;
+                } <span class="s0">else </span>limit = <span class="s2">&quot; WHERE ID != '-1' LIMIT 50&quot;</span>;
+                <span class="s0">break</span>;
+            <span class="s0">case </span><span class="s3">4</span>:
+                tbName = <span class="s2">&quot;Theaters&quot;</span>;
+                <span class="s0">if </span>(para.length == <span class="s3">3</span>) {
+                    String site = <a href="Theaters.java.html">Theaters</a>.parseSite(para[<span class="s3">0</span>], para[<span class="s3">1</span>], para[<span class="s3">2</span>]);
+                    limit = <span class="s2">&quot; WHERE site like '%&quot; </span>+ site + <span class="s2">&quot;%' LIMIT 20&quot;</span>;
+                } <span class="s0">else </span>limit = <span class="s2">&quot; LIMIT 20&quot;</span>;
+                <span class="s0">break</span>;
+        }
+        PreparedStatement ps = <a href="../SqlUtil/MySQLUtil.java.html">MySQLUtil</a>.setPreStmt(<span class="s2">&quot;SELECT *  FROM &quot; </span>+ tbName + limit);
+
+        <span class="s0">return <a href="../SqlUtil/MySQLUtil.java.html">MySQLUtil</a></span>.query(ps);
+    }
+
+    <span class="s0">private static final </span>String[] genere = {
+            <span class="s2">&quot;动作片&quot;</span>, <span class="s2">&quot;喜剧片&quot;</span>, <span class="s2">&quot;纪录片&quot;</span>, <span class="s2">&quot;戏剧&quot;</span>, <span class="s2">&quot;适合家庭的&quot;</span>, <span class="s2">&quot;奇幻片&quot;</span>, <span class="s2">&quot;外语片&quot;</span>, <span class="s2">&quot;恐怖片&quot;</span>, <span class="s2">&quot;音乐片&quot;</span>, <span class="s2">&quot;爱情片&quot;</span>, <span class="s2">&quot;科幻片&quot;</span>, <span class="s2">&quot;惊悚电影&quot;</span>
+    };
+
+    <span class="s0">private static </span>String parseType(String s) {
+        <span class="s0">return </span>genere[Integer.parseInt(s)];
+    }
+
+    <span class="s0">public static </span>ResultSet getTheaterInfo(String id) {
+        PreparedStatement ps = <a href="../SqlUtil/MySQLUtil.java.html">MySQLUtil</a>.setPreStmt(<span class="s2">&quot;SELECT *  FROM Theaters WHERE ID = ?&quot;</span>);
+        <span class="s0">return <a href="../SqlUtil/MySQLUtil.java.html">MySQLUtil</a></span>.query(ps, id);
+    }
+
+    <span class="s0">public static </span>ResultSet getMovieInfo(String id) {
+        PreparedStatement ps = <a href="../SqlUtil/MySQLUtil.java.html">MySQLUtil</a>.setPreStmt(<span class="s2">&quot;SELECT *  FROM items WHERE ID = ?&quot;</span>);
+        <span class="s0">return <a href="../SqlUtil/MySQLUtil.java.html">MySQLUtil</a></span>.query(ps, id);
+    }
+
+    <span class="s0">public static </span>ResultSet getMovieInfo(<span class="s0">int </span>type, <span class="s0">int </span>page, String query) {
+        <span class="s0">if </span>(type == <span class="s3">7</span>) <span class="s0">return </span>getRank(page, query);
+        <span class="s0">int </span>capacity = <span class="s3">0</span>;
+        String tail = <span class="s2">&quot;&quot;</span>;
+        <span class="s0">switch </span>(type) {
+            <span class="s0">case </span><span class="s3">6</span>:
+                capacity = <span class="s3">10</span>;
+                <span class="s0">break</span>;
+        }
+        <span class="s0">if </span>(query != <span class="s0">null </span>&amp;&amp; !query.equals(<span class="s2">&quot;&quot;</span>)) {
+            tail = getWhereLimit(<span class="s2">&quot;items&quot;</span>, query);
+        }
+        PreparedStatement ps = <a href="../SqlUtil/MySQLUtil.java.html">MySQLUtil</a>.setPreStmt(<span class="s2">&quot;SELECT *  FROM items&quot; </span>+ tail + <span class="s2">&quot; LIMIT &quot; </span>+ capacity + <span class="s2">&quot; OFFSET &quot; </span>+ ((page - <span class="s3">1</span>) * capacity));
+        <span class="s0">return <a href="../SqlUtil/MySQLUtil.java.html">MySQLUtil</a></span>.query(ps);
+    }
+
+    <span class="s0">public static </span>String getWhereLimit(String tbName, String query) {
+        String sql = <span class="s2">&quot;SELECT COLUMN_NAME FROM information_schema.COLUMNS WHERE TABLE_NAME like '&quot; </span>+ tbName + <span class="s2">&quot;'&quot;</span>;
+        PreparedStatement ps = <a href="../SqlUtil/MySQLUtil.java.html">MySQLUtil</a>.setPreStmt(sql);
+        ResultSet rs = <a href="../SqlUtil/MySQLUtil.java.html">MySQLUtil</a>.query(ps);
+        StringBuilder sb = <span class="s0">new </span>StringBuilder();
+        sb.append(<span class="s2">&quot; WHERE &quot;</span>);
+        <span class="s0">try </span>{
+            <span class="s0">while </span>(rs.next()) {
+                String temp = rs.getString(<span class="s3">1</span>) + <span class="s2">&quot; LIKE '%&quot; </span>+ query + <span class="s2">&quot;%'&quot;</span>;
+                sb.append(temp).append(<span class="s2">&quot; OR &quot;</span>);
+            }
+            sb.delete(sb.length() - <span class="s3">4</span>, sb.length());
+        } <span class="s0">catch </span>(SQLException e) {
+            e.printStackTrace();
+        }
+        <span class="s0">return </span>sb.toString();
+    }
+
+    <span class="s0">public static <a href="Items.java.html">Items</a> </span>moviePoster(String id) {
+        <span class="s0">try </span>(ResultSet rs = getMovieInfo(id)) {
+            <span class="s0">if </span>(rs != <span class="s0">null</span>) <span class="s0">return </span>handleRsOfMovie(rs)[<span class="s3">0</span>];
+        } <span class="s0">catch </span>(SQLException e) {
+            e.printStackTrace();
+        }
+        <span class="s0">return null</span>;
+    }
+
+    <span class="s0">public static <a href="Items.java.html">Items</a></span>[] moviePoster(<span class="s0">int </span>type, <span class="s0">int </span>page, String query) {
+        <span class="s0">try </span>(ResultSet rs = getMovieInfo(type, page, query)) {
+            <span class="s0">if </span>(rs != <span class="s0">null</span>) <span class="s0">return </span>handleRsOfMovie(rs);
+        } <span class="s0">catch </span>(SQLException e) {
+            e.printStackTrace();
+        }
+        <span class="s0">return null</span>;
+    }
+
+    <span class="s0">static <a href="Items.java.html">Items</a></span>[] handleRsOfMovie(ResultSet rs) <span class="s0">throws </span>SQLException {
+        <a href="Items.java.html">Items</a>[] items;
+        System.out.println(rs.getType());
+        rs.last();
+        items = <span class="s0">new <a href="Items.java.html">Items</a></span>[rs.getRow()];
+        rs.beforeFirst();
+        <span class="s0">int </span>i = -<span class="s3">1</span>;
+        <span class="s0">while </span>(rs.next()) {
+            <a href="Items.java.html">Items</a> item = <span class="s0">new <a href="Items.java.html">Items</a></span>(rs.getString(<span class="s2">&quot;ID&quot;</span>), rs.getInt(<span class="s2">&quot;state&quot;</span>),
+                    rs.getString(<span class="s2">&quot;itemName&quot;</span>),
+                    rs.getString(<span class="s2">&quot;engName&quot;</span>),
+                    rs.getString(<span class="s2">&quot;pics&quot;</span>),
+                    rs.getString(<span class="s2">&quot;keywords&quot;</span>),
+                    rs.getString(<span class="s2">&quot;genre&quot;</span>), rs.getInt(<span class="s2">&quot;country&quot;</span>), rs.getString(<span class="s2">&quot;runtime&quot;</span>),
+                    rs.getString(<span class="s2">&quot;releaseDate&quot;</span>),
+                    rs.getDouble(<span class="s2">&quot;rate&quot;</span>),
+                    rs.getDouble(<span class="s2">&quot;boxOffice&quot;</span>),
+                    rs.getString(<span class="s2">&quot;introduction&quot;</span>),
+                    <span class="s0">null</span>,
+                    <span class="s2">&quot;&quot;</span>, <span class="s2">&quot;&quot;</span>, <span class="s0">null</span>,
+                    rs.getString(<span class="s2">&quot;awards&quot;</span>));
+            items[++i] = item;
+        }
+        <span class="s0">return </span>items;
+    }
+
+    <span class="s0">public static <a href="Items.java.html">Items</a></span>[] moviePoster(<span class="s0">int </span>type, String... para) {
+        <span class="s0">try </span>(ResultSet rs = getMoviePoster(type, para)) {
+            <span class="s0">if </span>(rs != <span class="s0">null</span>) <span class="s0">return </span>handleRsOfMovie(rs);
+        } <span class="s0">catch </span>(SQLException | IOException e) {
+            e.printStackTrace();
+        }
+        <span class="s0">return null</span>;
+    }
+
+    <span class="s0">public static <a href="Theaters.java.html">Theaters</a> </span>theatersPoster(String id) {
+        <span class="s0">try </span>(ResultSet rs = getTheaterInfo(id)) {
+            <span class="s0">if </span>(rs != <span class="s0">null</span>) <span class="s0">return </span>handleRsOfTheaters(rs)[<span class="s3">0</span>];
+        } <span class="s0">catch </span>(SQLException e) {
+            e.printStackTrace();
+        }
+        <span class="s0">return null</span>;
+    }
+
+    <span class="s0">public static <a href="Theaters.java.html">Theaters</a></span>[] theatersPoster(<span class="s0">int </span>type, String... para) {
+        <span class="s0">try </span>(ResultSet rs = getMoviePoster(type, para)) {
+            <span class="s0">if </span>(rs != <span class="s0">null</span>) <span class="s0">return </span>handleRsOfTheaters(rs);
+        } <span class="s0">catch </span>(SQLException | IOException e) {
+            e.printStackTrace();
+        }
+        <span class="s0">return null</span>;
+    }
+
+    <span class="s0">public static <a href="Theaters.java.html">Theaters</a></span>[] theatersPoster(<span class="s0">int </span>type, String movie) {
+        <span class="s0">try </span>(ResultSet rs = getMoviePoster(type, movie)) {
+            <span class="s0">if </span>(rs != <span class="s0">null</span>) <span class="s0">return </span>handleRsOfTheaters(type, rs);
+        } <span class="s0">catch </span>(SQLException e) {
+            e.printStackTrace();
+        }
+        <span class="s0">return null</span>;
+    }
+
+    <span class="s0">public static <a href="Theaters.java.html">Theaters</a></span>[] theatersPoster(<span class="s0">int </span>type, <span class="s0">int </span>page, String query) {
+        <span class="s0">try </span>(ResultSet rs = getMoviePoster(type, page, query)) {
+            <span class="s0">if </span>(rs != <span class="s0">null</span>) <span class="s0">return </span>handleRsOfTheaters(type, rs);
+        } <span class="s0">catch </span>(SQLException e) {
+            e.printStackTrace();
+        }
+        <span class="s0">return null</span>;
+    }
+
+    <span class="s0">private static <a href="Theaters.java.html">Theaters</a></span>[] handleRsOfTheaters(<span class="s0">int </span>type, ResultSet rs) <span class="s0">throws </span>SQLException {
+        <a href="Theaters.java.html">Theaters</a>[] items;
+        System.out.println(rs.getType());
+        rs.last();
+        items = <span class="s0">new <a href="Theaters.java.html">Theaters</a></span>[rs.getRow()];
+        rs.beforeFirst();
+        <span class="s0">int </span>i = -<span class="s3">1</span>;
+        <span class="s0">while </span>(rs.next()) {
+            <a href="Theaters.java.html">Theaters</a> item = GetItem.theatersPoster(rs.getString(<span class="s2">&quot;ID&quot;</span>));
+            items[++i] = item;
+        }
+        <span class="s0">return </span>items;
+    }
+
+    <span class="s0">private static </span>ResultSet getMoviePoster(<span class="s0">int </span>type, String movie) {
+        String tbName = <span class="s2">&quot;&quot;</span>;
+        String limit = <span class="s2">&quot;&quot;</span>;
+        <span class="s0">switch </span>(type) {
+            <span class="s0">case </span><span class="s3">5</span>:
+                tbName = <span class="s2">&quot;Arrange&quot;</span>;
+                limit = <span class="s2">&quot; WHERE movieID = '&quot; </span>+ movie + <span class="s2">&quot;' LIMIT 50&quot;</span>;
+                <span class="s0">break</span>;
+        }
+        PreparedStatement ps = <a href="../SqlUtil/MySQLUtil.java.html">MySQLUtil</a>.setPreStmt(<span class="s2">&quot;SELECT DISTINCT theaterID AS ID FROM &quot; </span>+ tbName + limit);
+        <span class="s0">return <a href="../SqlUtil/MySQLUtil.java.html">MySQLUtil</a></span>.query(ps);
+    }
+
+    <span class="s0">private static </span>ResultSet getMoviePoster(<span class="s0">int </span>type, <span class="s0">int </span>page, String query) {
+        <span class="s0">int </span>capacity = <span class="s3">0</span>;
+        String tail = <span class="s2">&quot;&quot;</span>;
+        <span class="s0">switch </span>(type) {
+            <span class="s0">case </span><span class="s3">6</span>:
+                capacity = <span class="s3">10</span>;
+                <span class="s0">break</span>;
+        }
+        <span class="s0">if </span>(query != <span class="s0">null </span>&amp;&amp; !query.equals(<span class="s2">&quot;&quot;</span>)) {
+            tail = getWhereLimit(<span class="s2">&quot;Theaters&quot;</span>, query);
+        }
+        PreparedStatement ps = <a href="../SqlUtil/MySQLUtil.java.html">MySQLUtil</a>.setPreStmt(<span class="s2">&quot;SELECT *  FROM Theaters&quot; </span>+ tail + <span class="s2">&quot; LIMIT &quot; </span>+ capacity + <span class="s2">&quot; OFFSET &quot; </span>+ ((page - <span class="s3">1</span>) * capacity));
+        <span class="s0">return <a href="../SqlUtil/MySQLUtil.java.html">MySQLUtil</a></span>.query(ps);
+    }
+
+    <span class="s0">private static <a href="Theaters.java.html">Theaters</a></span>[] handleRsOfTheaters(ResultSet rs) <span class="s0">throws </span>SQLException {
+        <a href="Theaters.java.html">Theaters</a>[] items;
+        System.out.println(rs.getType());
+        rs.last();
+        items = <span class="s0">new <a href="Theaters.java.html">Theaters</a></span>[rs.getRow()];
+        rs.beforeFirst();
+        <span class="s0">int </span>i = -<span class="s3">1</span>;
+        <span class="s0">while </span>(rs.next()) {
+            <a href="Arrange.java.html">Arrange</a>[] arranges = <a href="GetArrange.java.html">GetArrange</a>.getArranges(rs.getString(<span class="s2">&quot;ID&quot;</span>));
+            <a href="Theaters.java.html">Theaters</a> item = <span class="s0">new <a href="Theaters.java.html">Theaters</a></span>(rs.getString(<span class="s2">&quot;ID&quot;</span>), rs.getInt(<span class="s2">&quot;state&quot;</span>), rs.getString(<span class="s2">&quot;theaterName&quot;</span>), rs.getString(<span class="s2">&quot;site&quot;</span>), arranges, (rs.getString(<span class="s2">&quot;showrooms&quot;</span>)!=<span class="s0">null </span>? rs.getString(<span class="s2">&quot;showrooms&quot;</span>).split(<span class="s2">&quot;,&quot;</span>) : <span class="s0">null</span>), <span class="s2">&quot;/imgs/cinemaLogo/&quot; </span>+ rs.getString(<span class="s2">&quot;pic&quot;</span>) + <span class="s2">&quot;.png&quot;</span>, rs.getString(<span class="s2">&quot;phone&quot;</span>), rs.getString(<span class="s2">&quot;introduction&quot;</span>));
+            items[++i] = item;
+        }
+        <span class="s0">return </span>items;
+    }
+
+    <span class="s0">public static </span>ResultSet getRank() {
+        <span class="s0">return </span>getRank(<span class="s3">1</span>, <span class="s2">&quot;&quot;</span>);
+    }
+
+    <span class="s0">public static </span>ResultSet getRank(<span class="s0">int </span>page, String query) {
+        String tbName = <span class="s2">&quot;ranktable&quot;</span>;
+        String whereLimit = <span class="s2">&quot;&quot;</span>;
+        <span class="s0">if </span>(query != <span class="s0">null </span>&amp;&amp; !query.equals(<span class="s2">&quot;&quot;</span>)) whereLimit = getWhereLimit(tbName, query);
+        PreparedStatement ps = <a href="../SqlUtil/MySQLUtil.java.html">MySQLUtil</a>.setPreStmt(<span class="s2">&quot;SELECT *  FROM &quot; </span>+ tbName + whereLimit + <span class="s2">&quot; ORDER BY `rank` LIMIT 10 OFFSET &quot; </span>+ ((page - <span class="s3">1</span>) * <span class="s3">10</span>));
+        <span class="s0">return <a href="../SqlUtil/MySQLUtil.java.html">MySQLUtil</a></span>.query(ps);
+    }
+
+    <span class="s0">public static <a href="Items.java.html">Items</a></span>[] rankInfo() {
+        <a href="Items.java.html">Items</a>[] items;
+        <span class="s0">try </span>(ResultSet rs = getRank()) {
+<span class="s4">//            System.out.println(rs.getType());</span>
+            rs.last();
+            items = <span class="s0">new <a href="Items.java.html">Items</a></span>[rs.getRow()];
+            rs.beforeFirst();
+            <span class="s0">int </span>i = -<span class="s3">1</span>;
+            <span class="s0">while </span>(rs.next()) {
+                <a href="Items.java.html">Items</a> item = <span class="s0">new <a href="Items.java.html">Items</a></span>(rs.getString(<span class="s2">&quot;ID&quot;</span>), rs.getInt(<span class="s2">&quot;state&quot;</span>),
+                        rs.getString(<span class="s2">&quot;itemName&quot;</span>),
+                        rs.getString(<span class="s2">&quot;engName&quot;</span>),
+                        rs.getString(<span class="s2">&quot;pics&quot;</span>),
+                        rs.getString(<span class="s2">&quot;keywords&quot;</span>),
+                        rs.getString(<span class="s2">&quot;genre&quot;</span>), rs.getInt(<span class="s2">&quot;country&quot;</span>), rs.getString(<span class="s2">&quot;runtime&quot;</span>),
+                        rs.getString(<span class="s2">&quot;releaseDate&quot;</span>),
+                        rs.getDouble(<span class="s2">&quot;rate&quot;</span>),
+                        rs.getDouble(<span class="s2">&quot;boxOffice&quot;</span>),
+                        rs.getString(<span class="s2">&quot;introduction&quot;</span>),
+                        <span class="s0">null</span>,
+                        <span class="s2">&quot;&quot;</span>, <span class="s2">&quot;&quot;</span>, <span class="s0">null</span>,
+                        rs.getString(<span class="s2">&quot;awards&quot;</span>));
+                items[++i] = item;
+            }
+            <span class="s0">return </span>items;
+        } <span class="s0">catch </span>(SQLException e) {
+            e.printStackTrace();
+        }
+        <span class="s0">return null</span>;
+    }
+
+}
+</pre>
+</body>
+</html>

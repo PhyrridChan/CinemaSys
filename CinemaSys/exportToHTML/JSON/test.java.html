@@ -1,0 +1,56 @@
+<html>
+<head>
+<title>test.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #000080; font-weight: bold;}
+.s1 { color: #000000;}
+.s2 { color: #008000; font-weight: bold;}
+.s3 { color: #0000ff;}
+</style>
+</head>
+<body bgcolor="#ffffff">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+test.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span>JSON;
+
+<span class="s0">import </span>com.alibaba.fastjson.JSONArray;
+<span class="s0">import </span>com.alibaba.fastjson.JSONObject;
+
+<span class="s0">import </span>java.io.IOException;
+
+<span class="s0">import static <a href="JSONhandle.java.html">JSON.JSONhandle</a></span>.*;
+<span class="s0">import static <a href="SpecificUtil.java.html">JSON.SpecificUtil</a></span>.searchJsonArraySite;
+
+<span class="s0">class </span>TestJson {
+    <span class="s0">public static void </span>main(String[] args) <span class="s0">throws </span>IOException {
+        <a href="JSONhandle.java.html">JSONhandle</a> jsoNhandle = <span class="s0">new <a href="JSONhandle.java.html">JSONhandle</a></span>();
+        JSONArray provList = getJsonArray(<span class="s2">&quot;provList&quot;</span>);
+        JSONArray cityList = getJsonArray(<span class="s2">&quot;cityList&quot;</span>);
+        JSONArray siteList = getJsonArray(<span class="s2">&quot;siteList&quot;</span>);
+
+        <span class="s0">int </span>prov = <span class="s3">10</span>;
+        <span class="s0">int </span>city = <span class="s3">6</span>;
+        <span class="s0">int </span>ref = prov * <span class="s3">30 </span>+ city;
+        <span class="s0">int </span>site = <span class="s3">4</span>;
+
+        System.out.println(<span class="s2">&quot;provList: &quot; </span>+ provList.getString(prov));
+        System.out.println(<span class="s2">&quot;cityList: &quot; </span>+ cityList.getJSONArray(prov).getString(city));
+        System.out.println(<span class="s2">&quot;ref: &quot; </span>+ refList.getInteger(ref));
+        System.out.println(<span class="s2">&quot;siteList: &quot; </span>+ siteList.getJSONArray(refList.indexOf(ref + <span class="s2">&quot;&quot;</span>)).getString(site));
+
+        System.out.println(<span class="s2">&quot;____________compare____________&quot;</span>);
+
+        System.out.println(<span class="s2">&quot;provList: &quot; </span>+ searchJsonArray(<span class="s2">&quot;provList&quot;</span>, prov));
+        System.out.println(<span class="s2">&quot;cityList: &quot; </span>+ searchJsonArray(<span class="s2">&quot;cityList&quot;</span>, prov, city));
+        System.out.println(<span class="s2">&quot;ref: &quot; </span>+ refList.getInteger(ref));
+        System.out.println(<span class="s2">&quot;siteList: &quot; </span>+ searchJsonArraySite(<span class="s2">&quot;siteList&quot;</span>, ref, site));
+    }
+
+
+}</pre>
+</body>
+</html>

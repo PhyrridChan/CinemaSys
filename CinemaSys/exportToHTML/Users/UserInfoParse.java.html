@@ -1,0 +1,68 @@
+<html>
+<head>
+<title>UserInfoParse.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #000080; font-weight: bold;}
+.s1 { color: #000000;}
+.s2 { color: #0000ff;}
+.s3 { color: #008000; font-weight: bold;}
+</style>
+</head>
+<body bgcolor="#ffffff">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+UserInfoParse.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span>Users;
+
+<span class="s0">import </span>java.util.Arrays;
+<span class="s0">import </span>java.util.HashMap;
+<span class="s0">import </span>java.util.Map;
+
+<span class="s0">public class </span>UserInfoParse {
+    <span class="s0">public static </span>HashMap&lt;String, String&gt; parse(String text) {
+        <span class="s0">if </span>(text == <span class="s0">null </span>|| text.isEmpty()) {
+            <span class="s0">return null</span>;
+        }
+        <span class="s0">char</span>[] chars = text.toCharArray();
+        <span class="s0">int </span>count = <span class="s2">0</span>;
+        HashMap&lt;String, String&gt; map = <span class="s0">new </span>HashMap&lt;&gt;();
+        String[] strs = <span class="s0">new </span>String[<span class="s2">50</span>];
+        <span class="s0">int </span>j = <span class="s2">0</span>;
+        <span class="s0">while </span>(<span class="s0">true</span>) {
+            StringBuilder sb = <span class="s0">new </span>StringBuilder();
+            <span class="s0">while </span>(<span class="s0">true</span>) {
+                <span class="s0">char </span>c = chars[j++];
+                <span class="s0">if </span>(c != <span class="s3">'{' </span>&amp;&amp; c != <span class="s3">'}' </span>&amp;&amp; c != <span class="s3">',' </span>&amp;&amp; c != <span class="s3">'</span><span class="s0">\n</span><span class="s3">' </span>&amp;&amp; c != <span class="s3">' '</span>) {
+                    sb.append(c);
+                } <span class="s0">else if </span>(c != <span class="s3">'</span><span class="s0">\n</span><span class="s3">' </span>&amp;&amp; c != <span class="s3">' '</span>) {
+                    <span class="s0">break</span>;
+                }
+            }
+            <span class="s0">if </span>(sb.length() != <span class="s2">0</span>) {
+                String sbstr = sb.toString();
+                <span class="s0">if </span>(sbstr.contains(<span class="s3">&quot;=&quot;</span>)) {
+                    String[] sbs = sbstr.split(<span class="s3">&quot;=&quot;</span>);
+                    map.put(sbs[<span class="s2">0</span>], sbs[<span class="s2">1</span>]);
+                }
+            }
+            <span class="s0">if </span>(j &gt;= chars.length) <span class="s0">break</span>;
+        }
+        <span class="s0">return </span>map;
+    }
+
+    <span class="s0">public static void </span>main(String[] args) {
+        String str = <span class="s3">&quot;Users{UID='111', status=1, userName='test1', avator='path', sex=m, age=12, phone='1111', regionCountry=1, regionProvince=1, regionCity=1, joinTime='2021-11-15 20:38:11'}Customers{property=CustomersProperties{preferCopyright='1', preferCategory='1', activity=1, statement='sss', label=1, level=1, grow=10, regionID=0}, credit=10, vip=Vips{type=3, expire='2021-11-16 19:30:59', vipLevel=4}}&quot;</span>;
+        HashMap&lt;String, String&gt; strs = parse(str);
+        <span class="s0">for </span>(Map.Entry&lt;String, String&gt; entry: strs.entrySet()){
+            System.out.println(entry.getKey() + <span class="s3">&quot;</span><span class="s0">\t</span><span class="s3">&quot; </span>+ entry.getValue());
+        }
+    }
+}
+
+
+</pre>
+</body>
+</html>

@@ -1,0 +1,180 @@
+<html>
+<head>
+<title>Users.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #000080; font-weight: bold;}
+.s1 { color: #000000;}
+.s2 { color: #008000; font-weight: bold;}
+</style>
+</head>
+<body bgcolor="#ffffff">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Users.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span>Users;
+
+<span class="s0">public class </span>Users {
+    <span class="s0">private </span>String UID;
+    <span class="s0">private int </span>state;
+    <span class="s0">private </span>String userName;
+    <span class="s0">private </span>String avator;
+    <span class="s0">private char </span>sex;
+    <span class="s0">private int </span>age;
+    <span class="s0">private </span>String phone;
+    <span class="s0">private int </span>regionCountry;
+    <span class="s0">private int </span>regionProvince;
+    <span class="s0">private int </span>regionCity;
+    <span class="s0">private </span>String joinTime;
+
+    <span class="s0">public </span>Users(String UID, <span class="s0">int </span>state, String userName, String avator, <span class="s0">char </span>sex, <span class="s0">int </span>age, String phone, <span class="s0">int </span>regionCountry, <span class="s0">int </span>regionProvince, <span class="s0">int </span>regionCity, String joinTime) {
+        <span class="s0">this</span>.UID = UID;
+        <span class="s0">this</span>.state = state;
+        <span class="s0">this</span>.userName = userName;
+        <span class="s0">this</span>.avator = avator;
+        <span class="s0">this</span>.sex = sex;
+        <span class="s0">this</span>.age = age;
+        <span class="s0">this</span>.phone = phone;
+        <span class="s0">this</span>.regionCountry = regionCountry;
+        <span class="s0">this</span>.regionProvince = regionProvince;
+        <span class="s0">this</span>.regionCity = regionCity;
+        <span class="s0">this</span>.joinTime = joinTime;
+    }
+
+    <span class="s0">public </span>Users(String userName, String avator, <span class="s0">char </span>sex, <span class="s0">int </span>age, String phone, <span class="s0">int </span>regionCountry, <span class="s0">int </span>regionProvince, <span class="s0">int </span>regionCity) {
+        <span class="s0">this</span>.userName = userName;
+        <span class="s0">this</span>.avator = avator;
+        <span class="s0">this</span>.sex = sex;
+        <span class="s0">this</span>.age = age;
+        <span class="s0">this</span>.phone = phone;
+        <span class="s0">this</span>.regionCountry = regionCountry;
+        <span class="s0">this</span>.regionProvince = regionProvince;
+        <span class="s0">this</span>.regionCity = regionCity;
+    }
+
+    <span class="s0">public </span>String getUID() {
+        <span class="s0">return </span>UID;
+    }
+
+    <span class="s0">public void </span>setUID(String UID) {
+        <span class="s0">this</span>.UID = UID;
+    }
+
+    <span class="s0">public int </span>getState() {
+        <span class="s0">return </span>state;
+    }
+
+    <span class="s0">public void </span>setState(<span class="s0">int </span>state) {
+        <span class="s0">this</span>.state = state;
+    }
+
+    <span class="s0">public </span>String getUserName() {
+        <span class="s0">return </span>userName;
+    }
+
+    <span class="s0">public void </span>setUserName(String userName) {
+        <span class="s0">this</span>.userName = userName;
+    }
+
+    <span class="s0">public </span>String getAvator() {
+        <span class="s0">return </span>avator;
+    }
+
+    <span class="s0">public void </span>setAvator(String avator) {
+        <span class="s0">this</span>.avator = avator;
+    }
+
+    <span class="s0">public char </span>getSex() {
+        <span class="s0">return </span>sex;
+    }
+
+    <span class="s0">public void </span>setSex(<span class="s0">char </span>sex) {
+        <span class="s0">this</span>.sex = sex;
+    }
+
+    <span class="s0">public int </span>getAge() {
+        <span class="s0">return </span>age;
+    }
+
+    <span class="s0">public void </span>setAge(<span class="s0">int </span>age) {
+        <span class="s0">this</span>.age = age;
+    }
+
+    <span class="s0">public </span>String getPhone() {
+        <span class="s0">return </span>phone;
+    }
+
+    <span class="s0">public void </span>setPhone(String phone) {
+        <span class="s0">this</span>.phone = phone;
+    }
+
+    <span class="s0">public int </span>getRegionCountry() {
+        <span class="s0">return </span>regionCountry;
+    }
+
+    <span class="s0">public void </span>setRegionCountry(<span class="s0">int </span>regionCountry) {
+        <span class="s0">this</span>.regionCountry = regionCountry;
+    }
+
+    <span class="s0">public int </span>getRegionProvince() {
+        <span class="s0">return </span>regionProvince;
+    }
+
+    <span class="s0">public void </span>setRegionProvince(<span class="s0">int </span>regionProvince) {
+        <span class="s0">this</span>.regionProvince = regionProvince;
+    }
+
+    <span class="s0">public int </span>getRegionCity() {
+        <span class="s0">return </span>regionCity;
+    }
+
+    <span class="s0">public void </span>setRegionCity(<span class="s0">int </span>regionCity) {
+        <span class="s0">this</span>.regionCity = regionCity;
+    }
+
+    <span class="s0">public </span>String getJoinTime() {
+        <span class="s0">return </span>joinTime;
+    }
+
+    <span class="s0">public void </span>setJoinTime(String joinTime) {
+        <span class="s0">this</span>.joinTime = joinTime;
+    }
+
+    <span class="s0">public void </span>printInfo() {
+        System.out.print(
+                <span class="s2">&quot;UID='&quot; </span>+ UID + <span class="s2">'</span><span class="s0">\'</span><span class="s2">' </span>+
+                <span class="s2">&quot;, state=&quot; </span>+ state +
+                <span class="s2">&quot;, userName='&quot; </span>+ userName + <span class="s2">'</span><span class="s0">\'</span><span class="s2">' </span>+
+                <span class="s2">&quot;, avator='&quot; </span>+ avator + <span class="s2">'</span><span class="s0">\'</span><span class="s2">' </span>+
+                <span class="s2">&quot;, sex=&quot; </span>+ sex +
+                <span class="s2">&quot;, age=&quot; </span>+ age +
+                <span class="s2">&quot;, phone='&quot; </span>+ phone + <span class="s2">'</span><span class="s0">\'</span><span class="s2">' </span>+
+                <span class="s2">&quot;, regionCountry=&quot; </span>+ regionCountry +
+                <span class="s2">&quot;, regionProvince=&quot; </span>+ regionProvince +
+                <span class="s2">&quot;, regionCity=&quot; </span>+ regionCity +
+                <span class="s2">&quot;, joinTime='&quot; </span>+ joinTime + <span class="s2">'</span><span class="s0">\'</span><span class="s2">'</span>
+                );
+    }
+
+    @Override
+    <span class="s0">public </span>String toString() {
+        <span class="s0">return </span><span class="s2">&quot;Users{&quot; </span>+
+                <span class="s2">&quot;UID=&quot; </span>+ UID +
+                <span class="s2">&quot;, state=&quot; </span>+ state +
+                <span class="s2">&quot;, userName=&quot; </span>+ userName +
+                <span class="s2">&quot;, avator=&quot; </span>+ avator +
+                <span class="s2">&quot;, sex=&quot; </span>+ sex +
+                <span class="s2">&quot;, age=&quot; </span>+ age +
+                <span class="s2">&quot;, phone=&quot; </span>+ phone +
+                <span class="s2">&quot;, regionCountry=&quot; </span>+ regionCountry +
+                <span class="s2">&quot;, regionProvince=&quot; </span>+ regionProvince +
+                <span class="s2">&quot;, regionCity=&quot; </span>+ regionCity +
+                <span class="s2">&quot;, joinTime=&quot; </span>+ joinTime +
+                <span class="s2">'}'</span>;
+    }
+}
+</pre>
+</body>
+</html>

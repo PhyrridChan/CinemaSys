@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>theaters</title>
+  <link href="/main_page/styles.css" rel="stylesheet" />n
+  <link href="/imgs/decorate.ico" type="images/x-icon" rel="icon">
+</head>
+
+<body style="background: #111111">
+<div class="app">
+  <div class="nav">
+    <div class="nav__bar">
+      <div class="nav__bar__tab"><a href="/cinema/movies" class="nav__bar__link"><b>电影</b></a></div>
+      <div class="nav__bar__tab"><a href="/cinema/theaters" class="nav__bar__link"><b>影城</b></a></div>
+      <div class="nav__bar__tab"><a href="/main_page/ranking.html" class="nav__bar__link"><b>榜单</b></a></div>
+      <div class="nav__bar__tab">
+        <a href="#" style="font-style: italic" class="nav__bar__link"><b>NEWS</b></a>
+      </div>
+    </div><a href="/cinema/main"><img class="nav__logo" src="https://i.bmp.ovh/imgs/2021/11/12329def7ff8e6aa.png" alt="mainPage" /></a>
+    <div>
+      <div class="img-avator"><a href="/CusPersonalInfo/me.html"><img class="nav__avatar" id="myAvator" alt="avator" src="'path'"></a></div>
+    </div>
+  </div>
+  <div class="showMovies" style="width: 90%;margin: 100px 70px 15px 70px;height: auto;color: #1488CC">
+    <div>
+      <div class="div__title"><img height="12" src="../imgs/decorate.svg"><b style="font-size: xx-large;padding-left: 15px">选择城市</b></div>
+      <div class="input-text" style="display: flex;flex-direction: row;flex-wrap: nowrap;align-content: center;justify-content: center;"><select id="prov" name="regionProvince" style="width: 20%;margin-right: 2%;"></select><select id="city" name="regionCity" style="width: 20%;margin-right: 2%;"></select><select id="site" name="regionSite" style="width: 20%"></select>
+        <script src="/login_page/CustomerLoginPage/location.js"></script>
+      </div>
+      <div style="width: 50%;margin: 10px 0 10px 25%"><button class="con-button" id="signup2" type="submit">查询</button></div>
+    </div>
+  </div>
+  <div class="showMovies" style="width: 90%;margin: 30px 70px 60px 70px;height: auto">
+    <dl class="row__posters" style="">
+      <dt class="row__poster row__posterLarge">
+        <a href="#">
+          <img style="border-radius: 5px;" width="162px" height="243px" src="https://p0.meituan.net/movie/ad76ae218f96848694c8a4671473e8973491417.jpg" alt="你的世界如果没有我" />
+        </a>
+        <div class="row__poster__info" style="height: 20px;margin: 0 0 5px 5px;">
+          <img class="row__poster__info" width="25px" height="25px" src="/imgs/icon.png">
+          <b class="row__poster__info" style="font-size: 20px;color: white;margin: 0 0 5px 5px;">
+            <nobr style="font-size: 16px">暂无评分</nobr>
+          </b>
+        </div>
+        <h1 class="row__poster__name">你的世界如果没有我</h1>
+      </dt>
+      <dt class="row__poster row__posterLarge">
+        <a href="#">
+          <img style="border-radius: 5px;" width="162px" height="243px" src="https://p1.meituan.net/movie/026cd6132de1a27dec6b4512b2b9ea3a2331677.jpg" alt="曾经相爱的我们" />
+        </a>
+        <div class="row__poster__info" style="height: 20px;margin: 0 0 5px 5px;">
+          <img class="row__poster__info" width="25px" height="25px" src="/imgs/icon.png">
+          <b class="row__poster__info" style="font-size: 20px;color: white;margin: 0 0 5px 5px;">
+            <nobr style="font-size: 16px">暂无评分</nobr>
+          </b>
+        </div>
+        <h1 class="row__poster__name">曾经相爱的我们</h1>
+      </dt>
+      <dt class="row__poster row__posterLarge">
+        <a href="#">
+          <img style="border-radius: 5px;" width="162px" height="243px" src="https://p0.meituan.net/movie/0e81560dc9910a6a658a82ec7a054ceb5075992.jpg" alt="长津湖" />
+        </a>
+        <div class="row__poster__info" style="height: 20px;margin: 0 0 5px 5px;">
+          <img class="row__poster__info" width="25px" height="25px" src="/imgs/icon.png">
+          <b class="row__poster__info" style="font-size: 20px;color: white;margin: 0 0 5px 5px;">9.5</b>
+        </div>
+        <h1 class="row__poster__name">长津湖</h1>
+      </dt>
+      <dt class="row__poster row__posterLarge">
+        <a href="#">
+          <img style="border-radius: 5px;" width="162px" height="243px" src="https://p0.meituan.net/movie/d32a5c1e0f23080689d3e6beddab33a15172665.jpg" alt="古董局中局" />
+        </a>
+        <div class="row__poster__info" style="height: 20px;margin: 0 0 5px 5px;">
+          <img class="row__poster__info" width="25px" height="25px" src="/imgs/icon.png">
+          <b class="row__poster__info" style="font-size: 20px;color: white;margin: 0 0 5px 5px;">8.9</b>
+        </div>
+        <h1 class="row__poster__name">古董局中局</h1>
+      </dt>
+      <dt class="row__poster row__posterLarge">
+        <a href="#">
+          <img style="border-radius: 5px;" width="162px" height="243px" src="https://p1.meituan.net/movie/11a20f742febda4fa698dc65637801082016356.jpg" alt="野马分鬃" />
+        </a>
+        <div class="row__poster__info" style="height: 20px;margin: 0 0 5px 5px;">
+          <img class="row__poster__info" width="25px" height="25px" src="/imgs/icon.png">
+          <b class="row__poster__info" style="font-size: 20px;color: white;margin: 0 0 5px 5px;">7.2</b>
+        </div>
+        <h1 class="row__poster__name">野马分鬃</h1>
+      </dt>
+      <dt class="row__poster row__posterLarge">
+        <a href="#">
+          <img style="border-radius: 5px;" width="162px" height="243px" src="https://p0.meituan.net/movie/e93b8b54ffd529b26605c8c078b9cbca2295531.jpg" alt="误杀2" />
+        </a>
+        <div class="row__poster__info" style="height: 20px;margin: 0 0 5px 5px;">
+          <img class="row__poster__info" width="25px" height="25px" src="/imgs/icon.png">
+          <b class="row__poster__info" style="font-size: 20px;color: white;margin: 0 0 5px 5px;">
+            <nobr style="font-size: 16px">暂无评分</nobr>
+          </b>
+        </div>
+        <h1 class="row__poster__name">误杀2</h1>
+      </dt>
+      <dt class="row__poster row__posterLarge">
+        <a href="#">
+          <img style="border-radius: 5px;" width="162px" height="243px" src="https://p0.meituan.net/movie/498a3a9b80c81469569fdffaf06feede3387105.jpg" alt="门锁" />
+        </a>
+        <div class="row__poster__info" style="height: 20px;margin: 0 0 5px 5px;">
+          <img class="row__poster__info" width="25px" height="25px" src="/imgs/icon.png">
+          <b class="row__poster__info" style="font-size: 20px;color: white;margin: 0 0 5px 5px;">7.8</b>
+        </div>
+        <h1 class="row__poster__name">门锁</h1>
+      </dt>
+      <dt class="row__poster row__posterLarge">
+        <a href="#">
+          <img style="border-radius: 5px;" width="162px" height="243px" src="https://p1.meituan.net/movie/82465383f9755e1ee0174f8c6ef8bc061956663.jpg" alt="哦！文姬" />
+        </a>
+        <div class="row__poster__info" style="height: 20px;margin: 0 0 5px 5px;">
+          <img class="row__poster__info" width="25px" height="25px" src="/imgs/icon.png">
+          <b class="row__poster__info" style="font-size: 20px;color: white;margin: 0 0 5px 5px;">9.0</b>
+        </div>
+        <h1 class="row__poster__name">哦！文姬</h1>
+      </dt>
+      <dt class="row__poster row__posterLarge">
+        <a href="#">
+          <img style="border-radius: 5px;" width="162px" height="243px" src="https://p1.meituan.net/movie/eca2e666d9b487c4d292bcaa25c5e8894323835.jpg" alt="只要你过得比我好" />
+        </a>
+        <div class="row__poster__info" style="height: 20px;margin: 0 0 5px 5px;">
+          <img class="row__poster__info" width="25px" height="25px" src="/imgs/icon.png">
+          <b class="row__poster__info" style="font-size: 20px;color: white;margin: 0 0 5px 5px;">9.2</b>
+        </div>
+        <h1 class="row__poster__name">只要你过得比我好</h1>
+      </dt>
+      <dt class="row__poster row__posterLarge">
+        <a href="#">
+          <img style="border-radius: 5px;" width="162px" height="243px" src="https://p0.meituan.net/movie/dd422b7d77d9cab1cace5e747f92e694701682.jpg" alt="穿过寒冬拥抱你" />
+        </a>
+        <div class="row__poster__info" style="height: 20px;margin: 0 0 5px 5px;">
+          <img class="row__poster__info" width="25px" height="25px" src="/imgs/icon.png">
+          <b class="row__poster__info" style="font-size: 20px;color: white;margin: 0 0 5px 5px;">
+            <nobr style="font-size: 16px">暂无评分</nobr>
+          </b>
+        </div>
+        <h1 class="row__poster__name">穿过寒冬拥抱你</h1>
+      </dt>
+      <dt class="row__poster row__posterLarge">
+        <a href="#">
+          <img style="border-radius: 5px;" width="162px" height="243px" src="https://p0.meituan.net/movie/9ea0d81c8ca4d07b02e74441d4e2d6c74057669.jpg" alt="梅艳芳" />
+        </a>
+        <div class="row__poster__info" style="height: 20px;margin: 0 0 5px 5px;">
+          <img class="row__poster__info" width="25px" height="25px" src="/imgs/icon.png">
+          <b class="row__poster__info" style="font-size: 20px;color: white;margin: 0 0 5px 5px;">9.2</b>
+        </div>
+        <h1 class="row__poster__name">梅艳芳</h1>
+      </dt>
+      <dt class="row__poster row__posterLarge">
+        <a href="#">
+          <img style="border-radius: 5px;" width="162px" height="243px" src="https://p0.meituan.net/movie/dcc0411b145d4336a7f67e650d17964e1846717.jpg" alt="扬名立万" />
+        </a>
+        <div class="row__poster__info" style="height: 20px;margin: 0 0 5px 5px;">
+          <img class="row__poster__info" width="25px" height="25px" src="/imgs/icon.png">
+          <b class="row__poster__info" style="font-size: 20px;color: white;margin: 0 0 5px 5px;">9.2</b>
+        </div>
+        <h1 class="row__poster__name">扬名立万</h1>
+      </dt>
+      <dt class="row__poster row__posterLarge">
+        <a href="#">
+          <img style="border-radius: 5px;" width="162px" height="243px" src="https://p1.meituan.net/mmdb/ceab1c48a4a1e2d9fe941757ee2f5152256864.jpg" alt="我和我的父辈" />
+        </a>
+        <div class="row__poster__info" style="height: 20px;margin: 0 0 5px 5px;">
+          <img class="row__poster__info" width="25px" height="25px" src="/imgs/icon.png">
+          <b class="row__poster__info" style="font-size: 20px;color: white;margin: 0 0 5px 5px;">9.5</b>
+        </div>
+        <h1 class="row__poster__name">我和我的父辈</h1>
+      </dt>
+      <dt class="row__poster row__posterLarge">
+        <a href="#">
+          <img style="border-radius: 5px;" width="162px" height="243px" src="https://p0.meituan.net/movie/f84bef670a5534d9249409f921e2f33d4421909.jpg" alt="007：无暇赴死" />
+        </a>
+        <div class="row__poster__info" style="height: 20px;margin: 0 0 5px 5px;">
+          <img class="row__poster__info" width="25px" height="25px" src="/imgs/icon.png">
+          <b class="row__poster__info" style="font-size: 20px;color: white;margin: 0 0 5px 5px;">8.6</b>
+        </div>
+        <h1 class="row__poster__name">007：无暇赴死</h1>
+      </dt>
+      <dt class="row__poster row__posterLarge">
+        <a href="#">
+          <img style="border-radius: 5px;" width="162px" height="243px" src="https://p0.meituan.net/movie/10069d33c6c95ccb38665c76644fe63e5055632.jpg" alt="沙丘" />
+        </a>
+        <div class="row__poster__info" style="height: 20px;margin: 0 0 5px 5px;">
+          <img class="row__poster__info" width="25px" height="25px" src="/imgs/icon.png">
+          <b class="row__poster__info" style="font-size: 20px;color: white;margin: 0 0 5px 5px;">7.8</b>
+        </div>
+        <h1 class="row__poster__name">沙丘</h1>
+      </dt>
+      <dt class="row__poster row__posterLarge">
+        <a href="#">
+          <img style="border-radius: 5px;" width="162px" height="243px" src="https://p1.meituan.net/movie/9c7adc8d35a483a954829d970f02028b653288.jpg" alt="雄狮少年" />
+        </a>
+        <div class="row__poster__info" style="height: 20px;margin: 0 0 5px 5px;">
+          <img class="row__poster__info" width="25px" height="25px" src="/imgs/icon.png">
+          <b class="row__poster__info" style="font-size: 20px;color: white;margin: 0 0 5px 5px;">
+            <nobr style="font-size: 16px">暂无评分</nobr>
+          </b>
+        </div>
+        <h1 class="row__poster__name">雄狮少年</h1>
+      </dt>
+      <dt class="row__poster row__posterLarge">
+        <a href="#">
+          <img style="border-radius: 5px;" width="162px" height="243px" src="https://p0.meituan.net/movie/e78f26918fd0aec91db5d50dc1729f01680242.png" alt="入殓师" />
+        </a>
+        <div class="row__poster__info" style="height: 20px;margin: 0 0 5px 5px;">
+          <img class="row__poster__info" width="25px" height="25px" src="/imgs/icon.png">
+          <b class="row__poster__info" style="font-size: 20px;color: white;margin: 0 0 5px 5px;">8.6</b>
+        </div>
+        <h1 class="row__poster__name">入殓师</h1>
+      </dt>
+      <dt class="row__poster row__posterLarge">
+        <a href="#">
+          <img style="border-radius: 5px;" width="162px" height="243px" src="https://p0.meituan.net/mmdb/e8c6fc39ad774426b8ccfc33b22dc722185055.jpg" alt="铁道英雄" />
+        </a>
+        <div class="row__poster__info" style="height: 20px;margin: 0 0 5px 5px;">
+          <img class="row__poster__info" width="25px" height="25px" src="/imgs/icon.png">
+          <b class="row__poster__info" style="font-size: 20px;color: white;margin: 0 0 5px 5px;">9.0</b>
+        </div>
+        <h1 class="row__poster__name">铁道英雄</h1>
+      </dt>
+      <dt class="row__poster row__posterLarge">
+        <a href="#">
+          <img style="border-radius: 5px;" width="162px" height="243px" src="https://p0.meituan.net/movie/5076e52b18bd576312012ba16b30e5891556787.jpg" alt="乌海" />
+        </a>
+        <div class="row__poster__info" style="height: 20px;margin: 0 0 5px 5px;">
+          <img class="row__poster__info" width="25px" height="25px" src="/imgs/icon.png">
+          <b class="row__poster__info" style="font-size: 20px;color: white;margin: 0 0 5px 5px;">6.9</b>
+        </div>
+        <h1 class="row__poster__name">乌海</h1>
+      </dt>
+      <dt class="row__poster row__posterLarge">
+        <a href="#">
+          <img style="border-radius: 5px;" width="162px" height="243px" src="https://p1.meituan.net/movie/b4a31b9172b410dfbd9f3547965af7b5440231.jpg" alt="无尽攀登" />
+        </a>
+        <div class="row__poster__info" style="height: 20px;margin: 0 0 5px 5px;">
+          <img class="row__poster__info" width="25px" height="25px" src="/imgs/icon.png">
+          <b class="row__poster__info" style="font-size: 20px;color: white;margin: 0 0 5px 5px;">9.5</b>
+        </div>
+        <h1 class="row__poster__name">无尽攀登</h1>
+      </dt>
+    </dl>
+  </div>
+  <div class="bottom">
+    <div class="bottom-width">有疑问请联系<a href="tel:1-844-542-4813" class="tel-link">123-1234-1234</a>
+      <div>
+        <ul class="bottom-flex">
+          <li class="list-bottom"><a href="#" class="link-bottom">常见问题</a></li>
+          <li class="list-bottom"><a href="#" class="link-bottom">客服中心</a></li>
+          <li class="list-bottom"><a href="#" class="link-bottom">使用条款</a></li>
+          <li class="list-bottom"><a href="#" class="link-bottom">隐私政策</a></li>
+          <li class="list-bottom"><a href="#" class="link-bottom">关于我们</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script>
+  $(function(){var oTop1=$(document).scrollTop();$(window).scroll(function(){var oTop2=$(document).scrollTop();console.log(oTop2);if(oTop2>oTop1){$(".nav").addClass("hide").removeClass("show")}else{$(".nav").addClass("show").removeClass("hide")}oTop1=$(document).scrollTop()})});
+</script>
+</body>
+
+</html>

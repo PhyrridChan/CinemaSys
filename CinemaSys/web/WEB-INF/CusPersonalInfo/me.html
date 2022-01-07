@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html xmlns="">
+<head>
+    <meta charset="utf-8"/>
+    <title>me</title>
+    <link href="../main_page/styles.css" rel="stylesheet"/>
+    <link href="../imgs/decorate.ico" type="images/x-icon" rel="icon">
+</head>
+<body style="background: #111111">
+<div class="app">
+    <div class="nav">
+        <!--    tabs    -->
+        <div class="nav__bar">
+            <div class="nav__bar__tab">
+                <a href="/main_page/movies.html" class="nav__bar__link"><b>电影</b></a>
+            </div>
+            <div class="nav__bar__tab">
+                <a href="/main_page/theaters.html" class="nav__bar__link"><b>影城</b></a>
+            </div>
+            <div class="nav__bar__tab">
+                <a href="/main_page/ranking.html" class="nav__bar__link"><b>榜单</b></a>
+            </div>
+            <div class="nav__bar__tab">
+                <a href="#" style="font-style: italic" class="nav__bar__link"><b>NEWS</b></a>
+            </div>
+        </div>
+        <!--    logo    -->
+        <a href="/cinema/main">
+            <img class="nav__logo" src="https://i.bmp.ovh/imgs/2021/11/12329def7ff8e6aa.png" alt=""/>
+        </a>
+        <!-- avator: login;myAvator -->
+        <div>
+            <div class="img-avator">
+                <a class="nav__bar__link" href="/cinema" style="position: absolute;top: 10px;right:0px;width: 55px"
+                   id="login"><b>[登录]</b></a>
+                <img class="nav__avatar" id="myAvator" alt="" style="display: none"
+                     src="#">
+            </div>
+        </div>
+    </div>
+
+    <div style="display: block;width: 100%;margin-top: 100px;height: 1100px;">
+        <div style="float: left;width: 16%;padding-right: 3%;height: 1100px;">
+            <dl style="width: 100%;font-size:24px;background: #222222;margin-left: 20px;text-align: center;color: white;border-radius:5px ">
+                <div class="div__title" style="text-align: left;padding-bottom: 15px">
+                    <img height="12" src="../imgs/decorate.svg">
+                    <b style="font-size: xx-large;padding-left: 15px">
+                        个人中心</b>
+                </div>
+                <form id="leftBarForm" class="leftBarForm">
+                    <div style="padding: 10px;cursor: pointer" id="billDiv">
+                        <input type="radio" name="nav" id="billRadio" value="billRadio" style="display: none"
+                               checked/>
+                        <dt>
+                            <label for="billRadio" style="cursor: pointer">
+                                我的
+                                <nobr style="font-weight: bolder">订单</nobr>
+                            </label>
+                        </dt>
+                    </div>
+                    <div style="padding: 10px;cursor: pointer" id="infoDiv">
+                        <input type="radio" name="nav" id="infoRadio" value="infoRadio" style="display:none"/>
+                        <dt>
+                            <label for="infoRadio" style="cursor: pointer" onclick="insertRegion()">
+                                我的
+                                <nobr style="font-weight: bolder">信息</nobr>
+                            </label>
+                        </dt>
+                    </div>
+                </form>
+            </dl>
+        </div>
+
+        <div style="float: left;width: 77%;padding-left: 10px; margin-right: 3%">
+            <dl style="width: 100%;font-size:24px;background: #222222;text-align: center;color: white;border-radius:5px ">
+                <div class="div__title" style="text-align: left;padding-bottom: 15px">
+                    <img height="12" src="../imgs/decorate.svg">
+                    <b style="" class="titleBar" id="billO">
+                        我的订单</b>
+                    <b style="display: none" class="titleBar" id="infoO">
+                        我的信息</b>
+                </div>
+            </dl>
+        </div>
+
+        <div class="blocks table_content" style="padding-left: 10px;width: 77%" id="billTable">
+            <div class="blocks" style="width: 100%">
+                <img style="float: left;border-radius: 5px;padding-right: 1%" height="180px"
+                     src="https://p0.meituan.net/movie/9ea0d81c8ca4d07b02e74441d4e2d6c74057669.jpg@464w_644h_1e_1c">
+                <div style="float: left;background: #222222;border-radius: 5px;width: 87.2%;height: 180px;">
+                    <div style="display: inline-block;vertical-align: middle;color:white;">
+                        <h4 style="font-size: 30px; margin: 30px 5px 0 10px;">电影名
+                        </h4>
+                        <h5 style="margin: 5px 0 0 10px;">
+                            <nobr style="color: #1488CC">2021-08-29 周日 15:00</nobr>
+                        </h5>
+                        <h5 style="margin-left: 10px;
+                                width: 250px; max-height: 38px;
+                               ">
+                            <p>万达影城（长沙解放路激光IMAX店）</p>
+                            <p>IMAX激光厅 银幕 5排15座 5排16座</p>
+                        </h5>
+                    </div>
+                    <div style="display: inline-block;vertical-align: middle">
+                        <div style="height: 20px;margin: 10px 10px 5px 250px;float: right;color:white;">
+                            <b class="row__poster__info"
+                               style="font-size: 20px;color: white;margin: 0 5px 5px 0;">¥90</b>
+                        </div>
+                    </div>
+                    <div style="display: inline-block;vertical-align: middle">
+                        <div style="height: 20px;margin: 10px 10px 5px 250px;float: right;color:white;">
+                            <b class="row__poster__info"
+                               style="margin: 0 5px 5px 0;"><a href="#"
+                                                               style="text-decoration: none;font-size: 18px;color: white;">待取票</a></b>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="blocks" style="width: 100%">
+                <img style="float: left;border-radius: 5px;padding-right: 1%" height="180px"
+                     src="https://p0.meituan.net/movie/9ea0d81c8ca4d07b02e74441d4e2d6c74057669.jpg@464w_644h_1e_1c">
+                <div style="float: left;background: #222222;border-radius: 5px;width: 87.2%;height: 180px;">
+                    <div style="display: inline-block;vertical-align: middle;color:white;">
+                        <h4 style="font-size: 30px; margin: 30px 5px 0 10px;">电影名
+                        </h4>
+                        <h5 style="margin: 5px 0 0 10px;">
+                            <nobr style="color: #1488CC">2021-08-29 周日 15:00</nobr>
+                        </h5>
+                        <h5 style="margin-left: 10px;
+                                width: 250px; max-height: 38px;
+                               ">
+                            <p>万达影城（长沙解放路激光IMAX店）</p>
+                            <p>IMAX激光厅 银幕 5排15座 5排16座</p>
+                        </h5>
+                    </div>
+                    <div style="display: inline-block;vertical-align: middle">
+                        <div style="height: 20px;margin: 10px 10px 5px 250px;float: right;color:white;">
+                            <b class="row__poster__info"
+                               style="font-size: 20px;color: white;margin: 0 5px 5px 0;">¥90</b>
+                        </div>
+                    </div>
+                    <div style="display: inline-block;vertical-align: middle">
+                        <div style="height: 20px;margin: 10px 10px 5px 250px;float: right;color:white;">
+                            <b class="row__poster__info"
+                               style="margin: 0 5px 5px 0;"><a href="#"
+                                                               style="text-decoration: none;font-size: 18px;color: white;">待取票</a></b>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="blocks" style="width: 100%">
+                <img style="float: left;border-radius: 5px;padding-right: 1%" height="180px"
+                     src="https://p0.meituan.net/movie/9ea0d81c8ca4d07b02e74441d4e2d6c74057669.jpg@464w_644h_1e_1c">
+                <div style="float: left;background: #222222;border-radius: 5px;width: 87.2%;height: 180px;">
+                    <div style="display: inline-block;vertical-align: middle;color:white;">
+                        <h4 style="font-size: 30px; margin: 30px 5px 0 10px;">电影名
+                        </h4>
+                        <h5 style="margin: 5px 0 0 10px;">
+                            <nobr style="color: #1488CC">2021-08-29 周日 15:00</nobr>
+                        </h5>
+                        <h5 style="margin-left: 10px;
+                                width: 250px; max-height: 38px;
+                               ">
+                            <p>万达影城（长沙解放路激光IMAX店）</p>
+                            <p>IMAX激光厅 银幕 5排15座 5排16座</p>
+                        </h5>
+                    </div>
+                    <div style="display: inline-block;vertical-align: middle">
+                        <div style="height: 20px;margin: 10px 10px 5px 250px;float: right;color:white;">
+                            <b class="row__poster__info"
+                               style="font-size: 20px;color: white;margin: 0 5px 5px 0;">¥90</b>
+                        </div>
+                    </div>
+                    <div style="display: inline-block;vertical-align: middle">
+                        <div style="height: 20px;margin: 10px 10px 5px 250px;float: right;color:white;">
+                            <b class="row__poster__info"
+                               style="margin: 0 5px 5px 0;"><a href="#"
+                                                               style="text-decoration: none;font-size: 18px;color: white;">待取票</a></b>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="blocks" style="width: 100%">
+                <img style="float: left;border-radius: 5px;padding-right: 1%" height="180px"
+                     src="https://p0.meituan.net/movie/9ea0d81c8ca4d07b02e74441d4e2d6c74057669.jpg@464w_644h_1e_1c">
+                <div style="float: left;background: #222222;border-radius: 5px;width: 87.2%;height: 180px;">
+                    <div style="display: inline-block;vertical-align: middle;color:white;">
+                        <h4 style="font-size: 30px; margin: 30px 5px 0 10px;">电影名
+                        </h4>
+                        <h5 style="margin: 5px 0 0 10px;">
+                            <nobr style="color: #1488CC">2021-08-29 周日 15:00</nobr>
+                        </h5>
+                        <h5 style="margin-left: 10px;
+                                width: 250px; max-height: 38px;
+                               ">
+                            <p>万达影城（长沙解放路激光IMAX店）</p>
+                            <p>IMAX激光厅 银幕 5排15座 5排16座</p>
+                        </h5>
+                    </div>
+                    <div style="display: inline-block;vertical-align: middle">
+                        <div style="height: 20px;margin: 10px 10px 5px 250px;float: right;color:white;">
+                            <b class="row__poster__info"
+                               style="font-size: 20px;color: white;margin: 0 5px 5px 0;">¥90</b>
+                        </div>
+                    </div>
+                    <div style="display: inline-block;vertical-align: middle">
+                        <div style="height: 20px;margin: 10px 10px 5px 250px;float: right;color:white;">
+                            <b class="row__poster__info"
+                               style="margin: 0 5px 5px 0;"><a href="#"
+                                                               style="text-decoration: none;font-size: 18px;color: white;">待取票</a></b>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="float: right;color: #1488CC;padding: 15px 50px 15px 15px;">
+                <a href="#" style="padding: 5px;text-decoration: none;color: #1488CC;">上一页</a>
+                <a href="#" style="padding: 5px;text-decoration: none;color: #1488CC;">下一页</a>
+            </div>
+        </div>
+
+
+        <div class="login-div table_content" name="loginDiv" style="display: none;width: 77%;float: left;padding: 20px"
+             id="infoTable">
+            <div style="float: left;width: 47.5%;color: white">
+                <h3>头像</h3>
+                <div class="input-text" style="margin-bottom: 35px;vertical-align: middle;text-align: center;">
+                    <div style="text-align: center;margin: 0 auto">
+                        <div class="img-avatorshow">
+                            <img width="125px" height="125px" id="myAvatorinput" alt=""
+                                 src="../login_page/CustomerLoginPage/img/qq.png">
+                        </div>
+                    </div>
+                    <br>
+                    <a href="javascript:;" class="file" style="cursor: pointer">更换头像
+                        <input type="file" name="avator" id="uploadavator" accept="image/*" onchange="UploadImg(this)">
+                    </a>
+                    <div style="padding-top: 10px">
+                        <h3 style="display: flex;">经验值
+                            <nobr style="font-size: 20px;display: flex;flex-wrap: wrap;align-items: flex-end;padding-left: 10px;color: #1488CC;">
+                                23333
+                            </nobr>
+                            <nobr style="font-size: 16px;display: flex;flex-wrap: wrap;align-items: flex-end;">/30000
+                            </nobr>
+                        </h3>
+                        <div style="margin: 10px 50px 20px 50px;">
+                            <div style="width: 100%;height:26px;background: #222222">
+                                <div style="background: #1488CC;width: 65%;height:26px;display: flex;flex-wrap: wrap;align-content: center;justify-content: flex-end;padding-right: 10px;">
+                                    <b style="background: #333333;padding: 1px;border-radius: 5px;">LV 5</b></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="padding-top: 10px">
+                        <h3 style="display: flex;">VIP
+                            <nobr style="font-size: 20px;display: flex;flex-wrap: wrap;align-items: flex-end;padding-left: 34.2px;color: #1488CC;">
+                                23333
+                            </nobr>
+                            <nobr style="font-size: 16px;display: flex;flex-wrap: wrap;align-items: flex-end;">/30000
+                            </nobr>
+                        </h3>
+                        <div style="margin: 10px 50px 20px 50px;">
+                            <div style="width: 100%;height:26px;background: #222222">
+                                <div style="background: #1488CC;width: 65%;height:26px;display: flex;flex-wrap: wrap;align-content: center;justify-content: flex-end;padding-right: 10px;">
+                                    <b style="background: #333333;padding: 1px;border-radius: 5px;"><nobr style="padding-right: 5px">年度会员</nobr>LV 5</b></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="float: left; width: 47.5%;padding-right: 5%">
+                <div id="page1" name="page1" style="display: block;color: white;padding-left: 10px">
+                    <h3>基础信息</h3>
+                    <div class="input-text">
+                        <input type="text" placeholder="电话号码" style="width: 29%" disabled/>
+                        <input type="text" id="inputPhone" name="phone" placeholder="15211191926" style="width: 68%"/>
+                    </div>
+
+                    <div class="input-text" name="inputAge">
+                        <input type="text" placeholder="年龄" style="width: 29%" disabled/>
+                        <input type="number" id="inputAge" name="age" placeholder="12" min="1" max="100"
+                               style="width: 68%"/>
+                    </div>
+
+                    <h3>性别</h3>
+                    <div style="width: 100%; height: 25px; color: white; text-indent: 18px;margin-left: 10px;">
+                        <input checked type="radio" name="sex" value="male"> <b style="margin-right: 60px">男</b>
+                        <input type="radio" name="sex" value="female"> <b>女</b>
+                    </div>
+
+                    <h3>地址</h3>
+                    <div class="input-text">
+                        <select id="prov" name="regionProvince" style="margin-right: 2%"></select>
+                        <select id="city" name="regionCity" style="margin-right: 2%"></select>
+                        <select id="site" name="regionSite"></select>
+                        <script src="../login_page/CustomerLoginPage/location.js"></script>
+                    </div>
+                    <button class="signin-button" id="signup2" type="submit">保存修改
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="bottom">
+        <div class="bottom-width">
+            有疑问请联系 <a href="tel:1-844-542-4813" class="tel-link">123-1234-1234</a>
+            <div>
+                <ul class="bottom-flex">
+                    <li class="list-bottom">
+                        <a href="#" class="link-bottom">
+                            常见问题
+                        </a>
+                    </li>
+                    <li class="list-bottom">
+                        <a href="#" class="link-bottom">
+                            客服中心
+                        </a>
+                    </li>
+                    <li class="list-bottom">
+                        <a href="#" class="link-bottom">
+                            使用条款
+                        </a>
+                    </li>
+                    <li class="list-bottom">
+                        <a href="#" class="link-bottom">
+                            隐私政策
+                        </a>
+                    </li>
+                    <li class="list-bottom">
+                        <a href="#" class="link-bottom">
+                            关于我们
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+
+    <script>
+        function UploadImg(obj) {
+            var file = obj.files[0];
+            var reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = function (e) {
+                var img = document.getElementById("myAvatorinput");
+                img.src = e.target.result;
+            };
+        }
+
+        $('input[type=radio][name="nav"]').change(function () {
+            var myvalue = $('input:radio[name="nav"]:checked').val();
+            var choose;
+            var table;
+            do {
+                if (myvalue == "billRadio") {
+                    choose = document.getElementById("billO");
+                    table = document.getElementById("billTable");
+                }
+                if (myvalue == "infoRadio") {
+                    choose = document.getElementById("infoO");
+                    table = document.getElementById("infoTable");
+                }
+            } while (false);
+            $('.table_content').css('display', 'none');
+            table.style.display = "inline-block";
+            $('.titleBar').css('display', 'none');
+            choose.style.display = "inline-block";
+        });
+
+        function insertRegion() {
+            document.getElementById('prov')[17].selected = true;
+            provSelect.onchange();
+            document.getElementById('city')[0].selected = true;
+            citySelect.onchange();
+            document.getElementById('site')[4].selected = true;
+        }
+    </script>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html xmlns="">
+<head>
+    <meta charset="utf-8"/>
+    <title>me</title>
+    <link href="../main_page/styles.css" rel="stylesheet"/>
+    <link href="../imgs/decorate.ico" type="images/x-icon" rel="icon">
+</head>
+<body style="background: #111111">
+<div class="app">
+    <div class="nav">
+        <!--    tabs    -->
+        <div class="nav__bar">
+            <div class="nav__bar__tab">
+                <a href="/main_page/movies.html" class="nav__bar__link"><b>电影</b></a>
+            </div>
+            <div class="nav__bar__tab">
+                <a href="/main_page/theaters.html" class="nav__bar__link"><b>影城</b></a>
+            </div>
+            <div class="nav__bar__tab">
+                <a href="/main_page/ranking.html" class="nav__bar__link"><b>榜单</b></a>
+            </div>
+            <div class="nav__bar__tab">
+                <a href="#" style="font-style: italic" class="nav__bar__link"><b>NEWS</b></a>
+            </div>
+        </div>
+        <!--    logo    -->
+        <a href="/cinema/main">
+            <img class="nav__logo" src="https://i.bmp.ovh/imgs/2021/11/12329def7ff8e6aa.png" alt=""/>
+        </a>
+        <!-- avator: login;myAvator -->
+        <div>
+            <div class="img-avator">
+                <a class="nav__bar__link" href="#" style="position: absolute;top: 10px;right:0px;width: 55px"
+                   id="login"><b>[登录]</b></a>
+                <img class="nav__avatar" id="myAvator" alt="" style="display: none"
+                     src="">
+            </div>
+        </div>
+    </div>
+
+    <div style="display: block;width: 100%;margin-top: 100px;height: 700px;">
+        <div style="float: left;width: 16%;padding-right: 3%;height: 700px;">
+            <dl style="width: 100%;font-size:24px;background: #222222;margin-left: 20px;text-align: center;color: white;border-radius:5px ">
+                <div class="div__title" style="text-align: left;padding-bottom: 15px">
+                    <img height="12" src="../imgs/decorate.svg">
+                    <b style="font-size: xx-large;padding-left: 15px">
+                        个人中心</b>
+                </div>
+                <div style="padding: 10px;">
+                    <dt>我的订单</dt>
+                </div>
+                <div style="padding: 10px;color: #1488CC;transform: scale(1.1);">
+                    <dt>我的信息</dt>
+                </div>
+            </dl>
+        </div>
+        <div style="float: left;width: 77%;padding-left: 10px; margin-right: 3%">
+            <dl style="width: 100%;font-size:24px;background: #222222;text-align: center;color: white;border-radius:5px ">
+                <div class="div__title" style="text-align: left;padding-bottom: 15px">
+                    <img height="12" src="../imgs/decorate.svg">
+                    <b style="font-size: xx-large;padding-left: 15px">
+                        我的信息</b>
+                </div>
+            </dl>
+        </div>
+
+        <div class="login-div" name="loginDiv" style="width: 77%;float: left;padding-top: 20px">
+            <div style="float: left;width: 47.5%;color: white">
+                <h3>头像</h3>
+                <div class="input-text" style="margin-bottom: 35px;vertical-align: middle;text-align: center;">
+                    <div style="text-align: center;margin: 0 auto">
+                        <div class="img-avatorshow">
+                            <img width="125px" height="125px" id="myAvatorinput" alt=""
+                                 src="../login_page/CustomerLoginPage/img/qq.png">
+                        </div>
+                    </div>
+                    <br>
+                    <a href="javascript:;" class="file" style="cursor: pointer">更换头像
+                        <input type="file" name="avator" id="uploadavator" accept="image/*" onchange="UploadImg(this)">
+                    </a>
+                </div>
+            </div>
+            <div style="float: left; width: 47.5%;padding-right: 5%">
+                <div id="page1" name="page1" style="display: block;color: white;padding-left: 10px">
+                    <h3>基础信息</h3>
+                    <div class="input-text">
+                        <input type="text" id="inputPhone" name="phone" placeholder="电话号码"/>
+                    </div>
+
+                    <div class="input-text" name="inputAge">
+                        <input type="number" id="inputAge" name="age" placeholder="年龄" min="1" max="100"/>
+                    </div>
+
+                    <h3>性别</h3>
+                    <div style="width: 100%; height: 25px; color: white; text-indent: 18px;margin-left: 10px;">
+                        <input type="radio" name="sex" value="male"> <b style="margin-right: 60px">男</b>
+                        <input type="radio" name="sex" value="female"> <b>女</b>
+                    </div>
+
+                    <h3>地址</h3>
+                    <div class="input-text">
+                        <select id="prov" name="regionProvince" style="margin-right: 2%"></select>
+                        <select id="city" name="regionCity" style="margin-right: 2%"></select>
+                        <select id="site" name="regionSite"></select>
+                        <script src="/login_page/CustomerLoginPage/location.js"></script>
+                    </div>
+                    <button class="signin-button" id="signup2" type="submit">保存修改</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<div class="bottom">
+    <div class="bottom-width">
+        有疑问请联系 <a href="tel:1-844-542-4813" class="tel-link">123-1234-1234</a>
+        <div>
+            <ul class="bottom-flex">
+                <li class="list-bottom">
+                    <a href="#" class="link-bottom">
+                        常见问题
+                    </a>
+                </li>
+                <li class="list-bottom">
+                    <a href="#" class="link-bottom">
+                        客服中心
+                    </a>
+                </li>
+                <li class="list-bottom">
+                    <a href="#" class="link-bottom">
+                        使用条款
+                    </a>
+                </li>
+                <li class="list-bottom">
+                    <a href="#" class="link-bottom">
+                        隐私政策
+                    </a>
+                </li>
+                <li class="list-bottom">
+                    <a href="#" class="link-bottom">
+                        关于我们
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    function UploadImg(obj) {
+        var file = obj.files[0];
+        var reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = function (e) {
+            var img = document.getElementById("myAvator");
+            img.src = e.target.result;
+        };
+    }
+</script>
+
+</div>
+</body>
+</html>

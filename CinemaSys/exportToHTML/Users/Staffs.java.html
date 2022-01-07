@@ -1,0 +1,143 @@
+<html>
+<head>
+<title>Staffs.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #000080; font-weight: bold;}
+.s1 { color: #000000;}
+.s2 { color: #808080; font-style: italic;}
+.s3 { color: #008000; font-weight: bold;}
+</style>
+</head>
+<body bgcolor="#ffffff">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Staffs.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span>Users;
+
+<span class="s0">import <a href="../SqlUtil/MySQLUtil.java.html">SqlUtil.MySQLUtil</a></span>;
+
+<span class="s0">import </span>java.sql.ResultSet;
+<span class="s0">import </span>java.sql.SQLException;
+<span class="s0">import </span>java.text.SimpleDateFormat;
+<span class="s0">import </span>java.util.Date;
+
+<span class="s0">import static <a href="../pageConstructor/UpdateTable.java.html">pageConstructor.UpdateTable</a></span>.defaultId;
+
+<span class="s0">public class </span>Staffs <span class="s0">extends <a href="Users.java.html">Users</a> </span>{
+    <span class="s0">private int </span>rank;
+    <span class="s0">private int </span>root;
+    <span class="s0">private int </span>workGroup;
+    <span class="s0">private int </span>workPlace;
+    <span class="s0">private </span>String workOn;
+
+    <span class="s0">public </span>Staffs(String UID, <span class="s0">int </span>status, String userName, String avator, <span class="s0">char </span>sex, <span class="s0">int </span>age, String phone, <span class="s0">int </span>regionCountry, <span class="s0">int </span>regionProvince, <span class="s0">int </span>regionCity, String joinTime, <span class="s0">int </span>rank, <span class="s0">int </span>root, <span class="s0">int </span>workGroup, <span class="s0">int </span>workPlace, String workOn) {
+        <span class="s0">super</span>(UID, status, userName, avator, sex, age, phone, regionCountry, regionProvince, regionCity, joinTime);
+        <span class="s0">this</span>.rank = rank;
+        <span class="s0">this</span>.root = root;
+        <span class="s0">this</span>.workGroup = workGroup;
+        <span class="s0">this</span>.workPlace = workPlace;
+        <span class="s0">this</span>.workOn = workOn;
+    }
+
+    <span class="s0">public </span>Staffs(String userName, String avator, <span class="s0">char </span>sex, <span class="s0">int </span>age, String phone, <span class="s0">int </span>regionCountry, <span class="s0">int </span>regionProvince, <span class="s0">int </span>regionCity) {
+        <span class="s0">super</span>(userName, avator, sex, age, phone, regionCountry, regionProvince, regionCity);
+    }
+
+    <span class="s2">/**</span>
+     <span class="s2">*</span>
+     <span class="s2">*/</span>
+    <span class="s0">public </span>String getReducedInfo() {
+        <span class="s0">return </span><span class="s3">&quot;&quot;</span>;
+    }
+
+    @Override
+    <span class="s0">public </span>String toString() {
+        <span class="s0">return </span><span class="s3">&quot;Staffs{&quot; </span>+
+                <span class="s0">super</span>.toString() +
+                <span class="s3">&quot;, rank=&quot; </span>+ rank +
+                <span class="s3">&quot;, root=&quot; </span>+ root +
+                <span class="s3">&quot;, workGroup=&quot; </span>+ workGroup +
+                <span class="s3">&quot;, workPlace=&quot; </span>+ workPlace +
+                <span class="s3">&quot;, workOn=&quot; </span>+ workOn +
+                <span class="s3">'}'</span>;
+    }
+
+    <span class="s0">public void </span>printInfo() {
+        System.out.print(<span class="s3">&quot;Staffs{&quot;</span>);
+        <span class="s0">super</span>.printInfo();
+        System.out.println(<span class="s3">&quot;, rank=&quot; </span>+ rank +
+                <span class="s3">&quot;, root=&quot; </span>+ root +
+                <span class="s3">&quot;, workGroup=&quot; </span>+ workGroup +
+                <span class="s3">&quot;, workPlace=&quot; </span>+ workPlace +
+                <span class="s3">&quot;, workOn=&quot; </span>+ workOn +
+                <span class="s3">&quot;}&quot;</span>
+        );
+    }
+
+    <span class="s0">public boolean </span>addStaff(String PWD) {
+        <span class="s0">boolean </span>suc = <span class="s0">false</span>;
+        Date date = <span class="s0">new </span>Date(System.currentTimeMillis());
+        SimpleDateFormat formatter2 = <span class="s0">new </span>SimpleDateFormat(<span class="s3">&quot;yyyy-MM-dd HH:mm:ss&quot;</span>);
+        String UID = defaultId(<span class="s3">&quot;tb_Staffs&quot;</span>, <span class="s3">&quot;UID&quot;</span>,date);
+        <span class="s0">if </span>(<a href="../SqlUtil/MySQLUtil.java.html">MySQLUtil</a>.add(<span class="s3">&quot;tb_Staffs&quot;</span>, UID, <span class="s3">&quot;1&quot;</span>,
+                <span class="s0">this</span>.getUserName(),
+                <span class="s0">this</span>.getAvator(),
+                <span class="s0">this</span>.getSex() + <span class="s3">&quot;&quot;</span>,
+                <span class="s0">this</span>.getAge() + <span class="s3">&quot;&quot;</span>,
+                <span class="s0">this</span>.getPhone(),
+                <span class="s0">this</span>.getRegionCountry() + <span class="s3">&quot;&quot;</span>,
+                <span class="s0">this</span>.getRegionProvince() + <span class="s3">&quot;&quot;</span>,
+                <span class="s0">this</span>.getRegionCity() + <span class="s3">&quot;&quot;</span>,
+                formatter2.format(date),
+                <span class="s3">&quot;1&quot;</span>, <span class="s3">&quot;1&quot;</span>, <span class="s3">&quot;1&quot;</span>, <span class="s3">&quot;1&quot;</span>, <span class="s3">&quot;&quot;</span>, PWD
+        ))
+            System.out.println(<span class="s3">&quot;</span><span class="s0">\033</span><span class="s3">[92;1msuccessed to insert!</span><span class="s0">\033</span><span class="s3">[0m&quot;</span>);
+        <span class="s0">return </span>suc;
+    }
+
+    <span class="s0">public int </span>getRank() {
+        <span class="s0">return </span>rank;
+    }
+
+    <span class="s0">public void </span>setRank(<span class="s0">int </span>rank) {
+        <span class="s0">this</span>.rank = rank;
+    }
+
+    <span class="s0">public int </span>getRoot() {
+        <span class="s0">return </span>root;
+    }
+
+    <span class="s0">public void </span>setRoot(<span class="s0">int </span>root) {
+        <span class="s0">this</span>.root = root;
+    }
+
+    <span class="s0">public int </span>getWorkGroup() {
+        <span class="s0">return </span>workGroup;
+    }
+
+    <span class="s0">public void </span>setWorkGroup(<span class="s0">int </span>workGroup) {
+        <span class="s0">this</span>.workGroup = workGroup;
+    }
+
+    <span class="s0">public int </span>getWorkPlace() {
+        <span class="s0">return </span>workPlace;
+    }
+
+    <span class="s0">public void </span>setWorkPlace(<span class="s0">int </span>workPlace) {
+        <span class="s0">this</span>.workPlace = workPlace;
+    }
+
+    <span class="s0">public </span>String getWorkOn() {
+        <span class="s0">return </span>workOn;
+    }
+
+    <span class="s0">public void </span>setWorkOn(String workOn) {
+        <span class="s0">this</span>.workOn = workOn;
+    }
+}
+</pre>
+</body>
+</html>

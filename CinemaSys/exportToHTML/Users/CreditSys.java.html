@@ -1,0 +1,38 @@
+<html>
+<head>
+<title>CreditSys.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #000080; font-weight: bold;}
+.s1 { color: #000000;}
+.s2 { color: #0000ff;}
+</style>
+</head>
+<body bgcolor="#ffffff">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+CreditSys.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span>Users;
+
+<span class="s0">public class </span>CreditSys {
+    <span class="s0">private int </span>creditLevel;
+
+    <span class="s0">public int </span>getCreditLevel(<span class="s0">int </span>credit) {
+        <span class="s0">do </span>{
+            <span class="s0">if </span>(credit &lt; <span class="s2">0</span>) <span class="s0">return </span>-<span class="s2">1</span>;
+            <span class="s0">if </span>(credit &lt; <span class="s2">10</span>) <span class="s0">return </span><span class="s2">1</span>;
+            <span class="s0">if </span>(credit &lt; <span class="s2">50</span>) <span class="s0">return </span><span class="s2">2</span>;
+            <span class="s0">if </span>(credit &lt; <span class="s2">120</span>) <span class="s0">return </span><span class="s2">3</span>;
+            <span class="s0">if </span>(credit &lt; <span class="s2">250</span>) <span class="s0">return </span><span class="s2">4</span>;
+            <span class="s0">if </span>(credit &lt; <span class="s2">500</span>) <span class="s0">return </span><span class="s2">5</span>;
+            <span class="s0">if </span>(credit &lt; <span class="s2">1000</span>) <span class="s0">return </span><span class="s2">6</span>;
+            <span class="s0">if </span>(credit &lt; <span class="s2">2000</span>) <span class="s0">return </span><span class="s2">7</span>;
+            <span class="s0">return </span><span class="s2">8</span>;
+        } <span class="s0">while </span>(<span class="s0">false</span>);
+    }
+}
+</pre>
+</body>
+</html>

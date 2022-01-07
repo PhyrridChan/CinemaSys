@@ -1,0 +1,152 @@
+<html>
+<head>
+<title>JSONhandle.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #000080; font-weight: bold;}
+.s1 { color: #000000;}
+.s2 { color: #808080; font-style: italic;}
+.s3 { color: #808080; font-weight: bold; font-style: italic;}
+.s4 { color: #008000; font-weight: bold;}
+</style>
+</head>
+<body bgcolor="#ffffff">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+JSONhandle.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span>JSON;
+
+<span class="s0">import </span>java.io.*;
+<span class="s0">import </span>java.nio.charset.Charset;
+<span class="s0">import </span>java.nio.charset.StandardCharsets;
+
+<span class="s0">import </span>com.alibaba.fastjson.JSONArray;
+<span class="s0">import </span>com.alibaba.fastjson.JSONObject;
+
+<span class="s2">/**</span>
+ <span class="s2">* </span><span class="s3">@author </span><span class="s2">zhangfan PhyrridChan@outlook.com</span>
+ <span class="s2">* </span><span class="s3">@see </span><span class="s2">com.alibaba.fastjson</span>
+ <span class="s2">*/</span>
+<span class="s0">public class </span>JSONhandle {
+    <span class="s0">static </span>JSONObject jsonObject = <span class="s0">new </span>JSONObject();
+    <span class="s0">private static final </span>String JsonFilePath = <span class="s4">&quot;/Users/zhangfan/Documents/CinemaSys/src/JSON/locationInfo.json&quot;</span>;
+    <span class="s0">static </span>Charset charset = StandardCharsets.UTF_8;
+    <span class="s0">static </span>JSONArray refList = <span class="s0">new </span>JSONArray();
+
+    <span class="s0">public static void </span>main(String[] args) <span class="s0">throws </span>IOException {
+        System.out.println(readJSONData());
+    }
+
+
+    <span class="s0">public </span>JSONhandle() <span class="s0">throws </span>IOException {
+        setJsonObject(JsonFilePath, charset);
+        refList = getJsonArray(<span class="s4">&quot;ref&quot;</span>);
+    }
+
+    <span class="s2">/**</span>
+     <span class="s2">* </span><span class="s3">@param </span><span class="s2">path :JsonFilePath</span>
+     <span class="s2">* </span><span class="s3">@return </span><span class="s2">JsonFileContent</span>
+     <span class="s2">*/</span>
+    <span class="s0">public static </span>String readJSONData(String path, Charset charset) <span class="s0">throws </span>IOException {
+        StringBuilder strBuffer = <span class="s0">new </span>StringBuilder();
+        File JsonFile = <span class="s0">new </span>File(path);
+        <span class="s0">if </span>(!JsonFile.exists()) {
+            <span class="s0">throw new </span>FileNotFoundException();
+        }
+        FileInputStream jsonInputStream = <span class="s0">new </span>FileInputStream(JsonFile);
+        InputStreamReader inputStreamReader = <span class="s0">new </span>InputStreamReader(jsonInputStream, StandardCharsets.UTF_8);
+        BufferedReader reader = <span class="s0">new </span>BufferedReader(inputStreamReader);
+        String str;
+        <span class="s0">while </span>((str = reader.readLine()) != <span class="s0">null</span>) {
+            strBuffer.append(str);
+        }
+        reader.close();
+        <span class="s0">return </span>strBuffer.toString();
+    }
+
+    <span class="s2">/**</span>
+     <span class="s2">* {</span><span class="s3">@link </span><span class="s2">#readJSONData(String, Charset)}</span>
+     <span class="s2">*/</span>
+    <span class="s0">public static </span>String readJSONData() <span class="s0">throws </span>IOException {
+        <span class="s0">return </span>readJSONData(JsonFilePath, StandardCharsets.UTF_8);
+    }
+
+    <span class="s0">public static </span>String readJSONData(Charset charset) <span class="s0">throws </span>IOException {
+        <span class="s0">return </span>readJSONData(JsonFilePath, charset);
+    }
+
+    <span class="s0">public static </span>String readJSONData(String path) <span class="s0">throws </span>IOException {
+        <span class="s0">return </span>readJSONData(path, charset);
+    }
+
+    <span class="s2">/**</span>
+     <span class="s2">* </span><span class="s3">@param </span><span class="s2">path</span>
+     <span class="s2">* </span><span class="s3">@param </span><span class="s2">charset</span>
+     <span class="s2">* </span><span class="s3">@throws </span><span class="s2">IOException</span>
+     <span class="s2">*/</span>
+    <span class="s0">public void </span>setJsonObject(String path, Charset charset) <span class="s0">throws </span>IOException {
+        jsonObject = JSONObject.parseObject(readJSONData(path, charset));
+    }
+
+    <span class="s2">/**</span>
+     <span class="s2">* {</span><span class="s3">@link </span><span class="s2">#setJsonObject(String, Charset)}</span>
+     <span class="s2">*/</span>
+    <span class="s0">public void </span>setJsonObject(String path) <span class="s0">throws </span>IOException {
+        setJsonObject(path, charset);
+    }
+
+    <span class="s0">public void </span>setJsonObject(Charset charset) <span class="s0">throws </span>IOException {
+        setJsonObject(JsonFilePath, charset);
+    }
+
+    <span class="s0">public void </span>setJsonObject(JSONObject jsonObject) {
+        JSONhandle.jsonObject = jsonObject;
+    }
+
+    <span class="s2">/**</span>
+     <span class="s2">* </span><span class="s3">@return </span><span class="s2">JSONObject</span>
+     <span class="s2">*/</span>
+    <span class="s0">public static </span>JSONObject getJsonObject() {
+        <span class="s0">return </span>jsonObject;
+    }
+
+    <span class="s2">/**</span>
+     <span class="s2">* get JSONArray from a JSONObject</span>
+     <span class="s2">*</span>
+     <span class="s2">* </span><span class="s3">@param </span><span class="s2">key</span>
+     <span class="s2">* </span><span class="s3">@return</span>
+     <span class="s2">*/</span>
+    <span class="s0">public static </span>JSONArray getJsonArray(String key) {
+        <span class="s0">return </span>jsonObject.getJSONArray(key);
+    }
+
+    <span class="s2">/**</span>
+     <span class="s2">* get a str at a specific index from an array whose name is $(key)</span>
+     <span class="s2">*</span>
+     <span class="s2">* </span><span class="s3">@param </span><span class="s2">key</span>
+     <span class="s2">* </span><span class="s3">@param </span><span class="s2">index</span>
+     <span class="s2">* </span><span class="s3">@return </span><span class="s2">str</span>
+     <span class="s2">*/</span>
+    <span class="s0">public static </span>String searchJsonArray(String key, <span class="s0">int </span>index) {
+        JSONArray jsonArray = getJsonArray(key);
+        <span class="s0">return </span>jsonArray.getString(index);
+    }
+
+    <span class="s0">public static </span>String searchJsonArray(String key, String index) {
+        <span class="s0">return </span>searchJsonArray(key, Integer.parseInt(index));
+    }
+
+    <span class="s0">public static </span>String searchJsonArray(String key, <span class="s0">int </span>x, <span class="s0">int </span>y) {
+        JSONArray jsonArray = getJsonArray(key).getJSONArray(x);
+        <span class="s0">return </span>jsonArray.getString(y);
+    }
+
+    <span class="s0">public static </span>String searchJsonArray(String key, String x, String y) {
+        <span class="s0">return </span>searchJsonArray(key, Integer.parseInt(x), Integer.parseInt(y));
+    }
+}
+</pre>
+</body>
+</html>

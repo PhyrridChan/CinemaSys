@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>money</title>
+    <link rel="stylesheet" href="cinema.css">
+    <!--    <link rel="stylesheet" href="../cinema-seat-booking-master/style.css"/>-->
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="jquery.seat-charts.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+</head>
+<body>
+<div class="seating">
+    <div class="seatCharts-container">
+        <div style="width: 250px; height: 250px; background: #1488CC">
+            二维码
+        </div>
+    </div>
+    <div class="booking-details">
+        <div style="height: 100px">
+            <p>电影名：<span>Star WarsStar WarsStar WarsStar WarsStar Wars</span></p>
+        </div>
+        <p>订票数：<span id="counter">0</span></p>
+        <p>总价：<b>¥<span id="total">0</span></b></p>
+    </div>
+</div>
+<button class="checkout-button">已完成付款</button>
+<script type="text/javascript" src="cinema.js"></script>
+</body>
+</html>

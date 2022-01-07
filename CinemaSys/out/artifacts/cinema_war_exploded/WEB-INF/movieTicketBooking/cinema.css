@@ -1,0 +1,220 @@
+:root {
+    --background: #111111;
+    --white: #fff;
+    --gray: #777;
+    --dark-gray: #444451;
+    --light-blue: #6feaf6;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    align-items: center;
+    background-color: var(--background);
+    color: var(--white);
+    display: flex;
+    flex-direction: column;
+    font-family: 'Lato', sans-serif;
+    height: 100vh;
+    justify-content: center;
+    margin: 0;
+}
+
+#seats {
+    margin-bottom: 30px;
+    perspective: 500px;
+}
+
+.showcase {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    color: var(--white);
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+    padding: 5px 10px;
+}
+
+.showcase li {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin: 0 10px;
+}
+
+.showcase li small {
+    margin-left: 2px;
+}
+
+.screen {
+    background-color: var(--white);
+    box-shadow: 0 10px 25px rgba(255, 255, 255, 0.7);
+    height: 70px;
+    margin: 15px 0;
+    transform: rotateX(-45deg);
+    width: 100%;
+    color: #1488CC;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: space-around;
+}
+
+.front {
+    width: 300px;
+    margin: 5px 32px 45px 32px;
+    background-color: #f0f0f0;
+    color: #666;
+    text-align: center;
+    padding: 3px;
+    border-radius: 5px;
+}
+
+.booking-details {
+    float: right;
+    position: relative;
+    padding: 20px;
+    width: 200px;
+    height: 450px;
+}
+
+.booking-details h3 {
+    margin: 5px 5px 0 0;
+    font-size: 16px;
+}
+
+.booking-details p {
+    line-height: 20px;
+    font-size: 16px;
+    color: #999
+}
+
+.booking-details div {
+    width: 200px;
+    height: 200px;
+    overflow-y: auto;
+}
+
+.booking-details p span {
+    color: #666;
+}
+
+div.seatCharts-cell {
+    color: #1488CC;
+    height: 25px;
+    width: 25px;
+    line-height: 25px;
+    margin: 3px;
+    float: left;
+    text-align: center;
+    outline: none;
+    font-size: 13px;
+}
+
+/*div.seatCharts-seat {color: #fff;cursor: pointer;-webkit-border-radius:5px;-moz-border-radius:5px;border-radius: 5px;} */
+div.seatCharts-seat {
+    background-color: var(--dark-gray);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    height: 20px;
+    margin: 3px;
+    width: 25px;
+}
+
+div.seatCharts-row {
+    height: 35px;
+}
+
+div.seatCharts-seat.available {
+    background-color: var(--dark-gray);
+    color: #1488CC;
+    /*background-color: #00ff40;*/
+}
+
+div.seatCharts-seat.focused {
+    /*background-color: #76B474;border: none;*/
+    cursor: pointer;
+    transform: scale(1.2);
+}
+
+div.seatCharts-seat.selected {
+    /*background-color: #808080;*/
+    background-color: #1488CC;
+    color: white;
+}
+
+div.seatCharts-seat.unavailable {
+    /*background-color: #ff0000;*/
+    cursor: not-allowed;
+    background-color: var(--white);
+    color: var(--dark-gray);
+}
+
+div.seatCharts-container {
+    border-right: 1px dotted #adadad;
+    width: 400px;
+    padding: 20px;
+    float: left;
+}
+
+div.seatCharts-legend {
+    padding-left: 0px;
+    position: absolute;
+    bottom: 16px;
+}
+
+ul.seatCharts-legendList {
+    padding-left: 0px;
+}
+
+.seatCharts-legendItem {
+    float: left;
+    width: 90px;
+    margin-top: 10px;
+    line-height: 2;
+}
+
+span.seatCharts-legendDescription {
+    margin-left: 5px;
+    line-height: 30px;
+}
+
+.checkout-button {
+    margin-top: 10px;
+    width: 20%;
+    height: 26px;
+    font-size: 14px;
+    cursor: pointer;
+    background-color: #1488CC;
+    border: none;
+    border-radius: 0.2vw;
+    color: #fff;
+    font-weight: 700;
+    justify-content: center;
+    align-items: center;
+}
+
+#selected-seats {
+    height: 130px;
+    border-radius: 5px;
+    /*background: #1488CC;*/
+    overflow-y: auto;
+    width: 200px;
+}
+
+#selected-seats li {
+    float: left;
+    width: 100px;
+    height: 26px;
+    line-height: 26px;
+    border-radius: 5px;
+    background: #1488CC;
+    color: #f0f0f0;
+    margin: 6px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    list-style: none;
+}

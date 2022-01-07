@@ -1,0 +1,130 @@
+<html>
+<head>
+<title>Casts.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #000080; font-weight: bold;}
+.s1 { color: #000000;}
+.s2 { color: #808080; font-style: italic;}
+.s3 { color: #008000; font-weight: bold;}
+</style>
+</head>
+<body bgcolor="#ffffff">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Casts.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span>Items;
+
+<span class="s0">public class </span>Casts {
+    <span class="s0">private </span>String director;
+    <span class="s0">private </span>String cast;
+    <span class="s0">private </span>String producer;
+    <span class="s0">private </span>String writer;
+    <span class="s0">private </span>String cameraman;
+    <span class="s0">private </span>String artDirector;
+    <span class="s0">private </span>String editor;
+    <span class="s0">private </span>String sound;
+    <span class="s2">//develop in the future: info page for each staff</span>
+    <span class="s2">/**</span>
+     <span class="s2">* Constructor</span>
+     <span class="s2">*/</span>
+    <span class="s0">public </span>Casts(String director, String cast, String producer, String writer, String cameraman, String artDirector, String editor, String sound) {
+        <span class="s0">this</span>.director = director;
+        <span class="s0">this</span>.cast = cast;
+        <span class="s0">this</span>.producer = producer;
+        <span class="s0">this</span>.writer = writer;
+        <span class="s0">this</span>.cameraman = cameraman;
+        <span class="s0">this</span>.artDirector = artDirector;
+        <span class="s0">this</span>.editor = editor;
+        <span class="s0">this</span>.sound = sound;
+    }
+
+    <span class="s2">/**</span>
+     <span class="s2">* Getters and Setters</span>
+     <span class="s2">*/</span>
+    <span class="s0">public </span>String getDirector() {
+        <span class="s0">return </span>director;
+    }
+
+    <span class="s0">public void </span>setDirector(String director) {
+        <span class="s0">this</span>.director = director;
+    }
+
+    <span class="s0">public </span>String getCast() {
+        <span class="s0">return </span>cast;
+    }
+
+    <span class="s0">public void </span>setCast(String cast) {
+        <span class="s0">this</span>.cast = cast;
+    }
+
+    <span class="s0">public </span>String getProducer() {
+        <span class="s0">return </span>producer;
+    }
+
+    <span class="s0">public void </span>setProducer(String producer) {
+        <span class="s0">this</span>.producer = producer;
+    }
+
+    <span class="s0">public </span>String getWriter() {
+        <span class="s0">return </span>writer;
+    }
+
+    <span class="s0">public void </span>setWriter(String writer) {
+        <span class="s0">this</span>.writer = writer;
+    }
+
+    <span class="s0">public </span>String getCameraman() {
+        <span class="s0">return </span>cameraman;
+    }
+
+    <span class="s0">public void </span>setCameraman(String cameraman) {
+        <span class="s0">this</span>.cameraman = cameraman;
+    }
+
+    <span class="s0">public </span>String getArtDirector() {
+        <span class="s0">return </span>artDirector;
+    }
+
+    <span class="s0">public void </span>setArtDirector(String artDirector) {
+        <span class="s0">this</span>.artDirector = artDirector;
+    }
+
+    <span class="s0">public </span>String getEditor() {
+        <span class="s0">return </span>editor;
+    }
+
+    <span class="s0">public void </span>setEditor(String editor) {
+        <span class="s0">this</span>.editor = editor;
+    }
+
+    <span class="s0">public </span>String getSound() {
+        <span class="s0">return </span>sound;
+    }
+
+    <span class="s0">public void </span>setSound(String sound) {
+        <span class="s0">this</span>.sound = sound;
+    }
+
+    @Override
+    <span class="s0">public </span>String toString() {
+        <span class="s0">return </span><span class="s3">&quot;Casts{&quot; </span>+
+                <span class="s3">&quot;director='&quot; </span>+ director + <span class="s3">'</span><span class="s0">\'</span><span class="s3">' </span>+
+                <span class="s3">&quot;, cast='&quot; </span>+ cast + <span class="s3">'</span><span class="s0">\'</span><span class="s3">' </span>+
+                <span class="s3">&quot;, producer='&quot; </span>+ producer + <span class="s3">'</span><span class="s0">\'</span><span class="s3">' </span>+
+                <span class="s3">&quot;, writer='&quot; </span>+ writer + <span class="s3">'</span><span class="s0">\'</span><span class="s3">' </span>+
+                <span class="s3">&quot;, cameraman='&quot; </span>+ cameraman + <span class="s3">'</span><span class="s0">\'</span><span class="s3">' </span>+
+                <span class="s3">&quot;, artDirector='&quot; </span>+ artDirector + <span class="s3">'</span><span class="s0">\'</span><span class="s3">' </span>+
+                <span class="s3">&quot;, editor='&quot; </span>+ editor + <span class="s3">'</span><span class="s0">\'</span><span class="s3">' </span>+
+                <span class="s3">&quot;, sound='&quot; </span>+ sound + <span class="s3">'</span><span class="s0">\'</span><span class="s3">' </span>+
+                <span class="s3">'}'</span>;
+    }
+    <span class="s0">public void </span>printInfo(){
+        System.out.println(<span class="s0">this</span>.toString());
+    }
+}
+</pre>
+</body>
+</html>

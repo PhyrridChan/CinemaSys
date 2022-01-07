@@ -1,0 +1,177 @@
+<html>
+<head>
+<title>CustomerInfoInputServlet.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #000080; font-weight: bold;}
+.s1 { color: #000000;}
+.s2 { color: #0000ff;}
+.s3 { color: #008000; font-weight: bold;}
+</style>
+</head>
+<body bgcolor="#ffffff">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+CustomerInfoInputServlet.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span>com.test.controller.Customer;
+
+<span class="s0">import <a href="../../../../SqlUtil/MySQLUtil.java.html">SqlUtil.MySQLUtil</a></span>;
+<span class="s0">import <a href="../../../../Users/Customers.java.html">Users.Customers</a></span>;
+<span class="s0">import </span>org.apache.commons.fileupload.FileItem;
+<span class="s0">import </span>org.apache.commons.fileupload.disk.DiskFileItemFactory;
+<span class="s0">import </span>org.apache.commons.fileupload.servlet.ServletFileUpload;
+
+<span class="s0">import </span>javax.servlet.*;
+<span class="s0">import </span>javax.servlet.http.*;
+<span class="s0">import </span>java.io.File;
+<span class="s0">import </span>java.io.IOException;
+<span class="s0">import </span>java.io.PrintWriter;
+<span class="s0">import </span>java.net.URLDecoder;
+<span class="s0">import </span>java.nio.charset.StandardCharsets;
+<span class="s0">import </span>java.util.HashMap;
+<span class="s0">import </span>java.util.List;
+<span class="s0">import </span>java.util.Map;
+
+<span class="s0">public class </span>CustomerInfoInputServlet <span class="s0">extends </span>HttpServlet {
+    <span class="s0">private static final long </span>serialVersionUID = <span class="s2">1L</span>;
+    
+    <span class="s0">private static final </span>String UPLOAD_DIRECTORY = <span class="s3">&quot;upload&quot;</span>;
+
+
+    <span class="s0">private static final int </span>MEMORY_THRESHOLD = <span class="s2">1024 </span>* <span class="s2">1024 </span>* <span class="s2">3</span>;  
+    <span class="s0">private static final int </span>MAX_FILE_SIZE = <span class="s2">1024 </span>* <span class="s2">1024 </span>* <span class="s2">40</span>; 
+    <span class="s0">private static final int </span>MAX_REQUEST_SIZE = <span class="s2">1024 </span>* <span class="s2">1024 </span>* <span class="s2">50</span>; 
+
+    @Override
+    <span class="s0">protected void </span>doPost(HttpServletRequest request, HttpServletResponse response) <span class="s0">throws </span>ServletException, IOException {
+        <span class="s0">if </span>(!ServletFileUpload.isMultipartContent(request)) {
+            PrintWriter writer = response.getWriter();
+            writer.println(<span class="s3">&quot;Error: 表单必须包含 enctype=multipart/form-data&quot;</span>);
+            writer.flush();
+            <span class="s0">return</span>;
+        }
+
+        
+        DiskFileItemFactory factory = <span class="s0">new </span>DiskFileItemFactory();
+        
+        factory.setSizeThreshold(MEMORY_THRESHOLD);
+        
+        factory.setRepository(<span class="s0">new </span>File(System.getProperty(<span class="s3">&quot;java.io.tmpdir&quot;</span>)));
+
+        
+        ServletFileUpload upload = <span class="s0">new </span>ServletFileUpload(factory);
+
+        
+        upload.setFileSizeMax(MAX_FILE_SIZE);
+
+        
+        upload.setSizeMax(MAX_REQUEST_SIZE);
+
+        
+        upload.setHeaderEncoding(<span class="s3">&quot;UTF-8&quot;</span>);
+
+        
+        
+        String uploadPath = request.getServletContext().getRealPath(<span class="s3">&quot;./&quot;</span>) + File.separator + UPLOAD_DIRECTORY;
+
+        
+        File uploadDir = <span class="s0">new </span>File(uploadPath);
+        <span class="s0">if </span>(!uploadDir.exists()) uploadDir.mkdir();
+
+        String uniFilePath = <span class="s0">null</span>;
+        Map&lt;String, Object&gt; params = <span class="s0">new </span>HashMap&lt;&gt;();
+        <span class="s0">try </span>{
+            
+            @SuppressWarnings(<span class="s3">&quot;unchecked&quot;</span>)
+            List&lt;FileItem&gt; formItems = upload.parseRequest(request);
+            <span class="s0">if </span>(formItems != <span class="s0">null </span>&amp;&amp; formItems.size() &gt; <span class="s2">0</span>) {
+                
+                <span class="s0">for </span>(FileItem item : formItems) {
+                    
+                    <span class="s0">if </span>(!item.isFormField()) {
+                        String fileName = <span class="s0">new </span>File(item.getName()).getName();
+                        uniFilePath = File.separator + fileName;
+                        String filePath = uploadPath + uniFilePath;
+                        File storeFile = <span class="s0">new </span>File(filePath);
+                        
+                        System.out.println(fileName + <span class="s3">&quot; : &quot; </span>+ filePath);
+                        
+                        item.write(storeFile);
+                        request.setAttribute(<span class="s3">&quot;message&quot;</span>, <span class="s3">&quot;头像上传成功&quot;</span>);
+                    } <span class="s0">else </span>{
+                        String name = item.getFieldName();
+                        String value = <span class="s0">new </span>String(item.getString().getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8);
+                        params.put(name, value);
+                    }
+                }
+            }
+        } <span class="s0">catch </span>(Exception e) {
+            request.setAttribute(<span class="s3">&quot;massage&quot;</span>, <span class="s3">&quot;错误信息：&quot; </span>+ e.getMessage());
+            e.printStackTrace();
+        }
+
+        String phone = (String) params.get(<span class="s3">&quot;phone&quot;</span>),
+                age = (String) params.get(<span class="s3">&quot;age&quot;</span>),
+                sex = (String) params.get(<span class="s3">&quot;sex&quot;</span>),
+                regionProvince = (String) params.get(<span class="s3">&quot;regionProvince&quot;</span>),
+                regionCity = (String) params.get(<span class="s3">&quot;regionCity&quot;</span>),
+                regionSite = (String) params.get(<span class="s3">&quot;regionSite&quot;</span>),
+                avator = uniFilePath;
+
+        String userName = <span class="s0">null</span>, userPWD = <span class="s0">null</span>;
+        Cookie cookie = <span class="s0">null</span>;
+        
+        Cookie[] cookies = request.getCookies();
+        
+        response.setContentType(<span class="s3">&quot;text/html;charset=UTF-8&quot;</span>);
+        <span class="s0">for </span>(<span class="s0">int </span>i = <span class="s2">0</span>; i &lt; cookies.length; i++) {
+            cookie = cookies[i];
+            <span class="s0">if </span>((cookie.getName()).equals(<span class="s3">&quot;userName&quot;</span>)) {
+                userName = URLDecoder.decode(cookie.getValue(), StandardCharsets.UTF_8);
+                cookie.setMaxAge(<span class="s2">0</span>);
+                cookie.setDomain(<span class="s3">&quot;&quot;</span>);
+                response.addCookie(cookie);
+            }
+            <span class="s0">if </span>((cookie.getName()).equals(<span class="s3">&quot;userPWD&quot;</span>)) {
+                userPWD = URLDecoder.decode(cookie.getValue(), StandardCharsets.UTF_8);
+                cookie.setMaxAge(<span class="s2">0</span>);
+                cookie.setDomain(<span class="s3">&quot;&quot;</span>);
+                response.addCookie(cookie);
+            }
+        }
+        <span class="s0">if </span>(userName == <span class="s0">null </span>|| userPWD == <span class="s0">null</span>) {
+            response.setContentType(<span class="s3">&quot;text/html; charset=utf-8&quot;</span>);
+            PrintWriter out = response.getWriter();
+            out.write(<span class="s3">&quot;&lt;script language='javascript'&gt;alert('出错！');window.location.href='/cinema'&lt;/script&gt;&quot;</span>);
+        }
+        <span class="s0">else </span>{
+            System.out.println(<span class="s3">&quot;request: &quot; </span>+ request +
+                    <span class="s3">&quot;, age: &quot; </span>+ age +
+                    <span class="s3">&quot;, sex: &quot; </span>+ sex +
+                    <span class="s3">&quot;, regionProvince: &quot; </span>+ regionProvince +
+                    <span class="s3">&quot;, regionCity: &quot; </span>+ regionCity +
+                    <span class="s3">&quot;, regionSite: &quot; </span>+ regionSite +
+                    <span class="s3">&quot;, avator: &quot; </span>+ uniFilePath +
+                    <span class="s3">&quot;, userName: &quot; </span>+ userName +
+                    <span class="s3">&quot;, userPWD: &quot; </span>+ userPWD
+            );
+
+            <a href="../../../../SqlUtil/MySQLUtil.java.html">MySQLUtil</a> mySQLUtil = <span class="s0">new <a href="../../../../SqlUtil/MySQLUtil.java.html">MySQLUtil</a></span>();
+            <a href="../../../../Users/Customers.java.html">Customers</a> users = <span class="s0">new <a href="../../../../Users/Customers.java.html">Customers</a></span>(userName, avator, sex.equals(<span class="s3">&quot;male&quot;</span>) ? <span class="s3">'男' </span>: <span class="s3">'女'</span>, Integer.parseInt(age), phone, Integer.parseInt(regionProvince), Integer.parseInt(regionCity), Integer.parseInt(regionSite));
+            users.printInfo();
+            users.addCus(userPWD);
+
+            response.sendRedirect(<span class="s3">&quot;/cinema&quot;</span>);
+        }
+    }
+
+    @Override
+    <span class="s0">protected void </span>doGet(HttpServletRequest req, HttpServletResponse resp) <span class="s0">throws </span>ServletException, IOException {
+        doPost(req, resp);
+    }
+}
+</pre>
+</body>
+</html>

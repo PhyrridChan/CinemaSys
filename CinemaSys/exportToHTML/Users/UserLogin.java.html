@@ -1,0 +1,92 @@
+<html>
+<head>
+<title>UserLogin.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #000080; font-weight: bold;}
+.s1 { color: #000000;}
+.s2 { color: #0000ff;}
+.s3 { color: #008000; font-weight: bold;}
+</style>
+</head>
+<body bgcolor="#ffffff">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+UserLogin.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span>Users;
+
+<span class="s0">import <a href="../SqlUtil/MySQLUtil.java.html">SqlUtil.MySQLUtil</a></span>;
+
+<span class="s0">import </span>java.sql.PreparedStatement;
+<span class="s0">import </span>java.sql.ResultSet;
+<span class="s0">import </span>java.sql.SQLException;
+
+<span class="s0">public class </span>UserLogin {
+    <span class="s0">public static <a href="Users.java.html">Users</a> </span>login(<span class="s0">int </span>loginType, String userName, String userPWD) {
+        <a href="Users.java.html">Users</a> users;
+        ResultSet rs = <span class="s0">null</span>;
+        <span class="s0">try </span>{
+            rs = loginQuery(loginType, userName, userPWD);
+            <span class="s0">if </span>(loginType == <span class="s2">1</span>) {
+                <span class="s0">if </span>(rs.next()) {
+                    String UID = rs.getString(<span class="s3">&quot;UID&quot;</span>);
+                    <a href="CustomersProperties.java.html">CustomersProperties</a> properties = propertiesQuery(UID);
+                    <span class="s0">int </span>credit = CreditSysQuery(UID);
+                    <a href="Vips.java.html">Vips</a> vip = vipsQuery(UID);
+                    <span class="s0">return new <a href="Customers.java.html">Customers</a></span>(UID, rs.getInt(<span class="s3">&quot;state&quot;</span>), rs.getString(<span class="s3">&quot;userName&quot;</span>),
+                            <span class="s3">&quot;/cinema/upload&quot; </span>+ rs.getString(<span class="s3">&quot;avator&quot;</span>), rs.getString(<span class="s3">&quot;sex&quot;</span>).charAt(<span class="s2">0</span>), rs.getInt(<span class="s3">&quot;age&quot;</span>), rs.getString(<span class="s3">&quot;phone&quot;</span>), rs.getInt(<span class="s3">&quot;regionCountry&quot;</span>), rs.getInt(<span class="s3">&quot;regionProvince&quot;</span>), rs.getInt(<span class="s3">&quot;regionCity&quot;</span>), rs.getString(<span class="s3">&quot;joinTime&quot;</span>), properties, credit, vip);
+                }
+
+            } <span class="s0">else if </span>(loginType == <span class="s2">2</span>) {
+                <span class="s0">if </span>(rs.next()) {
+                    <span class="s0">return new <a href="Staffs.java.html">Staffs</a></span>(rs.getString(<span class="s3">&quot;UID&quot;</span>), rs.getInt(<span class="s3">&quot;state&quot;</span>), rs.getString(<span class="s3">&quot;userName&quot;</span>),
+                            <span class="s3">&quot;/cinema/upload&quot; </span>+ rs.getString(<span class="s3">&quot;avator&quot;</span>), rs.getString(<span class="s3">&quot;sex&quot;</span>).charAt(<span class="s2">0</span>), rs.getInt(<span class="s3">&quot;age&quot;</span>), rs.getString(<span class="s3">&quot;phone&quot;</span>), rs.getInt(<span class="s3">&quot;regionCountry&quot;</span>), rs.getInt(<span class="s3">&quot;regionProvince&quot;</span>), rs.getInt(<span class="s3">&quot;regionCity&quot;</span>), rs.getString(<span class="s3">&quot;joinTime&quot;</span>), rs.getInt(<span class="s3">&quot;rank&quot;</span>), rs.getInt(<span class="s3">&quot;root&quot;</span>), rs.getInt(<span class="s3">&quot;workGroup&quot;</span>), rs.getInt(<span class="s3">&quot;workPlace&quot;</span>), rs.getString(<span class="s3">&quot;workOn&quot;</span>));
+                }
+            }
+        } <span class="s0">catch </span>(SQLException e) {
+            e.printStackTrace();
+        }
+        <span class="s0">return null</span>;
+    }
+
+    <span class="s0">public static </span>ResultSet loginQuery(<span class="s0">int </span>loginType, String userName, String userPwd) <span class="s0">throws </span>SQLException {
+        String tbName = <span class="s3">&quot;&quot;</span>;
+        tbName = loginType == <span class="s2">1 </span>? <span class="s3">&quot;tb_Users&quot; </span>: <span class="s3">&quot;tb_Staffs&quot;</span>;
+        PreparedStatement ps = <a href="../SqlUtil/MySQLUtil.java.html">MySQLUtil</a>.setPreStmt(<span class="s3">&quot;SELECT * FROM &quot; </span>+ tbName + <span class="s3">&quot; WHERE userName=? and userPwd=?&quot;</span>);
+        <span class="s0">return <a href="../SqlUtil/MySQLUtil.java.html">MySQLUtil</a></span>.query(ps, userName, userPwd);
+    }
+
+    <span class="s0">public static <a href="CustomersProperties.java.html">CustomersProperties</a> </span>propertiesQuery(String UID) <span class="s0">throws </span>SQLException {
+        String tbName = <span class="s3">&quot;tb_CustomersProperties&quot;</span>;
+        ResultSet rs = tableQueryCstm(tbName, UID);
+        <span class="s0">if </span>(rs.next())
+            <span class="s0">return new <a href="CustomersProperties.java.html">CustomersProperties</a></span>(rs.getString(<span class="s3">&quot;preferCopyright&quot;</span>), rs.getString(<span class="s3">&quot;preferCategory&quot;</span>), rs.getInt(<span class="s3">&quot;activity&quot;</span>), rs.getString(<span class="s3">&quot;statement&quot;</span>), rs.getInt(<span class="s3">&quot;label&quot;</span>), rs.getInt(<span class="s3">&quot;level&quot;</span>), rs.getInt(<span class="s3">&quot;grow&quot;</span>));
+        <span class="s0">else return null</span>;
+    }
+
+    <span class="s0">public static int </span>CreditSysQuery(String UID) <span class="s0">throws </span>SQLException {
+        String tbName = <span class="s3">&quot;credit&quot;</span>;
+        ResultSet rs = tableQueryCstm(tbName, UID);
+        <span class="s0">if </span>(rs.next()) <span class="s0">return </span>rs.getInt(<span class="s3">&quot;credit&quot;</span>);
+        System.err.println(<span class="s3">&quot;Wrong! DEFAULT SET IT -1&quot;</span>);
+        <span class="s0">return </span>-<span class="s2">1</span>;
+    }
+
+    <span class="s0">public static <a href="Vips.java.html">Vips</a> </span>vipsQuery(String UID) <span class="s0">throws </span>SQLException {
+        String tbName = <span class="s3">&quot;vipview&quot;</span>;
+        ResultSet rs = tableQueryCstm(tbName, UID);
+        <span class="s0">if </span>(rs.next()) <span class="s0">return new <a href="Vips.java.html">Vips</a></span>(rs.getInt(<span class="s3">&quot;type&quot;</span>), rs.getString(<span class="s3">&quot;expire&quot;</span>), rs.getInt(<span class="s3">&quot;VipLevel&quot;</span>));
+        <span class="s0">else return null</span>;
+    }
+
+    <span class="s0">public static </span>ResultSet tableQueryCstm(String tbName, String UID) {
+        String sql = <span class="s3">&quot;SELECT * FROM &quot; </span>+ tbName + <span class="s3">&quot; WHERE UID=?&quot;</span>;
+        PreparedStatement ps = <a href="../SqlUtil/MySQLUtil.java.html">MySQLUtil</a>.setPreStmt(sql);
+        <span class="s0">return <a href="../SqlUtil/MySQLUtil.java.html">MySQLUtil</a></span>.query(ps, UID);
+    }
+}
+</pre>
+</body>
+</html>

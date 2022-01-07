@@ -1,0 +1,67 @@
+<html>
+<head>
+<title>CustomerSignupServlet.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #000080; font-weight: bold;}
+.s1 { color: #000000;}
+.s2 { color: #008000; font-weight: bold;}
+.s3 { color: #808080; font-style: italic;}
+.s4 { color: #0000ff;}
+</style>
+</head>
+<body bgcolor="#ffffff">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+CustomerSignupServlet.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span>com.test.controller.Customer;
+
+<span class="s0">import </span>javax.servlet.*;
+<span class="s0">import </span>javax.servlet.http.*;
+<span class="s0">import </span>java.io.IOException;
+<span class="s0">import </span>java.io.PrintWriter;
+<span class="s0">import </span>java.net.URLEncoder;
+<span class="s0">import </span>java.nio.charset.StandardCharsets;
+<span class="s0">import </span>java.util.Objects;
+
+<span class="s0">public class </span>CustomerSignupServlet <span class="s0">extends </span>HttpServlet {
+    @Override
+    <span class="s0">protected void </span>doPost(HttpServletRequest request, HttpServletResponse response) <span class="s0">throws </span>ServletException, IOException {
+        String userName, userPWD, userRePWD;
+        userName = request.getParameter(<span class="s2">&quot;userName&quot;</span>);
+        userPWD = request.getParameter(<span class="s2">&quot;userPWD&quot;</span>);
+        userRePWD = request.getParameter(<span class="s2">&quot;userRePWD&quot;</span>);
+        response.setContentType(<span class="s2">&quot;text/html; charset=utf-8&quot;</span>);
+        PrintWriter out = response.getWriter();
+        <span class="s0">if </span>(userPWD != <span class="s0">null </span>&amp;&amp; userRePWD != <span class="s0">null </span>&amp;&amp; !userRePWD.equals(userPWD)) {
+            out.write(<span class="s2">&quot;&lt;script language='javascript'&gt;alert('两次密码不匹配，请重新填写');window.location.href='/login_page/CustomerLoginPage/customerSignUp.html'&lt;/script&gt;&quot;</span>);
+        } <span class="s0">else if </span>(userName == <span class="s0">null </span>|| userName.equals(<span class="s2">&quot;&quot;</span>) || Objects.equals(userPWD, <span class="s2">&quot;&quot;</span>)) {
+            out.write(<span class="s2">&quot;&lt;script language='javascript'&gt;alert('信息填写不完全，请重新填写');window.location.href='/login_page/CustomerLoginPage/customerSignUp.html'&lt;/script&gt;&quot;</span>);
+        } <span class="s0">else </span>{
+            <span class="s3">// 为userName和userPWD创建 Cookie</span>
+            Cookie userInfoOfPage1_userName = <span class="s0">new </span>Cookie(<span class="s2">&quot;userName&quot;</span>, URLEncoder.encode(userName, StandardCharsets.UTF_8));
+            Cookie userInfoOfPage1_userPWD = <span class="s0">new </span>Cookie(<span class="s2">&quot;userPWD&quot;</span>, URLEncoder.encode(userPWD, StandardCharsets.UTF_8));
+            <span class="s3">// 为两个 Cookie 设置过期日期为 5 min后</span>
+            userInfoOfPage1_userName.setMaxAge(<span class="s4">60 </span>* <span class="s4">5</span>);
+            userInfoOfPage1_userPWD.setMaxAge(<span class="s4">60 </span>* <span class="s4">5</span>);
+            <span class="s3">// 在响应头中添加两个 Cookie</span>
+            response.addCookie(userInfoOfPage1_userName);
+            response.addCookie(userInfoOfPage1_userPWD);
+            <span class="s3">// 设置响应内容类型</span>
+            response.setContentType(<span class="s2">&quot;text/html;charset=UTF-8&quot;</span>);
+
+            response.setStatus(<span class="s4">302</span>);
+            response.sendRedirect(<span class="s2">&quot;/login_page/CustomerLoginPage/customerInfoInput.html&quot;</span>);
+        }
+    }
+
+    @Override
+    <span class="s0">protected void </span>doGet(HttpServletRequest req, HttpServletResponse resp) <span class="s0">throws </span>ServletException, IOException {
+        doPost(req, resp);
+    }
+}
+</pre>
+</body>
+</html>

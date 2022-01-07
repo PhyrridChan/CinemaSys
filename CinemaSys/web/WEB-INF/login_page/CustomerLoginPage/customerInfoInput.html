@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/login_page/CustomerLoginPage/style.css">
+    <title>customerInfoInputPage</title>
+
+</head>
+<body>
+<div class="upper">
+    <div class="logo">
+        <a href="#">
+            <img src="/login_page/CustomerLoginPage/img/logo.png" class="img-logo"/>
+        </a>
+    </div>
+    <form name="aForm"
+          class="login" action="/cinema/CmInfoInputServlet" method="post" enctype="multipart/form-data">
+        <!--      onsubmit="return validForm(this)"-->
+
+        <div class="login-div" name="loginDiv">
+            <div id="page1" name="page1" style="display: block">
+                <h1>完善信息(1/2)</h1>
+                <div class="input-text">
+                    <input type="text" id="inputPhone" name="phone" placeholder="电话号码"/>
+                    <div class="warning-input" id="warningPhone">
+                        请输入有效的电话号码
+                    </div>
+                </div>
+
+                <div class="input-text" name="inputAge">
+                    <input type="number" id="inputAge" name="age" placeholder="年龄" min="1" max="100"/>
+                    <div class="warning-input" id="warningAge">
+                        请输入有效的年龄
+                    </div>
+                </div>
+
+                <h3>选择性别</h3>
+                <div style="width: 100%; height: 25px; color: white; text-indent: 18px;margin-left: 10px;">
+                    <input type="radio" name="sex" value="male"> <b style="margin-right: 60px">男</b>
+                    <input type="radio" name="sex" value="female"> <b>女</b>
+                </div>
+
+                <h3>选择地址</h3>
+                <div class="input-text">
+                    <select id="prov" name="regionProvince" style="margin-right: 2%"></select>
+                    <select id="city" name="regionCity" style="margin-right: 2%"></select>
+                    <select id="site" name="regionSite"></select>
+                    <script src="/login_page/CustomerLoginPage/location.js"></script>
+                </div>
+
+                <button class="signin-button" id="signup1" type="button" style="margin-bottom: 20px">下一步</button>
+            </div>
+            <div id="page2" style="display: none">
+                <h1>完善信息(2/2)</h1>
+                <h3>选择头像</h3>
+                <div class="input-text" style="margin-bottom: 35px;vertical-align: middle;text-align: center;">
+                    <div style="width: 100%;text-align: center;margin: 0 auto">
+                        <div class="img-avator">
+                            <img width="125px" height="125px" id="myAvator" alt=""
+                                 src="/login_page/CustomerLoginPage/img/qq.png">
+                        </div>
+                    </div>
+                    <br>
+                    <a href="javascript:;" class="file" style="cursor: pointer">选择头像
+                        <input type="file" name="avator" id="uploadavator" accept="image/*" onchange="UploadImg(this)">
+                    </a>
+                    <button class="signin-button" id="signup2" type="submit">完成注册</button>
+                    <div class="back">
+                        <a id="back" class="color_text" href="javascript:;"
+                           onclick="clickBack()"
+                           style="font-size: small;float: right">返回上一步</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script>
+    var btn01 = document.querySelector("#signup1");
+    var btn02 = document.querySelector("#signup2");
+    var div01 = document.querySelector("#page1");
+    var div02 = document.querySelector("#page2");
+
+    btn01.addEventListener(
+        "click", function () {
+            var phone = document.getElementById("inputPhone").value;
+            var age = document.getElementById("inputAge").value;
+            var sexs = document.getElementsByName("sex");
+            var tag = true;
+            for (var sex in sexs) {
+                if (sexs[sex].checked){
+                    tag = false;
+                    break;
+                }
+            }
+
+            console.log(phone + " ; " + age);
+            if(phone == "" || age == "" || tag){
+                alert("请填写完全用户信息");
+            }else {
+                div01.style.display = "none";
+                div02.style.display = "block";
+            }
+        })
+
+    btn02.addEventListener(
+        "click", function () {
+            if (div01.style.display == "block"){
+                alert("请按顺序填写完全用户信息");
+                window.location=location;
+            }
+        }
+    )
+    function clickBack() {
+        div01.style.display = "block";
+        div02.style.display = "none";
+    }
+
+    function UploadImg(obj) {
+        var file = obj.files[0];
+        var reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = function (e) {
+            var img = document.getElementById("myAvator");
+            img.src = e.target.result;
+        };
+    }
+
+
+</script>
+
+<div class="bottom">
+    <div class="bottom-width">
+        有疑问请联系 <a href="tel:1-844-542-4813" class="tel-link">123-1234-1234</a>
+        <div>
+            <ul class="bottom-flex">
+                <li class="list-bottom">
+                    <a href="#" class="link-bottom">
+                        常见问题
+                    </a>
+                </li>
+                <li class="list-bottom">
+                    <a href="#" class="link-bottom">
+                        客服中心
+                    </a>
+                </li>
+                <li class="list-bottom">
+                    <a href="#" class="link-bottom">
+                        使用条款
+                    </a>
+                </li>
+                <li class="list-bottom">
+                    <a href="#" class="link-bottom">
+                        隐私政策
+                    </a>
+                </li>
+                <li class="list-bottom">
+                    <a href="#" class="link-bottom">
+                        关于我们
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

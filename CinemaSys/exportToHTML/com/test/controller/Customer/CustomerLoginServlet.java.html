@@ -1,0 +1,52 @@
+<html>
+<head>
+<title>CustomerLoginServlet.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #000080; font-weight: bold;}
+.s1 { color: #000000;}
+.s2 { color: #0000ff;}
+.s3 { color: #008000; font-weight: bold;}
+</style>
+</head>
+<body bgcolor="#ffffff">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+CustomerLoginServlet.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span>com.test.controller.Customer;
+
+<span class="s0">import <a href="../../../../SqlUtil/MySQLUtil.java.html">SqlUtil.MySQLUtil</a></span>;
+<span class="s0">import <a href="../../../../Users/UserLogin.java.html">Users.UserLogin</a></span>;
+<span class="s0">import <a href="../../../../Users/Users.java.html">Users.Users</a></span>;
+
+<span class="s0">import </span>javax.servlet.*;
+<span class="s0">import </span>javax.servlet.http.*;
+<span class="s0">import </span>java.io.IOException;
+<span class="s0">import </span>java.io.PrintWriter;
+
+<span class="s0">import static <a href="../../../../pageConstructor/LoginContent.java.html">pageConstructor.LoginContent</a></span>.loginContent;
+
+<span class="s0">public class </span>CustomerLoginServlet <span class="s0">extends </span>HttpServlet {
+    @Override
+    <span class="s0">protected void </span>doPost(HttpServletRequest request, HttpServletResponse response) <span class="s0">throws </span>ServletException, IOException {
+        <a href="../../../../SqlUtil/MySQLUtil.java.html">MySQLUtil</a> mySQLUtil = <span class="s0">new <a href="../../../../SqlUtil/MySQLUtil.java.html">MySQLUtil</a></span>();
+        <span class="s0">int </span>loginType = <span class="s2">1</span>;
+        String userName = request.getParameter(<span class="s3">&quot;userName&quot;</span>);
+        String userPWD = request.getParameter(<span class="s3">&quot;userPWD&quot;</span>);
+        System.out.println(<span class="s3">&quot;</span><span class="s0">\n</span><span class="s3">&quot; </span>+ loginType + <span class="s3">&quot;-&quot; </span>+ userName + <span class="s3">&quot;-&quot; </span>+ userPWD);
+        <a href="../../../../Users/Users.java.html">Users</a> users = <a href="../../../../Users/UserLogin.java.html">UserLogin</a>.login(<span class="s2">1</span>, userName, userPWD);
+        response.setContentType(<span class="s3">&quot;text/html; charset=utf-8&quot;</span>);
+        PrintWriter out = response.getWriter();
+        loginContent(users, out, response, loginType);
+    }
+
+    @Override
+    <span class="s0">protected void </span>doGet(HttpServletRequest req, HttpServletResponse resp) <span class="s0">throws </span>ServletException, IOException {
+        doPost(req, resp);
+    }
+}
+</pre>
+</body>
+</html>

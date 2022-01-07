@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html xmlns="">
+<head>
+    <meta charset="utf-8"/>
+    <title>me</title>
+    <link href="../main_page/styles.css" rel="stylesheet"/>
+    <link href="../imgs/decorate.ico" type="images/x-icon" rel="icon">
+</head>
+<body style="background: #111111">
+<div class="app">
+    <div class="nav">
+        <!--    tabs    -->
+        <div class="nav__bar">
+            <div class="nav__bar__tab">
+                <a href="/main_page/movies.html" class="nav__bar__link"><b>电影</b></a>
+            </div>
+            <div class="nav__bar__tab">
+                <a href="/main_page/theaters.html" class="nav__bar__link"><b>影城</b></a>
+            </div>
+            <div class="nav__bar__tab">
+                <a href="/main_page/ranking.html" class="nav__bar__link"><b>榜单</b></a>
+            </div>
+            <div class="nav__bar__tab">
+                <a href="#" style="font-style: italic" class="nav__bar__link"><b>NEWS</b></a>
+            </div>
+        </div>
+        <!--    logo    -->
+        <a href="/cinema/main">
+            <img class="nav__logo" src="https://i.bmp.ovh/imgs/2021/11/12329def7ff8e6aa.png" alt=""/>
+        </a>
+        <!-- avator: login;myAvator -->
+        <div>
+            <div class="img-avator">
+                <a class="nav__bar__link" href="/cinema" style="position: absolute;top: 10px;right:0px;width: 55px"
+                   id="login"><b>[登录]</b></a>
+                <img class="nav__avatar" id="myAvator" alt="" style="display: none"
+                     src="#">
+            </div>
+        </div>
+    </div>
+    <!--    block-->
+    <!--    电影 管理-->
+    <div style="display: block;width: 100%;margin-top: 100px;height: 1100px;">
+        <!--        leftBar-->
+        <div style="float: left;width: 16%;padding-right: 3%;height: 1100px;">
+            <dl style="width: 100%;font-size:24px;background: #222222;margin-left: 20px;text-align: center;color: white;border-radius:5px ">
+                <div class="div__title" style="text-align: left;padding-bottom: 15px">
+                    <img height="12" src="../imgs/decorate.svg">
+                    <b style="font-size: xx-large;padding-left: 15px">
+                        个人中心</b>
+                </div>
+                <form id="leftBarForm" class="leftBarForm">
+                    <div style="padding: 10px;cursor: pointer" id="movieDiv">
+                        <input type="radio" name="nav" id="movieRadio" value="movieRadio" style="display: none"
+                               checked/>
+                        <dt>
+                            <label for="movieRadio" style="cursor: pointer">
+                                <nobr style="font-weight: bold">排片</nobr>
+                                管理</label>
+                        </dt>
+                    </div>
+                    <div style="padding: 10px;cursor: pointer" id="cinemaDiv">
+                        <input type="radio" name="nav" id="cinemaRadio" value="cinemaRadio" style="display:none "/>
+                        <dt>
+                            <label for="cinemaRadio" style="cursor: pointer">
+                                <nobr style="font-weight: bold">影城</nobr>
+                                管理
+                            </label>
+                        </dt>
+                    </div>
+
+                    <div style="padding: 10px;" class="pplOrg" id="userDiv">
+                        <input type="radio" name="nav" id="userRadio" value="userRadio" style="display: none"/>
+                        <dt>
+                            人员管理
+                            <label for="userRadio" style="cursor: pointer">
+                                <dl class="subTable">
+                                    <dt onclick="sendInfo(this)" class="subTableBar" id="cusRadio">
+                                        客户管理
+                                    </dt>
+                                    <dt onclick="sendInfo(this)" class="subTableBar" id="staffRadio">
+                                        工作人员管理
+                                    </dt>
+                                </dl>
+                            </label>
+                        </dt>
+                    </div>
+                </form>
+            </dl>
+        </div>
+        <!--        content-->
+        <div>
+            <!--            title-->
+            <div style="float: left;width: 77%;padding-left: 10px; margin-right: 3%">
+                <dl style="width: 100%;font-size:24px;background: #222222;text-align: center;color: white;border-radius:5px ">
+                    <div class="div__title" style="text-align: left;padding-bottom: 15px">
+                        <img height="12" src="../imgs/decorate.svg">
+                        <b style="" class="titleBar" id="movieO">
+                            排片管理</b>
+                        <b style="display: none" class="titleBar" id="cinemaO">
+                            影城管理</b>
+                        <b style="display: none" class="titleBar" id="usersO">
+                            人员管理
+                            <nobr class="subTitle" style="font-size: large;display: none" id="cusTitle">客户管理</nobr>
+                            <nobr class="subTitle" style="font-size: large;display: none" id="staffTitle">工作人员管理
+                            </nobr>
+                        </b>
+                    </div>
+                </dl>
+            </div>
+            <!--            main-->
+            <div class="blocks" style="padding-left: 10px;width: 77%">
+                <div style="float: left;background: #222222;border-radius: 5px;width: 100%;height: auto;color: white;overflow-x: scroll;">
+                    <div style="float: left;width: 10%;padding: 10px">
+                        <button class="signin-button" style="width: 100%;">添加</button>
+                    </div>
+                    <div class="input-text" style="float: left;width: 40%;padding: 10px">
+                        <input style="width: 60%" type="text">
+                        <button class="signin-button" style="width: 20%">查询</button>
+                    </div>
+                    <!--     Table     -->
+                    <!--     电影管理-->
+                    <div>
+                        <table class="pure-table" id="movieTable" style="display: inline-block">
+                            <thead>
+                            <tr>
+                                <td>放映室ID</td>
+                                <td>第1场放映信息</td>
+                                <td>第2场放映信息</td>
+                                <td>第3场放映信息</td>
+                                <td>第4场放映信息</td>
+                                <td>第5场放映信息</td>
+                                <td>第6场放映信息</td>
+                                <td>第7场放映信息</td>
+                                <td>第8场放映信息</td>
+                                <td>methods</td>
+                            </tr>
+                            </thead>
+                            <tr id="Movie_211208212321000001">
+                                <div>
+                                    <td><input type="text" placeholder="211208212321000001" readonly/></td>
+                                    <td><input type="text" placeholder="第1场放映信息" readonly/></td>
+                                    <td><input type="text" placeholder="第2场放映信息" readonly/></td>
+                                    <td><input type="text" placeholder="第3场放映信息" readonly/></td>
+                                    <td><input type="text" placeholder="第4场放映信息" readonly/></td>
+                                    <td><input type="text" placeholder="第5场放映信息" readonly/></td>
+                                    <td><input type="text" placeholder="第6场放映信息" readonly/></td>
+                                    <td><input type="text" placeholder="第7场放映信息" readonly/></td>
+                                    <td><input type="text" placeholder="第8场放映信息" readonly/></td>
+                                </div>
+                                <td>
+                                    <div style="width: 100px;text-align: center">
+                                        <a href="#"
+                                           style="color: #e0e0e0; text-decoration: none;font-size: 18px;padding-right: 5px;">删除</a>
+                                        <a href="#"
+                                           style="color: #e0e0e0; text-decoration: none;font-size: 18px;"
+                                           onclick="alter(this)">修改</a>
+                                        <a href="#"
+                                           style="color: #e0e0e0; text-decoration: none;font-size: 18px;display: none"
+                                           onclick="confirm(this)">确认</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <!--     影城管理-->
+                    <div>
+                        <table class="pure-table" id="cinemaTable">
+                            <thead>
+                            <tr>
+                                <td>影城ID</td>
+                                <td>状态</td>
+                                <td>影城名</td>
+                                <td>联系方式</td>
+                                <td>介绍</td>
+                                <td>地址</td>
+                                <td>放映室</td>
+                                <td>methods</td>
+                            </tr>
+                            </thead>
+                            <tr>
+                                <div>
+                                    <td><input type="text" placeholder="影城ID" readonly/></td>
+                                    <td><input style="width: 50px" type="text" placeholder="状态" readonly/></td>
+                                    <td><input type="text" placeholder="影城名(engName)" readonly/></td>
+                                    <td><input type="text" placeholder="联系方式" readonly/></td>
+                                    <td><input type="text" placeholder="介绍" readonly/></td>
+                                    <td><input type="text" placeholder="地址" readonly/></td>
+                                    <td><input type="text" placeholder="放映室" readonly/></td>
+                                </div>
+                                <td>
+                                    <div style="width: 100px;text-align: center">
+                                        <a href="#"
+                                           style="color: #e0e0e0; text-decoration: none;font-size: 18px;padding-right: 5px;">删除</a>
+                                        <a href="#"
+                                           style="color: #e0e0e0; text-decoration: none;font-size: 18px;"
+                                           onclick="alter(this)">修改</a>
+                                        <a href="#"
+                                           style="color: #e0e0e0; text-decoration: none;font-size: 18px;display: none"
+                                           onclick="confirm(this)">确认</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <!--     NEWS管理-->
+                    <div>
+                        <table class="pure-table" id="NewsTable">
+                            <thead>
+                            <tr>
+                                <td>暂未开发</td>
+                            </tr>
+                            </thead>
+                        </table>
+                    </div>
+                    <!--     榜单管理-->
+                    <div>
+                        <table class="pure-table" id="rankTable">
+                            <thead>
+                            <tr>
+                                <td>排名</td>
+                                <td>电影ID</td>
+                                <td>电影名（英文名）</td>
+                                <td style="width: 60px;">methods</td>
+                            </tr>
+                            </thead>
+                            <tr>
+                                <div>
+                                    <td>1</td>
+                                    <td><input type="text" placeholder="211208212321000001" readonly/></td>
+                                    <td>itemName(engName)</td>
+                                </div>
+                                <td>
+                                    <div style="width: 190px;text-align: center;display: inline-table;">
+                                        <a href="#"
+                                           style="color: #e0e0e0; text-decoration: none;font-size: 18px;padding: 5px;">删除</a>
+                                        <a href="#"
+                                           style="color: #e0e0e0; text-decoration: none;font-size: 18px;padding: 5px;"
+                                           onclick="alter(this)">修改</a>
+                                        <a href="#"
+                                           style="color: #e0e0e0; text-decoration: none;font-size: 18px;display: none;padding: 5px;"
+                                           onclick="confirm(this)">确认</a>
+                                        <a href="#"
+                                           style="color: #e0e0e0; text-decoration: none;font-size: 18px;padding-right: 5px;padding: 5px;">上调</a>
+                                        <a href="#"
+                                           style="color: #e0e0e0; text-decoration: none;font-size: 18px;padding: 5px;">下移</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <!--     人员管理-cus -->
+                    <div>
+                        <table class="pure-table" id="cusTable">
+                            <thead>
+                            <tr>
+                                <td>用户ID</td>
+                                <td>状态</td>
+                                <td>用户名</td>
+                                <td>头像</td>
+                                <td>性别</td>
+                                <td>年龄</td>
+                                <td>手机</td>
+                                <td>地区</td>
+                                <td>注册时间</td>
+                                <td>property</td>
+                                <td>credit</td>
+                                <td>value</td>
+                                <td>vip</td>
+                                <td>methods</td>
+                            </tr>
+                            </thead>
+                            <tr>
+                                <div>
+                                    <td>211208212321000001</td>
+                                    <td><input type="text" placeholder="状态" readonly/></td>
+                                    <td>用户名</td>
+                                    <td>头像</td>
+                                    <td>性别</td>
+                                    <td>年龄</td>
+                                    <td>手机</td>
+                                    <td>地区</td>
+                                    <td>注册时间</td>
+                                    <td><input type="text" placeholder="property" readonly/></td>
+                                    <td>credit</td>
+                                    <td>value</td>
+                                    <td>vip</td>
+                                </div>
+                                <td>
+                                    <div style="width: 100px;text-align: center">
+                                        <a href="#"
+                                           style="color: #e0e0e0; text-decoration: none;font-size: 18px;padding-right: 5px;">删除</a>
+                                        <a href="#"
+                                           style="color: #e0e0e0; text-decoration: none;font-size: 18px;"
+                                           onclick="alter(this)">修改</a>
+                                        <a href="#"
+                                           style="color: #e0e0e0; text-decoration: none;font-size: 18px;display: none"
+                                           onclick="confirm(this)">确认</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <!--     人员管理-staff-->
+                    <table class="pure-table" id="staffTable">
+                        <thead>
+                        <tr>
+                            <td>员工ID</td>
+                            <td>状态</td>
+                            <td>姓名</td>
+                            <td>头像</td>
+                            <td>性别</td>
+                            <td>年龄</td>
+                            <td>手机</td>
+                            <td>地区</td>
+                            <td>入职时间</td>
+                            <td>职位</td>
+                            <td>工作组</td>
+                            <td>工作地</td>
+                            <td>对接客户</td>
+                            <td>管理员权限</td>
+                            <td>methods</td>
+                        </tr>
+                        </thead>
+                        <tr>
+                            <div>
+                                <td>211208212321000001</td>
+                                <td><input type="text" placeholder="状态" readonly/></td>
+                                <td><input type="text" placeholder="姓名" readonly/></td>
+                                <td><input type="text" placeholder="头像" readonly/></td>
+                                <td><input type="text" placeholder="性别" readonly/></td>
+                                <td><input type="text" placeholder="年龄" readonly/></td>
+                                <td><input type="text" placeholder="手机" readonly/></td>
+                                <td><input type="text" placeholder="地区" readonly/></td>
+                                <td>入职时间</td>
+                                <td><input type="text" placeholder="职位" readonly/></td>
+                                <td><input type="text" placeholder="工作组" readonly/></td>
+                                <td><input type="text" placeholder="工作地" readonly/></td>
+                                <td>对接客户</td>
+                                <td><input type="text" placeholder="管理员权限" readonly/></td>
+                            </div>
+                            <td>
+                                <div style="width: 100px;text-align: center">
+                                    <a href="#"
+                                       style="color: #e0e0e0; text-decoration: none;font-size: 18px;padding-right: 5px;">删除</a>
+                                    <a href="#"
+                                       style="color: #e0e0e0; text-decoration: none;font-size: 18px;"
+                                       onclick="alter(this)">修改</a>
+                                    <a href="#"
+                                       style="color: #e0e0e0; text-decoration: none;font-size: 18px;display: none"
+                                       onclick="confirm(this)">确认</a>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <!--            bar-->
+            <div style="float: right;color: #1488CC;padding: 15px 50px 15px 15px;">
+                <a href="#" style="padding: 5px;text-decoration: none;color: #1488CC;">上一页</a>
+                <a href="#" style="padding: 5px;text-decoration: none;color: #1488CC;">下一页</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="bottom">
+        <div class="bottom-width">
+            有疑问请联系 <a href="tel:1-844-542-4813" class="tel-link">123-1234-1234</a>
+            <div>
+                <ul class="bottom-flex">
+                    <li class="list-bottom">
+                        <a href="#" class="link-bottom">
+                            常见问题
+                        </a>
+                    </li>
+                    <li class="list-bottom">
+                        <a href="#" class="link-bottom">
+                            客服中心
+                        </a>
+                    </li>
+                    <li class="list-bottom">
+                        <a href="#" class="link-bottom">
+                            使用条款
+                        </a>
+                    </li>
+                    <li class="list-bottom">
+                        <a href="#" class="link-bottom">
+                            隐私政策
+                        </a>
+                    </li>
+                    <li class="list-bottom">
+                        <a href="#" class="link-bottom">
+                            关于我们
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+        function UploadImg(obj) {
+            var file = obj.files[0];
+            var reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = function (e) {
+                var img = document.getElementById("myAvator");
+                img.src = e.target.result;
+            };
+        }
+
+        $('input[type=radio][name="nav"]').change(function () {
+            var myvalue = $('input:radio[name="nav"]:checked').val();
+            var choose;
+            var table;
+            do {
+                if (myvalue == "userRadio") {
+                    var choose = document.getElementById("usersO");
+                } else {
+                    if (myvalue == "movieRadio") {
+                        choose = document.getElementById("movieO");
+                        table = document.getElementById("movieTable");
+                    }
+                    if (myvalue == "cinemaRadio") {
+                        choose = document.getElementById("cinemaO");
+                        table = document.getElementById("cinemaTable");
+                    }
+                    if (myvalue == "NewsRadio") {
+                        var choose = document.getElementById("NewsO");
+                        table = document.getElementById("NewsTable");
+
+                    }
+                    if (myvalue == "rankRadio") {
+                        var choose = document.getElementById("rankO");
+                        table = document.getElementById("rankTable");
+
+                    }
+                    $('.pure-table').css('display', 'none');
+                    table.style.display = "inline-block";
+                }
+            } while (false);
+
+            $('.titleBar').css('display', 'none');
+            choose.style.display = "inline-block";
+        });
+
+        function sendInfo(obj) {
+            var name = obj.id;
+            var table;
+            console.log(name)
+            $('.subTitle').css('display', 'none');
+            $('.pure-table').css('display', 'none');
+            var subtitle;
+            if (name == "cusRadio") {
+                subtitle = document.getElementById("cusTitle");
+                table = document.getElementById("cusTable");
+            }
+            if (name == "staffRadio") {
+                subtitle = document.getElementById("staffTitle");
+                table = document.getElementById("staffTable");
+            }
+            subtitle.style.display = "inline-block";
+            table.style.display = "inline-block";
+        }
+
+        function alter(o) {
+            console.log($(o).parents("tr"));
+            $(o).parents("tr").find("input").removeAttr("readOnly");
+            $(o).css("display", "none");
+            $(o).next().css("display", "");
+        }
+
+        function confirm(o) {
+            $(o).parents("tr").find("input").attr("readOnly", true);
+            $(o).css("display", "none");
+            $(o).prev().css("display", "");
+        }
+
+    </script>
+
+</div>
+</body>
+</html>

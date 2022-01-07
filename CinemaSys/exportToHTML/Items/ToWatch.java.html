@@ -1,0 +1,98 @@
+<html>
+<head>
+<title>ToWatch.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #000080; font-weight: bold;}
+.s1 { color: #000000;}
+.s2 { color: #808080; font-style: italic;}
+.s3 { color: #008000; font-weight: bold;}
+</style>
+</head>
+<body bgcolor="#ffffff">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+ToWatch.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span>Items;
+
+<span class="s0">public class </span>ToWatch {
+    <span class="s0">private </span>String tencent;
+    <span class="s0">private </span>String aqiyi;
+    <span class="s0">private </span>String youku;
+    <span class="s0">private </span>String bilibili;
+    <span class="s0">private </span>String theater;
+
+    <span class="s2">/**</span>
+     <span class="s2">* Constructor</span>
+     <span class="s2">*/</span>
+    <span class="s0">public </span>ToWatch(String tencent, String aqiyi, String youku, String bilibili, String theater) {
+        <span class="s0">this</span>.tencent = tencent;
+        <span class="s0">this</span>.aqiyi = aqiyi;
+        <span class="s0">this</span>.youku = youku;
+        <span class="s0">this</span>.bilibili = bilibili;
+        <span class="s0">this</span>.theater = theater;
+    }
+
+    <span class="s2">/**</span>
+     <span class="s2">* Getters and Setters</span>
+     <span class="s2">*/</span>
+    <span class="s0">public </span>String getTencent() {
+        <span class="s0">return </span>tencent;
+    }
+
+    <span class="s0">public void </span>setTencent(String tencent) {
+        <span class="s0">this</span>.tencent = tencent;
+    }
+
+    <span class="s0">public </span>String getAqiyi() {
+        <span class="s0">return </span>aqiyi;
+    }
+
+    <span class="s0">public void </span>setAqiyi(String aqiyi) {
+        <span class="s0">this</span>.aqiyi = aqiyi;
+    }
+
+    <span class="s0">public </span>String getYouku() {
+        <span class="s0">return </span>youku;
+    }
+
+    <span class="s0">public void </span>setYouku(String youku) {
+        <span class="s0">this</span>.youku = youku;
+    }
+
+    <span class="s0">public </span>String getBilibili() {
+        <span class="s0">return </span>bilibili;
+    }
+
+    <span class="s0">public void </span>setBilibili(String bilibili) {
+        <span class="s0">this</span>.bilibili = bilibili;
+    }
+
+    <span class="s0">public </span>String getTheater() {
+        <span class="s0">return </span>theater;
+    }
+
+    <span class="s0">public void </span>setTheater(String theater) {
+        <span class="s0">this</span>.theater = theater;
+    }
+
+    @Override
+    <span class="s0">public </span>String toString() {
+        <span class="s0">return </span><span class="s3">&quot;ToWatch{&quot; </span>+
+                <span class="s3">&quot;tencent='&quot; </span>+ tencent + <span class="s3">'</span><span class="s0">\'</span><span class="s3">' </span>+
+                <span class="s3">&quot;, aqiyi='&quot; </span>+ aqiyi + <span class="s3">'</span><span class="s0">\'</span><span class="s3">' </span>+
+                <span class="s3">&quot;, youku='&quot; </span>+ youku + <span class="s3">'</span><span class="s0">\'</span><span class="s3">' </span>+
+                <span class="s3">&quot;, bilibili='&quot; </span>+ bilibili + <span class="s3">'</span><span class="s0">\'</span><span class="s3">' </span>+
+                <span class="s3">&quot;, theater='&quot; </span>+ theater + <span class="s3">'</span><span class="s0">\'</span><span class="s3">' </span>+
+                <span class="s3">'}'</span>;
+    }
+
+    <span class="s0">public void </span>printInfo(){
+        System.out.println(<span class="s0">this</span>.toString());
+    }
+}
+</pre>
+</body>
+</html>
